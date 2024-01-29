@@ -1,0 +1,29 @@
+.container_main_categories {
+	padding-top: var(--padding-top-section);
+}
+.container_title_categories {
+	margin-bottom: var(--padding-bottom-title-section);
+}
+
+
+.conatiner_slider_categories {
+	width: var(--width-container);
+	margin: 0 auto;
+}
+.slider_imagen_categorie {
+	width: 100%;
+	box-shadow: var(--box-shadow-black-blur);
+	height:100%;
+	object-fit: cover;
+	border-radius: var(--border-radius-box);
+}
+.slider_container_categorie{
+	height: 230px;
+	cursor: pointer;
+}
+.slick-slide > div {
+  margin: 0 10px;
+}
+.slick-list {
+  margin: 0 -10px;
+}

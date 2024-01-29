@@ -1,0 +1,252 @@
+.header {
+	width: 100vw;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	background-color: var(--color-white);
+	box-shadow: var(--box-shadow-black);
+	position: fixed;
+	top: 0;
+	z-index: 20;
+	left: 0;
+}
+.nav {
+	width: var(--width-container);
+	margin: 0 auto;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.nav_logo {
+	width: 120px;
+	cursor: pointer;
+}
+.icon_menu_hamburg {
+	font-size: var(--font-size-icon);
+	color: var(--color-icon);
+}
+.icon_menu {
+	font-size: var(--font-size-icon);
+	color: var(--color-icon);
+}
+i {
+	cursor: pointer;
+}
+.nav_container_icons {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+/*
+	Ocultando la lista de items del menu
+*/
+.nav_list {
+	opacity: 0;
+	position: fixed;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	transition: 0.4s ease-in-out;
+	transform: translateX(-1000px);
+	background-color: var(--color-white);
+}
+.see_menu {
+	transform: translateX(0px);
+	opacity: 1;
+}
+.icon_btn_menu_close {
+	position: absolute;
+	right: 10px;
+	top: 10px;
+}
+.container_items_list {
+	width: 90%;
+	margin: 20px auto;
+	max-height: 80%;
+	overflow-y: auto;
+}
+.list_item {
+	font-size: 16px;
+	display: flex;
+	position: relative;
+}
+.nav_ul_li {
+	position: relative;
+	cursor: pointer;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	margin-bottom: 5px;
+	overflow: hidden;
+}
+.sub_list {
+	height: 0px;
+	opacity: 0;
+	width: 100%;
+	left: 3px;
+	position: relative;
+	border-left: 0.5px solid black;
+	transition: 0.3s;
+}
+.sub_list > li {
+	font-size: 13px;
+	padding: 10px;
+	display: none;
+}
+.see_sub_list {
+	height: max-content;
+	opacity: 1;
+	margin-bottom: 10px;
+}
+.see_sub_list > li {
+	display: block;
+}
+.nav_ul_li .item {
+	color: black;
+	position: relative;
+}
+.item::before{
+	content: "";
+	position: absolute;
+	bottom: 0px;
+	left: 0px;
+	height: 1.5px;
+	width: 0%;
+	transition: .3s;
+	background-color: black;
+}
+.item:hover::before{
+	width: 100%;
+}
+.icon_arrow {
+	font-size: var(--font-size-icon);
+	position: absolute;
+	right: 0;
+	transition: 0.3s;
+}
+.rotate_arrow {
+	transform: rotate(90deg);
+}
+.title_menu {
+	margin-top: 15px;
+	font-size: 20px;
+	color: var(--color-text-titles);
+	text-transform: uppercase;
+	text-align: center;
+}
+
+.btn_close_menu {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	cursor: pointer;
+	background-color: rgba(242, 141, 141, 0.48);
+	padding: 10px;
+	color: var(--color-white);
+	font-size: 18px;
+}
+
+/*
+	item activo en la pagina
+*/
+
+.item-active::before{
+	content: "";
+	position: absolute;
+	width: 100%;
+	left: 0px;
+	bottom: 0px;
+	background-color: black;
+	height: 1px;
+}
+
+@media screen and (min-width: 1024px) {
+	*{
+		transition: none;
+		transform: none;
+	}
+	.icon_menu_hamburg {
+		display: none;
+	}
+	.title_menu {
+		display: none;
+	}
+	.nav_ul_li {
+		position: initial;
+		overflow:initial;
+	}
+	.icon_arrow {
+		display: none;
+	}
+	.list_item {
+		display: block;
+		margin:0px;
+		font-size: 16px;
+	}
+	.nav_container {
+		display: flex;
+		justify-content: space-between;
+		padding: 0px;
+		width: 58%;
+		/* border: var(--border); */
+	}
+	.nav_list {
+		position: initial;
+		transform: none;
+		opacity: 1;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 0px;
+	}
+	.item{
+		font-size: 15px;
+	}
+	.container_items_list{
+		display: flex;
+		align-items: center;
+		padding: 0px;
+		gap: 20px;
+		width: 100%;
+		overflow:initial;
+		margin: 0px;
+	}
+	.nav_ul_li{
+		display: flex;
+		align-items: center;
+		position: relative;
+		padding-top: 5px;
+		padding-bottom: 5px;
+	}
+	.nav_container_icons{
+		gap: 15px;
+	}
+	.btn_close_menu {
+		display: none;
+	}
+	.sub_list{
+		opacity: 0;
+		pointer-events: none;
+		height: 400px;
+		max-height: 700px;
+		overflow: auto;
+		padding: 30px;
+		position: absolute;
+		background-color: var(--color-white);
+		top: 33px;
+		left: 0px;
+		border: none;
+		width: 250px;
+		border-radius: var(--border-radius-box);
+		box-shadow: var(--box-shadow-black);
+	}
+	.nav_ul_li:hover >.sub_list{
+		opacity: 1;
+		pointer-events: unset;
+	}
+	.sub_list > li {
+		font-size: 14px;
+		padding: 10px;
+		display: block;
+	}
+}

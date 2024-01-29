@@ -1,0 +1,7 @@
+root=true
+
+[*] # indica que esta configuración afectará a todos los archivos del proyecto
+charset=utf-8 # indica el tipo de codificacion en el proyecto
+indent_style = tab # indica el estilo de espaciado en los archivos del proyecto
+indent_size = 2 # indica cuanto sera la tabulacion en el codigo
+trim_trailing_whitespace = true # elimina los espacios sobrantes al final de una linea de codigo

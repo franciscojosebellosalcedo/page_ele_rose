@@ -1,11 +1,8 @@
+import Layaut from "./components/layaut/Layaut";
 
 function App() {
 
-  return (
-    <div>
-     
-    </div>
-  );
+  return <Layaut/>
 }
 
 export default App;

@@ -1,0 +1,126 @@
+.grid_item_product{
+	position: relative;
+	height: 490px;
+	cursor: pointer;
+  border-radius: 8px;
+	overflow: hidden;
+  box-shadow: var(--box-shadow-black-blur);
+}
+.img_grid_item{
+	width: 100%;
+	transition: .4s ease-out;
+	height: 65%;
+	object-fit: cover;
+	border-top-right-radius:var(--border-radius-box) ;
+	border-top-left-radius:var(--border-radius-box) ;
+}
+.grid_item_product:hover > .img_grid_item{
+	transform: scale(1.1);
+}
+.conatiner_data_grid_item{
+	width: 100%;
+	height: max-content;
+	position: absolute;
+	top: 65%;
+	z-index: 1;
+	background-color: var(--color-white);
+	height: 50px;
+}
+.icon_item_grid{
+	color: var(--color-white);
+	display: flex;
+	cursor: pointer;
+	font-size: 20px;
+	margin-left: 10px;
+	align-items: center;
+	justify-content: center;
+}
+
+.grid_item_name_product{
+	padding: 0px 10px;
+	text-align: center;
+	margin-top: 15px;
+	font-size: 15px;
+	color: var(--color-text-title);
+}
+.btn_add_car{
+	width: 100%;
+	position: absolute;
+	font-size: 16px;
+	left: 0px;
+	border-bottom-right-radius: var(--border-radius-box);
+	border-bottom-left-radius: var(--border-radius-box);
+	background-color: rgba(0, 0, 0, 0.263);
+	bottom: 0px;
+	padding: 10px 0px;
+	color: var(--color-white);
+	cursor: pointer;
+	transition: .6s;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.btn_add_car:hover{
+	background-color:rgba(0, 0, 0, 0.725) ;
+}
+.grid_item_price_product{
+	text-align: center;
+	margin-top: 10px;
+	padding: 0 10px;
+}
+.stick_product_new{
+	background-color: #f1a0b5;
+	height: 100px;
+	width: 100px;
+	display: flex;
+	align-items: end;
+	flex-direction: column;
+	justify-content: center;
+	position: absolute;
+	transition: .6s;
+	top: -50px;
+	left: -55px;
+	transform: rotate(40deg);
+	z-index: 1;
+}
+.stick_text{
+	font-size: 14px;
+	transition: .6s;
+	right: -7px;
+	transform: rotate(-90deg);
+	position: absolute;
+	color: var(--color-white);
+}
+.stick_product_promotion{
+	background-color: #f1a0b5;
+	height: 100px;
+	width: 100px;
+	display: flex;
+	align-items: center;
+	flex-direction: row;
+	position: absolute;
+	transition: .6s;
+	top: -50px;
+	right: -55px;
+	transform: rotate(-40deg);
+	z-index: 1;
+}
+.stick_number_promotion{
+	font-size: 14px;
+	transition: .6s;
+	transform: rotate(90deg);
+	position: absolute;
+	color: var(--color-white);
+}
+.content_promotion{
+	display: flex;
+	width: 100%;
+	padding: 10px;
+	margin-top: 10px;
+	justify-content: space-around;
+	align-items: center;
+}
+.content_promotion > .content_price:nth-child(1) > p{
+	text-decoration: line-through;
+	text-decoration-thickness: 1.4px;
+}
