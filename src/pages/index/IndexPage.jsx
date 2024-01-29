@@ -9,7 +9,7 @@ const IndexPage = () => {
     <div className="index_page">
       <NavBar/>
 			<SliderMain/>
-			{/* <MainCategories/> */}
+			<MainCategories/>
 			<ProductsNews/>
     </div>
   )

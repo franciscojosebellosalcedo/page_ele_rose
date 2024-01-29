@@ -1,11 +1,10 @@
 .container_main_categories {
 	padding-top: var(--padding-top-section);
+	overflow: hidden;
 }
 .container_title_categories {
 	margin-bottom: var(--padding-bottom-title-section);
 }
-
-
 .conatiner_slider_categories {
 	width: var(--width-container);
 	margin: 0 auto;
@@ -27,5 +26,4 @@
 }
 .slick-list {
   margin: 0 -8px;
-
 }
