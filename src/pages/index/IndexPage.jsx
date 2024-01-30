@@ -1,3 +1,4 @@
+import CollectionRecent from "../../components/colleactionRecent/CollectionRecent";
 import MainCategories from "../../components/mainCategories/MainCategories";
 import NavBar from "../../components/navBar/NavBar";
 import ProductsNews from "../../components/productsNews/ProductsNews";
@@ -11,6 +12,7 @@ const IndexPage = () => {
 			<SliderMain/>
 			<MainCategories/>
 			<ProductsNews/>
+			<CollectionRecent/>
     </div>
   )
 }

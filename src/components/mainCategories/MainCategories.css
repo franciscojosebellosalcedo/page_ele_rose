@@ -51,19 +51,26 @@
 	height: 230px;
 	position: relative;
 	cursor: pointer;
+	border-radius: var(--border-radius-box);
 	overflow: hidden;
 }
 .slider_container_categorie:hover >.container_see_more_categorie{
 	bottom: 0px;
 	pointer-events: unset;
 }
-
+.slider_container_categorie:hover >.slider_imagen_categorie{
+	transform: scale(1.1);
+}
 .item_slider_category_name{
 	position: absolute;
 	bottom: 10px;
 	z-index: 1;
-	font-size: 28px;
-	right: 10px;
+	font-size: 22px;
+	text-align: center;
+	text-transform: uppercase;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 90%;
 	padding: 6px;
 	color: var(--color-text-title);
 	border-radius: var(--border-radius-box);

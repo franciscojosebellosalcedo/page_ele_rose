@@ -1,7 +1,8 @@
 .grid_item_product{
 	position: relative;
-	height: 490px;
+	height: 400px;
 	cursor: pointer;
+	border: var(--border-small);
   border-radius: 8px;
 	overflow: hidden;
   box-shadow: var(--box-shadow-black-blur);
@@ -9,7 +10,7 @@
 .img_grid_item{
 	width: 100%;
 	transition: .4s ease-out;
-	height: 65%;
+	height: 50%;
 	object-fit: cover;
 	border-top-right-radius:var(--border-radius-box) ;
 	border-top-left-radius:var(--border-radius-box) ;
@@ -21,7 +22,7 @@
 	width: 100%;
 	height: max-content;
 	position: absolute;
-	top: 65%;
+	top: 50%;
 	z-index: 1;
 	background-color: var(--color-white);
 	height: 50px;
