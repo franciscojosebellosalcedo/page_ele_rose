@@ -54,13 +54,18 @@ i {
 .see_menu {
 	transform: translateX(0px);
 	opacity: 1;
-	width: 100vw;
-	height: 100vh;
 }
 .icon_btn_menu_close {
 	position: absolute;
 	right: 10px;
 	top: 10px;
+}
+.sub_list_item{
+	transition: .6s;
+}
+.sub_list_item:hover{
+	transition: .6s;
+	color: var(--color-text-titles);
 }
 .container_items_list {
 	width: 90%;

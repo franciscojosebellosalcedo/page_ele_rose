@@ -5,6 +5,8 @@ export const ROUTES={
 	INIT:"/"
 }
 
+export const URL_BASE=process.env.REACT_APP_URL_API;
+
 export const SETTINGS_SLIDER_RESPONSIVE={
 	dots: true,
 	infinite: false,
@@ -166,3 +168,10 @@ export const SETTINGS_SLIDER_MAIN={
 	nextArrow: <NextArrow />,
 	prevArrow: <PrevArrow />,
 };
+
+export const HEADERS={
+	"Access-Control-Allow-Origin": "*",
+	"Access-Control-Allow-Methods": "GET, POST, PUT, DELETE",
+	"Access-Control-Allow-Headers": "Content-Type",
+	"Content-Type":"application/json"
+}

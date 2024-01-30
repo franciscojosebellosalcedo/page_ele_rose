@@ -6,16 +6,16 @@ const initialState = {
   },
 };
 
-const collesctionSlice = createSlice({
-  name: "collection",
+const categorySlice = createSlice({
+  name: "category",
   initialState,
   reducers: {
-		setCollections:(state,action)=>{
+		setCategories:(state,action)=>{
 			state.data.list=action.payload;
 		}
   },
 });
 export const {
-	setCollections,
-} = collesctionSlice.actions;
-export default collesctionSlice.reducer;
+	setCategories,
+} = categorySlice.actions;
+export default categorySlice.reducer;

@@ -2,18 +2,20 @@ import { NavLink } from "react-router-dom";
 import "./NavBar.css";
 import { useState } from "react";
 import { ROUTES } from "../../constants/constants";
+import { useSelector } from "react-redux";
 
 const NavBar = () => {
 	const [isOpenAccessories, setIsOpenAccessories] = useState(false);
 	const [isOpenCollections, setIsOpenCollections] = useState(false);
 	const [isOpenMenu, setIsOpenMenu] = useState(false);
+	const categories=useSelector((state)=>state.category.data.list);
+	const collections=useSelector((state)=>state.collection.data.list);
 
 	const handlerOpenMenu = (e) => {
 		e.preventDefault();
 		e.stopPropagation();
 		setIsOpenMenu(!isOpenMenu);
 	}
-
 
 	const handlerOpenAccessories = (e) => {
 		e.preventDefault();
@@ -46,16 +48,23 @@ const NavBar = () => {
 								</li>
 							</div>
 
-
-							<div className="nav_ul_li" >
+							<div className="nav_ul_li">
 								<li  className="list_item">
 									<NavLink className={({ isActive }) => isActive === true ? "item " : "item"} >Accesorios</NavLink>
 									<i className={`uil uil-angle-right icon_arrow ${isOpenAccessories ? "rotate_arrow" : ""}`} onClick={(e) => handlerOpenAccessories(e)}></i>
 								</li>
 								<ul className={`sub_list sub_list_accessories ${isOpenAccessories ? "see_sub_list" : ""}`}>
-									<li className="sub_list_item">Collares</li>
-									<li className="sub_list_item">Aretes</li>
-									<li className="sub_list_item">Earcuff</li>
+									{
+										categories && categories.length >0 ?
+											<>
+												{
+													categories.map((cat,index)=>{
+														return <li key={index} className="sub_list_item">{cat?.name}</li>
+													})
+												}
+											</>
+										:""
+									}
 								</ul>
 							</div>
 
@@ -65,24 +74,17 @@ const NavBar = () => {
 									<i className={`uil uil-angle-right icon_arrow ${isOpenCollections ? "rotate_arrow" : ""}`}  onClick={(e) => handlerOpenCollections(e)}></i>
 								</li>
 								<ul className={`sub_list sub_list_accessories ${isOpenCollections ? "see_sub_list" : ""}`}>
-									<li className="sub_list_item">Collares</li>
-									<li className="sub_list_item">Aretes</li>
-									<li className="sub_list_item">Earcuff</li>
-									<li className="sub_list_item">Earcuff</li>
-									<li className="sub_list_item">Earcuff</li>
-									<li className="sub_list_item">Earcuff</li>
-									<li className="sub_list_item">Earcuff</li>
-									<li className="sub_list_item">Earcuff</li>
-									<li className="sub_list_item">Earcuff</li>
-									<li className="sub_list_item">Earcuff</li>
-									<li className="sub_list_item">Earcuff</li>
-									<li className="sub_list_item">Earcuff</li>
-									<li className="sub_list_item">Earcuff</li>
-									<li className="sub_list_item">Earcuff</li>
-									<li className="sub_list_item">Earcuff</li>
-									<li className="sub_list_item">Earcuff</li>
-									<li className="sub_list_item">Earcuff</li>
-									<li className="sub_list_item">Earcuff</li>
+									{
+										collections && collections.length >0 ?
+											<>
+												{
+													collections.map((coll,index)=>{
+														return <li key={index} className="sub_list_item">{coll?.name}</li>
+													})
+												}
+											</>
+										:""
+									}
 								</ul>
 							</div>
 
