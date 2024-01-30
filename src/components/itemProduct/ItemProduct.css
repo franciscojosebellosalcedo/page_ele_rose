@@ -46,7 +46,7 @@
 .btn_add_car{
 	width: 100%;
 	position: absolute;
-	font-size: 16px;
+	font-size: 14px;
 	left: 0px;
 	border-bottom-right-radius: var(--border-radius-box);
 	border-bottom-left-radius: var(--border-radius-box);
@@ -123,4 +123,9 @@
 .content_promotion > .content_price:nth-child(1) > p{
 	text-decoration: line-through;
 	text-decoration-thickness: 1.4px;
+}
+@media screen and (min-width:768px) {
+	.btn_add_car{
+		font-size: 16px;
+	}
 }

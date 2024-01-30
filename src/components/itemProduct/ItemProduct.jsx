@@ -7,7 +7,7 @@ const ItemProduct = () => {
 				<span className="stick_text">Nuevo</span>
 			</div>
 			<div className="stick_product_promotion">
-				<span className="stick_number_promotion">%50</span>
+				<span className="stick_number_promotion">50%</span>
 			</div>
 			<img className="img_grid_item" src={require("../../assest/img-p-1.jpeg")} alt="" />
 			<div className="conatiner_data_grid_item">
