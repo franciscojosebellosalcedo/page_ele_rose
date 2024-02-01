@@ -11,7 +11,6 @@
 }
 .slider_container_item_rating{
 	position: relative;
-	cursor: pointer;
 	border-radius: var(--border-radius-box);
 	overflow: hidden;
 

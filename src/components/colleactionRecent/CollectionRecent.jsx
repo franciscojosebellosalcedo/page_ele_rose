@@ -1,10 +1,8 @@
 import { useSelector } from "react-redux";
 import "./CollectionRecent.css";
-import { useEffect, useState } from "react";
 
 const CollectionRecent = () => {
 	const collectionsReverse = useSelector((state) => state.collection.data.reverse);
-
 
 	return (
 		<section className="container container_collections_recent">

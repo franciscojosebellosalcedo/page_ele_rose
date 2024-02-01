@@ -8,12 +8,28 @@ import { getAllCollections } from "../../service/collection.service";
 import { setCollections, setCollectionsReverse } from "../../features/collection/collection";
 import { getAllProducts } from "../../service/product.service";
 import { setProducts } from "../../features/product/product";
+import { getAllQualification } from "../../service/qualification.service";
+import { setQualification } from "../../features/qualification/qualification";
 
 const Layaut = () => {
 	const token = useSelector((state) => state.token.data.token);
 	const dispatch = useDispatch();
 	const [isLoader, setIsLoader] = useState(false);
 
+	const getQualifications = async () => {
+		setIsLoader(true);
+		try {
+			const responseProducts = (await getAllQualification(token)).data;
+			if (responseProducts.status === 200 && responseProducts.response) {
+				const data = responseProducts.data;
+				dispatch(setQualification(data));
+			}
+		} catch (error) {
+			console.log(error)
+		}
+		setIsLoader(false);
+
+	}
 	const getProducts = async () => {
 		setIsLoader(true);
 		try {
@@ -70,6 +86,7 @@ const Layaut = () => {
 		getCategories();
 		getCollections();
 		getProducts();
+		getQualifications();
 	}
 
 	useEffect(() => {

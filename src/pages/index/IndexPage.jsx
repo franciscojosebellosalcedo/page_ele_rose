@@ -1,3 +1,4 @@
+import { useSelector } from "react-redux";
 import CollectionRecent from "../../components/colleactionRecent/CollectionRecent";
 import Footer from "../../components/footer/Footer";
 import HappyClients from "../../components/happyClients/HappyClients";
@@ -9,15 +10,18 @@ import SliderMain from "../../components/sliderMain/SliderMain";
 import "./IndexPage.css";
 
 const IndexPage = () => {
+	const qualifications=useSelector((state)=>state.qualification.data.list);
+	const collectionsRecent=useSelector((state)=>state.collection.data.list);
+
   return (
     <div className="index_page">
       <NavBar/>
 			<SliderMain/>
 			<MainCategories/>
 			<ProductsNews/>
-			<CollectionRecent/>
+			{collectionsRecent && collectionsRecent.length >0 ?<CollectionRecent/>:""}
 			<InfoEleRose/>
-			<HappyClients/>
+			{qualifications && qualifications.length >0 ? <HappyClients/> :""}
 			<Footer/>
     </div>
   )

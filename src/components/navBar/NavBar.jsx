@@ -96,7 +96,7 @@ const NavBar = () => {
 
 							<div className="nav_ul_li">
 								<li className="list_item">
-									<NavLink className={({ isActive }) => isActive === true ? "item " : "item"} >Contanto</NavLink>
+									<NavLink className={({ isActive }) => isActive === true ? "item " : "item"} >Contacto</NavLink>
 								</li>
 							</div>
 
