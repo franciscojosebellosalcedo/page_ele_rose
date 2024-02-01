@@ -1,5 +1,6 @@
 .container_footer{
 	padding-top: 20px;
+	width: 100vw;
 	padding-bottom: 0;
 	background-color: rgba(0, 0, 0, 0.585);
 }
