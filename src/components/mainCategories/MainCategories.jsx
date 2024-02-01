@@ -17,7 +17,7 @@ const MainCategories = () => {
 						<Slider {...SETTINGS_SLIDER_RESPONSIVE}>
 								{
 									categories.map((cat, index) => {
-										return <div className="slider-container slider_container_categorie">
+										return <div key={index} className="slider-container slider_container_categorie">
 											<h4 className="item_slider_category_name">{cat?.name}</h4>
 											<img className="slider_imagen_categorie" src={cat?.imagen} alt="" />
 											<div className="container_see_more_categorie">

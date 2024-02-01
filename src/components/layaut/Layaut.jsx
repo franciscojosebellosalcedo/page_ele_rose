@@ -5,7 +5,7 @@ import { getAllCategories } from "../../service/category.service";
 import { setCategories } from "../../features/category/category";
 import Loader from "../loader/Loader";
 import { getAllCollections } from "../../service/collection.service";
-import { setCollections } from "../../features/collection/collection";
+import { setCollections, setCollectionsReverse } from "../../features/collection/collection";
 import { getAllProducts } from "../../service/product.service";
 import { setProducts } from "../../features/product/product";
 
@@ -36,6 +36,12 @@ const Layaut = () => {
 			if (responseCollections.status === 200 && responseCollections.response) {
 				const data = responseCollections.data;
 				dispatch(setCollections(data));
+				const list=[];
+				for (let index = 0; index < data.length; index++) {
+					const collection = data[index];
+					list.unshift(collection);
+				}
+				dispatch(setCollectionsReverse(list));
 			}
 		} catch (error) {
 			console.log(error)

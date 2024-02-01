@@ -11,7 +11,7 @@ export const INFO_ELEROSE={
 		text:"Atendemos todas las inquietudes por Whatsapp +57 3053559355 y también por el email elerose@gmail.com"
 	},
 	deliveries:{
-		title:"Domicilios",
+		title:"Envíos",
 		text:"Envíos seguros a toda Colombia con nuestros aliados logísticos"
 	},
 	ratingsClients:{

@@ -1,22 +1,32 @@
+import { useSelector } from "react-redux";
 import "./CollectionRecent.css";
+import { useEffect, useState } from "react";
 
 const CollectionRecent = () => {
+	const collectionsReverse = useSelector((state) => state.collection.data.reverse);
+
+
 	return (
 		<section className="container container_collections_recent">
 			<h1 className="container_title container_title_products_news"> Colecciones recientes</h1>
 			<div className="collections_recent_grid">
-				<div className="content_collection">
-					<img className="imagen_collection_recent" src={require("../../assest/example-treme-1.webp")} alt="" />
-					<h4 className="name_collection_recent">Juegos de perlas</h4>
-				</div>
-				<div className="content_collection">
-					<img className="imagen_collection_recent" src={require("../../assest/example-treme-1.webp")} alt="" />
-					<h4 className="name_collection_recent">Letras</h4>
-				</div>
-				<div className="content_collection">
-					<img className="imagen_collection_recent" src={require("../../assest/example-treme-1.webp")} alt="" />
-					<h4 className="name_collection_recent">Collar de paises</h4>
-				</div>
+				{
+					collectionsReverse && collectionsReverse.length > 0 ?
+						<>
+							{
+								collectionsReverse.map((col, index) => {
+									return index < 3 ?
+										<div key={index} className="content_collection">
+											<img className="imagen_collection_recent" src={col?.imagen} alt="" />
+											<h4 className="name_collection_recent">{col?.name}</h4>
+										</div>
+										: ""
+								})
+							}
+						</>
+						: ""
+				}
+
 			</div>
 		</section>
 	)
