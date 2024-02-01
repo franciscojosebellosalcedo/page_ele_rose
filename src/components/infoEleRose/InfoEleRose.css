@@ -41,7 +41,7 @@
 	text-transform: uppercase;
 }
 .info_text{
-	font-size: 15px;
+	font-size: 14px;
 	color: var(--color-text-title);
 }
 .container_info_ele_rose > .content_info:nth-child(2){

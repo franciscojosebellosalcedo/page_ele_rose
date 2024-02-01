@@ -1,5 +1,6 @@
 .container_footer{
-	padding: var(--padding-top-section) 20px;
+	padding-top: 20px;
+	padding-bottom: 0;
 	background-color: rgba(0, 0, 0, 0.585);
 }
 .info_footer{
@@ -8,17 +9,21 @@
 	justify-content: center;
 	flex-direction: column;
 	gap: 50px;
+	padding-top: 40px;
+	padding-bottom: 40px;
+	padding-left: 20px;
 	text-align: center;
 }
 .content_info_footer li{
 	margin-top: 15px;
 	font-size: 13px;
+	cursor: pointer;
 	color: rgb(231, 227, 227);
 }
 .info_footer_title{
 	text-transform: uppercase;
 	position: relative;
-	font-size: 16px;
+	font-size: 14px;
 	padding-bottom: 5px;
 	color: var(--color-text-titles);
 }
@@ -31,4 +36,71 @@
 	background-color: rgb(255, 255, 255);
 	width: 50%;
 	transform: translateX(-50%);
+}
+.icon_media >i{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: rgba(0, 0, 0, 0.382);
+	color: white;
+	border-radius: 50%;
+	cursor: pointer;
+	width: 40px;
+	height: 40px;
+	font-size: 25px;
+}
+.info_footer > .content_info_footer:last-child{
+	display: flex;
+	align-items: center;
+	gap: 12px;
+}
+.info_footer > .content_info_footer:last-child > .icon_media:last-child{
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	cursor: pointer;
+	background-color: rgba(0, 0, 0, 0.382);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.info_footer > .content_info_footer:last-child > .icon_media:last-child > img{
+	width: 55%;
+	height: 55%;
+}
+.info_footer_page{
+	padding-top: 50px;
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-bottom: 10px;
+	color: white;
+	font-size: 13px;
+	text-align: center;
+	border-top: .5px solid rgba(255, 255, 255, 0.672) ;
+}
+
+
+@media screen and (min-width:775px) {
+	.info_footer{
+		flex-direction: row;
+		align-items: start;
+		justify-content: start;
+		gap: 180px;
+	}
+	.content_info_footer{
+		margin: 0px;
+		text-align: start;
+	}
+	.info_footer_title::before{
+		transform: none;
+		width: 100%;
+		left: 0px;
+	}
+	.info_footer > .content_info_footer:last-child{
+		align-self: flex-end;
+	}
+	.info_footer_page{
+		text-align: left;
+	}
+
 }
