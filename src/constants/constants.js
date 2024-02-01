@@ -5,8 +5,175 @@ export const ROUTES={
 	INIT:"/"
 }
 
+export const INFO_ELEROSE={
+	serviceClient:{
+		title:"Atención al cliente",
+		text:"Atendemos todas las inquietudes por Whatsapp +57 3053559355 y también por el email elerose@gmail.com"
+	},
+	deliveries:{
+		title:"Domicilios",
+		text:"Envíos seguros a toda Colombia con nuestros aliados logísticos"
+	},
+	ratingsClients:{
+		title:"Descubre lo que dicen nuestros clientes"
+	}
+}
+
+export const LIST_NUMBER_SCORE=[1,2,3,4,5];
+
 export const URL_BASE=process.env.REACT_APP_URL_API;
 
+export const SETTINGS_SLIDER_RESPONSIVE_RATINGS={
+	dots: true,
+	infinite: false,
+	speed: 500,
+	slidesToShow: 4,
+	autoplay:true,
+	slidesToScroll: 4,
+	initialSlide: 0,
+	responsive: [
+		{
+			breakpoint: 1024,
+			settings: {
+				slidesToShow: 3,
+				slidesToScroll: 3,
+			}
+		},
+		{
+			breakpoint: 740,
+			settings: {
+				slidesToShow: 2,
+				slidesToScroll: 1,
+			}
+		},
+		{
+			breakpoint: 710,
+			settings: {
+				slidesToShow: 2,
+				slidesToScroll: 1,
+			}
+		},
+		{
+			breakpoint: 690,
+			settings: {
+				slidesToShow: 2,
+				slidesToScroll: 1,
+			}
+		},
+		{
+			breakpoint: 670,
+			settings: {
+				slidesToShow: 2,
+				slidesToScroll: 1,
+			}
+		},
+		{
+			breakpoint: 650,
+			settings: {
+				slidesToShow: 2,
+				slidesToScroll: 1,
+			}
+		},
+		{
+			breakpoint: 630,
+			settings: {
+				slidesToShow: 2,
+				slidesToScroll: 1,
+			}
+		},
+		{
+			breakpoint: 610,
+			settings: {
+				slidesToShow: 2,
+				slidesToScroll: 1,
+			}
+		},
+		{
+			breakpoint: 590,
+			settings: {
+				slidesToShow: 2,
+				slidesToScroll: 1,
+			}
+		},
+		{
+			breakpoint: 580,
+			settings: {
+				slidesToShow: 2,
+				slidesToScroll: 1,
+			}
+		},
+		{
+			breakpoint: 560,
+			settings: {
+				slidesToShow: 2,
+				slidesToScroll: 1,
+			}
+		},
+		{
+			breakpoint: 540,
+			settings: {
+				slidesToShow: 2,
+				slidesToScroll: 1,
+			}
+		},
+		{
+			breakpoint: 530,
+			settings: {
+				slidesToShow: 2,
+				slidesToScroll: 1,
+			}
+		},
+		{
+			breakpoint: 510,
+			settings: {
+				slidesToShow: 2,
+				slidesToScroll: 1,
+			}
+		},
+		{
+			breakpoint: 500,
+			settings: {
+				slidesToShow: 2,
+				slidesToScroll: 1,
+			}
+		},
+		{
+			breakpoint: 460,
+			settings: {
+				slidesToShow: 1,
+				slidesToScroll: 1
+			}
+		},
+		{
+			breakpoint: 450,
+			settings: {
+				slidesToShow: 1,
+				slidesToScroll: 1
+			}
+		},
+		{
+			breakpoint: 430,
+			settings: {
+				slidesToShow: 1,
+				slidesToScroll: 1
+			}
+		},
+		{
+			breakpoint: 410,
+			settings: {
+				slidesToShow: 1,
+				slidesToScroll: 1
+			}
+		},
+		{
+			breakpoint: 400,
+			settings: {
+				slidesToShow: 1,
+				slidesToScroll: 1
+			}
+		}
+	]
+};
 export const SETTINGS_SLIDER_RESPONSIVE={
 	dots: true,
 	infinite: false,

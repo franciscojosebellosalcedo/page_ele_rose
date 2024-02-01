@@ -29,7 +29,7 @@
 	--font-size-icon-slider: 25px;
 	--width-container:96%;
 	--padding-top-section:100px;
-	--padding-bottom-title-section:50px;
+	--padding-bottom-title-section:60px;
 	--border: 1px solid #000000;
 	--box-shadow-black: 0px 0px 2px 0px #00000060;
 	--box-shadow-black-blur: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -37,6 +37,12 @@
 
 body{
 	background-color: var(--color-white);
+	overflow-x: hidden;
+}
+.text_nowrap{
+	white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .container_title{
 	font-size: 25px;
