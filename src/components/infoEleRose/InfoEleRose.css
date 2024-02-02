@@ -6,7 +6,7 @@
 }
 .content_info{
 	padding:30px;
-	background-color: #f1a0b645;
+	background-color: var(--bg-section-app);
 	display: flex;
 	align-items: center;
 

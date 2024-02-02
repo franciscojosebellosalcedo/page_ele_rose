@@ -2,7 +2,14 @@ import NextArrow from "../components/nextArrow/NextArrow.jsx";
 import PrevArrow from "../components/prevArrow/PrevArrow.jsx";
 
 export const ROUTES={
-	INIT:"/"
+	INIT:"/",
+	ACCESORIES:"/accesories/all",
+	ONE_COLLECTION:"/accesories/collection/:name",
+	PRODUCT:"/accesories/product/:name",
+	CART:"/cart",
+	ACCOUNT:"/account",
+	ABOUT:"/about",
+	CONTACT:"/contact",
 }
 
 export const INFO_ELEROSE={

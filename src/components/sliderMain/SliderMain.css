@@ -1,5 +1,5 @@
 .container_slider{
-	margin-top: 70px;
+	margin-top: var(--margin-top-section);
 	position: relative;
 	height: max-content;
 }
