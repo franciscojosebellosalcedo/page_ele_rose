@@ -13,7 +13,6 @@ const Footer = () => {
 					</ul>
 				</div>
 				
-
 				<div className="content_info_footer">
 					<h1 className="info_footer_title">Ele rose</h1>
 					<ul className="list_info_ele_rose">
