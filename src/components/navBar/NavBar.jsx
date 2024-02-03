@@ -70,7 +70,7 @@ const NavBar = () => {
 
 							<div className="nav_ul_li">
 								<li  className="list_item">
-									<NavLink className={({ isActive }) => isActive === true ? "item " : "item"} >Colecciones</NavLink>
+									<NavLink  className={({ isActive }) => isActive === true ? "item " : "item"} >Colecciones</NavLink>
 									<i className={`uil uil-angle-right icon_arrow ${isOpenCollections ? "rotate_arrow" : ""}`}  onClick={(e) => handlerOpenCollections(e)}></i>
 								</li>
 								<ul className={`sub_list sub_list_accessories ${isOpenCollections ? "see_sub_list" : ""}`}>
@@ -90,13 +90,13 @@ const NavBar = () => {
 
 							<div className="nav_ul_li">
 								<li className="list_item">
-									<NavLink className={({ isActive }) => isActive === true ? "item " : "item"} >Nosotros</NavLink>
+									<NavLink  to={ROUTES.ABOUT} className={({ isActive }) => isActive === true ? "item " : "item"} >Nosotros</NavLink>
 								</li>
 							</div>
 
 							<div className="nav_ul_li">
 								<li className="list_item">
-									<NavLink className={({ isActive }) => isActive === true ? "item " : "item"} >Contacto</NavLink>
+									<NavLink to={ROUTES.CONTACT} className={({ isActive }) => isActive === true ? "item " : "item"} >Contacto</NavLink>
 								</li>
 							</div>
 
