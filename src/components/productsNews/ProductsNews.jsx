@@ -1,7 +1,6 @@
 import { useSelector } from "react-redux";
-import ItemProduct from "../itemProduct/ItemProduct";
-import "./ProductsNews.css";
 import ListProducts from "../listProducts/ListProducts";
+import "./ProductsNews.css";
 
 const ProductsNews = () => {
 	const products=useSelector((state)=>state.product.data.list);
