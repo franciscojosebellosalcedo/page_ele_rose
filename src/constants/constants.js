@@ -4,12 +4,13 @@ import PrevArrow from "../components/prevArrow/PrevArrow.jsx";
 export const ROUTES={
 	INIT:"/",
 	ACCESORIES:"/accesories/all",
-	ONE_COLLECTION:"/accesories/collection/:name",
-	PRODUCT:"/accesories/product/:name",
+	ONE_CATEGORY:"/accesories/category",
+	PRODUCT:"/accesories/product",
 	CART:"/cart",
 	ACCOUNT:"/account",
 	ABOUT:"/about",
 	CONTACT:"/contact",
+	NOT_FOUND:"/not-found"
 }
 
 export const INFO_ELEROSE={
@@ -23,7 +24,8 @@ export const INFO_ELEROSE={
 	},
 	ratingsClients:{
 		title:"Descubre lo que dicen nuestros clientes"
-	}
+	},
+	messageProductsNotFound:"No hay productos"
 }
 
 export const LIST_NUMBER_SCORE=[1,2,3,4,5];
@@ -327,6 +329,32 @@ export const SETTINGS_SLIDER_RESPONSIVE={
 			settings: {
 				slidesToShow: 1,
 				slidesToScroll: 1
+			}
+		}
+	]
+};
+export const SETTINGS_SLIDER_RESPONSIVE_CATEGORIES_ACCESORIES={
+	dots: true,
+	speed: 500,
+	slidesToShow: 4,
+	autoplay:true,
+	slidesToScroll: 4,
+	initialSlide: 0,
+	infinite:true,
+	responsive: [
+		{
+			breakpoint: 700,
+			settings: {
+				slidesToShow: 5,
+				slidesToScroll: 5
+			}
+		}
+		,
+		{
+			breakpoint: 400,
+			settings: {
+				slidesToShow: 3,
+				slidesToScroll: 3
 			}
 		}
 	]

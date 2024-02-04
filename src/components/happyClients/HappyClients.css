@@ -6,8 +6,9 @@
 }
 .container_slider_ratings_client{
 	width: 90%;
-	cursor: normal;
+	cursor: auto;
 	margin: 0 auto;
+	overflow: hidden;
 }
 .slider_container_item_rating{
 	position: relative;

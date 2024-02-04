@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import "./NavBar.css";
 import { useState } from "react";
 import { ROUTES } from "../../constants/constants";
@@ -10,6 +10,12 @@ const NavBar = () => {
 	const [isOpenMenu, setIsOpenMenu] = useState(false);
 	const categories=useSelector((state)=>state.category.data.list);
 	const collections=useSelector((state)=>state.collection.data.list);
+	const nav=useNavigate();
+
+	const navigate=(e,cat)=>{
+		handlerOpenMenu(e);
+		nav(ROUTES.ONE_CATEGORY+`/${cat?.name}`);
+	}
 
 	const handlerOpenMenu = (e) => {
 		e.preventDefault();
@@ -33,7 +39,7 @@ const NavBar = () => {
 		<header className="header">
 			<nav className="nav">
 				<i className="uil uil-bars icon_menu_hamburg" onClick={(e) => handlerOpenMenu(e)}></i>
-				<img className="nav_logo" src={require("../../assest/logo.jpeg")} alt="" />
+				<img className="nav_logo" onClick={()=>nav(ROUTES.INIT)} src={require("../../assest/logo.jpeg")} alt="" />
 
 				<section className="nav_container">
 
@@ -59,7 +65,7 @@ const NavBar = () => {
 											<>
 												{
 													categories.map((cat,index)=>{
-														return <li key={index} className="sub_list_item">{cat?.name}</li>
+														return <li onClick={(e)=>navigate(e,cat)} key={index} className="sub_list_item">{cat?.name}</li>
 													})
 												}
 											</>
@@ -68,7 +74,7 @@ const NavBar = () => {
 								</ul>
 							</div>
 
-							<div className="nav_ul_li">
+							{/* <div className="nav_ul_li">
 								<li  className="list_item">
 									<NavLink  className={({ isActive }) => isActive === true ? "item " : "item"} >Colecciones</NavLink>
 									<i className={`uil uil-angle-right icon_arrow ${isOpenCollections ? "rotate_arrow" : ""}`}  onClick={(e) => handlerOpenCollections(e)}></i>
@@ -98,7 +104,7 @@ const NavBar = () => {
 								<li className="list_item">
 									<NavLink to={ROUTES.CONTACT} className={({ isActive }) => isActive === true ? "item " : "item"} >Contacto</NavLink>
 								</li>
-							</div>
+							</div> */}
 
 						</div>
 						<button className="btn btn_close_menu" onClick={(e) => handlerOpenMenu(e)}>Cerrar menú</button>

@@ -8,6 +8,7 @@
 .conatiner_slider_categories {
 	width: var(--width-container);
 	margin: 0 auto;
+	overflow: hidden;
 }
 .slider_imagen_categorie {
 	width: 100%;

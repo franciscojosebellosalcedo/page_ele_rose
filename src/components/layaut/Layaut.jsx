@@ -7,7 +7,7 @@ import Loader from "../loader/Loader";
 import { getAllCollections } from "../../service/collection.service";
 import { setCollections, setCollectionsReverse } from "../../features/collection/collection";
 import { getAllProducts } from "../../service/product.service";
-import { setProducts } from "../../features/product/product";
+import { setProducts, setProductsFilter } from "../../features/product/product";
 import { getAllQualification } from "../../service/qualification.service";
 import { setQualification } from "../../features/qualification/qualification";
 
@@ -37,6 +37,7 @@ const Layaut = () => {
 			if (responseProducts.status === 200 && responseProducts.response) {
 				const data = responseProducts.data;
 				dispatch(setProducts(data));
+				dispatch(setProductsFilter(data));
 			}
 		} catch (error) {
 			console.log(error)
