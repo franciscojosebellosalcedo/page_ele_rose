@@ -3,18 +3,32 @@ import "./NavBar.css";
 import { useState } from "react";
 import { ROUTES } from "../../constants/constants";
 import { useSelector } from "react-redux";
+import ModalRegisterUser from "../modalRegisterUser/ModalRegisterUser";
+import ModalSearch from "../modalSearch/ModalSearch";
 
 const NavBar = () => {
 	const [isOpenAccessories, setIsOpenAccessories] = useState(false);
 	const [isOpenCollections, setIsOpenCollections] = useState(false);
 	const [isOpenMenu, setIsOpenMenu] = useState(false);
-	const categories=useSelector((state)=>state.category.data.list);
-	const collections=useSelector((state)=>state.collection.data.list);
-	const nav=useNavigate();
+	const categories = useSelector((state) => state.category.data.list);
+	const collections = useSelector((state) => state.collection.data.list);
+	const nav = useNavigate();
+	const [isOpenModal, setIsOpenModal] = useState(false);
+	const [isOpenModalSearch, setIsOpenModalSearch] = useState(false);
 
-	const navigate=(e,cat)=>{
+	const handlerOpenModalSearch = (e) => {
+		e.preventDefault();
+		setIsOpenModalSearch(!isOpenModalSearch);
+	}
+
+	const handlerOpenModal = (e) => {
+		e.preventDefault();
+		setIsOpenModal(!isOpenModal);
+	}
+
+	const navigate = (e, cat) => {
 		handlerOpenMenu(e);
-		nav(ROUTES.ONE_CATEGORY+`/${cat?.name}`);
+		nav(ROUTES.ONE_CATEGORY + `/${cat?.name}`);
 	}
 
 	const handlerOpenMenu = (e) => {
@@ -39,7 +53,7 @@ const NavBar = () => {
 		<header className="header">
 			<nav className="nav">
 				<i className="uil uil-bars icon_menu_hamburg" onClick={(e) => handlerOpenMenu(e)}></i>
-				<img className="nav_logo" onClick={()=>nav(ROUTES.INIT)} src={require("../../assest/logo.jpeg")} alt="" />
+				<img className="nav_logo" onClick={() => nav(ROUTES.INIT)} src={require("../../assest/logo.jpeg")} alt="" />
 
 				<section className="nav_container">
 
@@ -55,21 +69,21 @@ const NavBar = () => {
 							</div>
 
 							<div className="nav_ul_li">
-								<li  className="list_item">
+								<li className="list_item">
 									<NavLink to={ROUTES.ACCESORIES} className={({ isActive }) => isActive === true ? "item " : "item"} >Accesorios</NavLink>
 									<i className={`uil uil-angle-right icon_arrow ${isOpenAccessories ? "rotate_arrow" : ""}`} onClick={(e) => handlerOpenAccessories(e)}></i>
 								</li>
 								<ul className={`sub_list sub_list_accessories ${isOpenAccessories ? "see_sub_list" : ""}`}>
 									{
-										categories && categories.length >0 ?
+										categories && categories.length > 0 ?
 											<>
 												{
-													categories.map((cat,index)=>{
-														return <li onClick={(e)=>navigate(e,cat)} key={index} className="sub_list_item">{cat?.name}</li>
+													categories.map((cat, index) => {
+														return <li onClick={(e) => navigate(e, cat)} key={index} className="sub_list_item">{cat?.name}</li>
 													})
 												}
 											</>
-										:""
+											: ""
 									}
 								</ul>
 							</div>
@@ -111,14 +125,16 @@ const NavBar = () => {
 					</ul>
 
 					<div className="nav_container_icons">
-						<i className="uil uil-search icon_nav icon_menu"></i>
-						<i className="uil uil-user icon_nav icon_menu"></i>
+						<i className="uil uil-search icon_nav icon_menu" onClick={(e) => handlerOpenModalSearch(e)}></i>
+						<i className="uil uil-user icon_nav icon_menu" onClick={(e) => handlerOpenModal(e)}></i>
 						<i className="uil uil-shopping-cart icon_nav icon_menu"></i>
 					</div>
 
 				</section>
 
 			</nav>
+			<ModalRegisterUser isOpenModal={isOpenModal} handlerOpenModal={handlerOpenModal} />
+			<ModalSearch isOpenModalSearch={isOpenModalSearch} handlerOpenModalSearch={handlerOpenModalSearch} />
 		</header>
 	)
 }
