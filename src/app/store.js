@@ -4,6 +4,7 @@ import CategoryReducer from "../features/category/category";
 import ProductReducer from "../features/product/product";
 import TokenReducer from "../features/token/token";
 import QualificationReducer from "../features/qualification/qualification";
+import UserReducer from "../features/user/user";
 
 export const store = configureStore({
 	reducer: {
@@ -12,5 +13,6 @@ export const store = configureStore({
 		product: ProductReducer,
 		token: TokenReducer,
 		qualification: QualificationReducer,
+		user: UserReducer,
 	},
 });

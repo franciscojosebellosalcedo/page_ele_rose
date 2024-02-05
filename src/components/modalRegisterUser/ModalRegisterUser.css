@@ -16,6 +16,15 @@
 	opacity: 1;
 	pointer-events: unset;
 }
+.alert_modal_user{
+	font-size: 14px;
+	padding: 4px;
+	color: rgb(255, 0, 0);
+	position: relative;
+	margin-bottom: 8px;
+	border-radius: var(--border-radius-box);
+	list-style-type: circle;
+}
 .modal{
 	background-color:var(--color-white) ;
 	box-shadow: var(--box-shadow-black-blur);
@@ -68,9 +77,21 @@
 	background-color: rgba(0, 0, 0, 0.527);
 	color: var(--color-white);
 	text-transform: uppercase;
-	transition: .5s;
 	cursor: pointer;
+	height: 35px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	border-radius: var(--border-radius-box);
+}
+.color_alert_red{
+	color: red;
+}
+.color_alert_green{
+	color: rgba(0, 128, 0, 0.785);
+}
+.none_cursor{
+	pointer-events: none;
 }
 .btn_login:hover{
 	background-color:rgba(0, 0, 0, 0.725) ;

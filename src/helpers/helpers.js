@@ -5,6 +5,26 @@ export const headersWithToken=(token)=>{
 	return HEADERS;
 }
 
+export const getRefressTokenLocalStorage=()=>{
+	return sessionStorage.getItem("refressTokenEleRose");
+}
+
+export const saveRefressTokenLocalStorage=(token)=>{
+	sessionStorage.setItem("refressTokenEleRose",token);
+}
+
+export const isValidObject=(object)=>{
+	const listValues=[null,""," ",undefined,0];
+	const keys=Object.keys(object);
+	for (let index = 0; index < keys.length; index++) {
+		const key = keys[index];
+		if(listValues.includes(object[`${key}`])===true){
+			return false;
+		}
+	}
+	return true;
+}
+
 export const  formatPrice=(price) =>{
   return Math.round(price * 100) / 100
 	.toLocaleString('es-MX', { style: 'currency', currency: 'MXN' });
