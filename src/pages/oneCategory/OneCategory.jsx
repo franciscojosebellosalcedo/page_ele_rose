@@ -16,16 +16,17 @@ const OneCategory = () => {
 	const [listProducts,setListProducts]=useState([]);
 
 	useEffect(()=>{
+		let list=[];
 		if(categories.length >0){
 			const catFound=categories.find((cat)=>cat.name===params.name);
 			if(!catFound){
 				navigate(ROUTES.NOT_FOUND);
 			}else{
-				const list=products.filter((pro)=>pro.category?._id===catFound._id);
-				console.log(list)
-				setListProducts(list);
+				list=products.filter((pro)=>pro.category?._id===catFound._id);
 			}
+			setListProducts(list);
 		}
+
 	});
 
 	return (

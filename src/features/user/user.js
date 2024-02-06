@@ -1,7 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  data:null
+  data:{
+		user:{
+			name:"",
+			phone:"",
+			address:"",
+			email:"",
+			_id:"",
+			token:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im9iamVjdEBnbWFpbC5jb20iLCJfaWQiOiI2NWMyYTIzYjFlNzBhNTA1ODEzNDE0YTEiLCJpYXQiOjE3MDcyNTQzMzh9.wbXBxy6YAnJalEh9ywaAmSaqz8dmEnFDt44AF4hbwVU"
+		},
+	}
 };
 
 const userSlice = createSlice({
@@ -9,8 +18,8 @@ const userSlice = createSlice({
   initialState,
   reducers: {
 		setUser:(state,action)=>{
-			state.data=action.payload;
-		}
+			state.data.user=action.payload;
+		},
   },
 });
 export const {

@@ -1,4 +1,4 @@
-.container_modal_register_user{
+.container_modal_register_user {
 	position: fixed;
 	display: flex;
 	align-items: center;
@@ -9,14 +9,14 @@
 	right: 0px;
 	background-color: rgba(0, 0, 0, 0.608);
 	opacity: 0;
-	transition: .5s;
+	transition: 0.5s;
 	pointer-events: none;
 }
-.see_modal_user{
+.see_modal_user {
 	opacity: 1;
 	pointer-events: unset;
 }
-.alert_modal_user{
+.alert_modal_user {
 	font-size: 14px;
 	padding: 4px;
 	color: rgb(255, 0, 0);
@@ -25,23 +25,24 @@
 	border-radius: var(--border-radius-box);
 	list-style-type: circle;
 }
-.modal{
-	background-color:var(--color-white) ;
+.modal {
+	background-color: var(--color-white);
 	box-shadow: var(--box-shadow-black-blur);
 	padding: 20px;
 	position: relative;
 	display: flex;
+	width: 100%;
+	height: 100%;
 	align-items: center;
 	flex-direction: column;
-	border-radius: var(--border-radius-box);
 }
-.title_modal{
+.title_modal {
 	text-transform: uppercase;
 	color: var(--color-text-titles);
 	font-size: 17px;
 	padding-bottom: 12px;
 }
-.icon_close_modal{
+.icon_close_modal {
 	position: absolute;
 	right: 15px;
 	top: 15px;
@@ -49,30 +50,30 @@
 	font-size: 20px;
 	color: var(--color-icon);
 }
-.logo_modal{
+.logo_modal {
 	width: 120px;
 	margin-top: 15px;
 	margin-bottom: 15px;
 }
-.form_modal{
+.form_modal {
 	display: flex;
 	flex-direction: column;
 	gap: 20px;
 	padding-top: 15px;
 	border-top: 1px solid rgba(0, 0, 0, 0.266);
-	width: 330px;
+	width: 100%;
 }
-.input{
+.input {
 	padding: 10px;
 	border: 1px solid rgba(0, 0, 0, 0.266);
 	border-radius: var(--border-radius-box);
 	width: 100%;
 }
-.forgot_password{
+.forgot_password {
 	color: var(--color-icon);
 	font-size: 13px;
 }
-.btn_login{
+.btn_login {
 	padding: 10px;
 	background-color: rgba(0, 0, 0, 0.527);
 	color: var(--color-white);
@@ -84,33 +85,38 @@
 	justify-content: center;
 	border-radius: var(--border-radius-box);
 }
-.color_alert_red{
+.color_alert_red {
 	color: red;
 }
-.color_alert_green{
+.color_alert_green {
 	color: rgba(0, 128, 0, 0.785);
 }
-.none_cursor{
+.none_cursor {
 	pointer-events: none;
 }
-.btn_login:hover{
-	background-color:rgba(0, 0, 0, 0.725) ;
+.btn_login:hover {
+	background-color: rgba(0, 0, 0, 0.725);
 }
-.not_account_use{
+.not_account_use {
 	align-self: start;
 	font-size: 13px;
 	margin-top: 15px;
 }
-.not_account_use > button{
+.not_account_use > button {
 	background: none;
 }
-.btn_register_user{
+.btn_register_user {
 	margin-left: 10px;
 	cursor: pointer;
 }
 
-@media screen and (min-width:700px) {
-	.form_modal{
+@media screen and (min-width: 700px) {
+	.form_modal {
 		width: 430px;
+	}
+	.modal {
+		height: max-content;
+		width: max-content;
+		border-radius: var(--border-radius-box);
 	}
 }

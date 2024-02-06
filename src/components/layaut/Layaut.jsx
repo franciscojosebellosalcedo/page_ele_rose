@@ -10,14 +10,35 @@ import { getAllProducts } from "../../service/product.service";
 import { setProducts, setProductsFilter } from "../../features/product/product";
 import { getAllQualification } from "../../service/qualification.service";
 import { setQualification } from "../../features/qualification/qualification";
+import { getNewAccessTokenUser } from "../../service/user.service";
+import { getRefressTokenLocalStorage, saveRefressTokenLocalStorage } from "../../helpers/helpers";
+import { setUser } from "../../features/user/user";
 
 const Layaut = () => {
-	const token = useSelector((state) => state.token.data.token);
+	const token = useSelector((state) => state.user.data.user.token);
 	const dispatch = useDispatch();
 	const [isLoader, setIsLoader] = useState(false);
 
-	const getQualifications = async () => {
+	const getAllRegistersModules = async () => {
 		setIsLoader(true);
+		//REFRESS TOKEN USER
+		try {
+			const token = getRefressTokenLocalStorage();
+			if (token) {
+				const responseToken = (await getNewAccessTokenUser(token)).data;
+				if (responseToken.status === 200 && responseToken.response) {
+					const data = responseToken.data;
+					const {user}=data;
+					const dataUser={name:user.name,address:user.address,_id:user._id,email:user.email,phone:user.phone,token:data.accessToken};
+					saveRefressTokenLocalStorage(data.refressToken);
+					dispatch(setUser({...dataUser}));
+				}
+			}
+		} catch (error) {
+			console.log(error)
+		}
+
+		// QUALIFICATIONES
 		try {
 			const responseProducts = (await getAllQualification(token)).data;
 			if (responseProducts.status === 200 && responseProducts.response) {
@@ -27,11 +48,9 @@ const Layaut = () => {
 		} catch (error) {
 			console.log(error)
 		}
-		setIsLoader(false);
 
-	}
-	const getProducts = async () => {
-		setIsLoader(true);
+		// PRODUCTS
+
 		try {
 			const responseProducts = (await getAllProducts(token)).data;
 			if (responseProducts.status === 200 && responseProducts.response) {
@@ -42,18 +61,14 @@ const Layaut = () => {
 		} catch (error) {
 			console.log(error)
 		}
-		setIsLoader(false);
 
-	}
-	const getCollections = async () => {
-		setIsLoader(true);
-
+		//COLLECTIONS
 		try {
 			const responseCollections = (await getAllCollections(token)).data;
 			if (responseCollections.status === 200 && responseCollections.response) {
 				const data = responseCollections.data;
 				dispatch(setCollections(data));
-				const list=[];
+				const list = [];
 				for (let index = 0; index < data.length; index++) {
 					const collection = data[index];
 					list.unshift(collection);
@@ -63,12 +78,8 @@ const Layaut = () => {
 		} catch (error) {
 			console.log(error)
 		}
-		setIsLoader(false);
 
-	}
-
-	const getCategories = async () => {
-		setIsLoader(true);
+		//CATEGORIES
 
 		try {
 			const responseCategory = (await getAllCategories(token)).data;
@@ -81,18 +92,18 @@ const Layaut = () => {
 		}
 		setIsLoader(false);
 
-	}
-
-	const getAllRegistersModules = async () => {
-		getCategories();
-		getCollections();
-		getProducts();
-		getQualifications();
+		// setIsLoader(true);
+		// getNewAccessTokenUserPage();
+		// getCategories();
+		// getCollections();
+		// getProducts();
+		// getQualifications();
+		// setIsLoader(false);
 	}
 
 	useEffect(() => {
 		getAllRegistersModules();
-	});
+	},[]);
 
 	return (
 		<>

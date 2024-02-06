@@ -5,6 +5,7 @@ import { ROUTES } from "../../constants/constants";
 import { useSelector } from "react-redux";
 import ModalRegisterUser from "../modalRegisterUser/ModalRegisterUser";
 import ModalSearch from "../modalSearch/ModalSearch";
+import { isValidObject } from "../../helpers/helpers";
 
 const NavBar = () => {
 	const [isOpenAccessories, setIsOpenAccessories] = useState(false);
@@ -15,6 +16,7 @@ const NavBar = () => {
 	const nav = useNavigate();
 	const [isOpenModal, setIsOpenModal] = useState(false);
 	const [isOpenModalSearch, setIsOpenModalSearch] = useState(false);
+	const userPage = useSelector((state) => state.user.data.user);
 
 	const handlerOpenModalSearch = (e) => {
 		e.preventDefault();
@@ -23,7 +25,11 @@ const NavBar = () => {
 
 	const handlerOpenModal = (e) => {
 		e.preventDefault();
-		setIsOpenModal(!isOpenModal);
+		if (isValidObject(userPage) === true) {
+			nav(ROUTES.ACCOUNT);
+		} else {
+			setIsOpenModal(!isOpenModal);
+		}
 	}
 
 	const navigate = (e, cat) => {
