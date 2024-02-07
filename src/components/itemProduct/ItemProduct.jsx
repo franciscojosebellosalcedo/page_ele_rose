@@ -1,6 +1,21 @@
+import { useDispatch, useSelector } from "react-redux";
 import "./ItemProduct.css";
+import { setCart } from "../../features/cart/cart";
+import { saveCartLocalStorage } from "../../helpers/helpers";
 
 const ItemProduct = ({ product }) => {
+	const dispatch=useDispatch();
+	const cart=useSelector((state)=>state.cart.data.list);
+
+	const addProductCart=(e,product)=>{
+		const list=[...cart];
+		const dataProductCart={amount:1,product};
+		list.unshift(dataProductCart);
+		dispatch(setCart(list));
+		saveCartLocalStorage(list);
+		//APIIII
+	}
+
 	return (
 		<div className="grid_item_product">
 			{
@@ -36,7 +51,7 @@ const ItemProduct = ({ product }) => {
 				}
 
 			</div>
-			<button className="btn btn_add_car">
+			<button className="btn btn_add_car" onClick={(e)=>addProductCart(e,product)}>
 				Agregar al carrito
 				<i title="Agregar al carrito" className="uil uil-shopping-bag icon_item_grid"></i>
 			</button>

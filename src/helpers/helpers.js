@@ -9,6 +9,13 @@ export const getRefressTokenLocalStorage=()=>{
 	return sessionStorage.getItem("refressTokenEleRose");
 }
 
+export const saveCartLocalStorage=(list)=>{
+	localStorage.setItem("cart",list);
+}
+export const getCartLocalStorage=(list)=>{
+	return JSON.parse(localStorage.getItem("cart"));
+}
+
 export const saveRefressTokenLocalStorage=(token)=>{
 	sessionStorage.setItem("refressTokenEleRose",token);
 }
