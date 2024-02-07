@@ -12,11 +12,7 @@ export const createUser=async (data)=>{
 }
 
 export const login=async (data)=>{
-	const response= await fetch(`${URL_BASE}/user/login-user-page`,{
-		method:"POST",
-		body:JSON.stringify(data),
-	});
-	return response.json();
+	return await axios.post(`${URL_BASE}/user/login-user-page`,{...data});
 }
 export const getNewAccessTokenUser=async (token)=>{
 	return await axios.get(`${URL_BASE}/user/refress-token`,{

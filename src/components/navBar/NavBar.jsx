@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import ModalRegisterUser from "../modalRegisterUser/ModalRegisterUser";
 import ModalSearch from "../modalSearch/ModalSearch";
 import { isValidObject } from "../../helpers/helpers";
+import CartRight from "../cartRight/CartRight";
 
 const NavBar = () => {
 	const [isOpenAccessories, setIsOpenAccessories] = useState(false);
@@ -16,11 +17,16 @@ const NavBar = () => {
 	const nav = useNavigate();
 	const [isOpenModal, setIsOpenModal] = useState(false);
 	const [isOpenModalSearch, setIsOpenModalSearch] = useState(false);
+	const [isOpenCart, setIsOpenCart] = useState(false);
 	const userPage = useSelector((state) => state.user.data.user);
 
 	const handlerOpenModalSearch = (e) => {
 		e.preventDefault();
 		setIsOpenModalSearch(!isOpenModalSearch);
+	}
+
+	const handlerOpencart=()=>{
+		setIsOpenCart(!isOpenCart);
 	}
 
 	const handlerOpenModal = (e) => {
@@ -133,7 +139,7 @@ const NavBar = () => {
 					<div className="nav_container_icons">
 						<i className="uil uil-search icon_nav icon_menu" onClick={(e) => handlerOpenModalSearch(e)}></i>
 						<i className="uil uil-user icon_nav icon_menu" onClick={(e) => handlerOpenModal(e)}></i>
-						<i className="uil uil-shopping-cart icon_nav icon_menu"></i>
+						<i className="uil uil-shopping-cart icon_nav icon_menu" onClick={()=>handlerOpencart()}><span className="amount_cart_products">0</span></i>
 					</div>
 
 				</section>
@@ -141,6 +147,7 @@ const NavBar = () => {
 			</nav>
 			<ModalRegisterUser isOpenModal={isOpenModal} handlerOpenModal={handlerOpenModal} />
 			<ModalSearch isOpenModalSearch={isOpenModalSearch} handlerOpenModalSearch={handlerOpenModalSearch} />
+			<CartRight isOpenCart={isOpenCart} handlerOpencart={handlerOpencart}/>
 		</header>
 	)
 }

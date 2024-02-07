@@ -29,15 +29,13 @@ const ModalRegisterUser = ({ isOpenModal,handlerOpenModal }) => {
 				setAlertModal({message:"Llene todos los campos",type:0});
 			}
 			else{
-				const responseLogin=await login(dataLogin);
-				console.log(responseLogin)
+				const responseLogin=(await login(dataLogin)).data;
 				if(responseLogin.status===200 && responseLogin.response){
 					const data=responseLogin.data;
-					console.log(data)
-					// setDataUser(data);
-					// setNewUser({name:"",address:"",isAdmin:false,phone:"",email:"",password:""});
-					// setAlertModal({message:"",type:0});
-					// navigate(ROUTES.ACCOUNT);
+					setDataUser(data);
+					setNewUser({name:"",address:"",isAdmin:false,phone:"",email:"",password:""});
+					setAlertModal({message:"",type:0});
+					navigate(ROUTES.ACCOUNT);
 				}else{
 					setAlertModal({message:responseLogin.message,type:0});
 				}

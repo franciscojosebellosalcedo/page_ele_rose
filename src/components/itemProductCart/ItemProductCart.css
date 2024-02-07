@@ -1,0 +1,22 @@
+.img_product_cart{
+    width: 90px;
+    border-radius: var(--border-radius-box);
+}
+.content_product_cart{
+    padding: 5px;
+    width: 100%;
+    display: flex;
+    gap: 25px;
+    align-items: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.267);
+}
+.text_item_cart{
+    font-size: 14px;
+}
+.input_amount{
+    flex-basis: 10%;
+    border: 1px solid rgba(0, 0, 0, 0.445);
+    width: 60px;
+    border-radius: var(--border-radius-box);
+    padding: 3px;
+}
