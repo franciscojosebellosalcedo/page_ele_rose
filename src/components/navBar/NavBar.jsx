@@ -2,11 +2,12 @@ import { NavLink, useNavigate } from "react-router-dom";
 import "./NavBar.css";
 import { useState } from "react";
 import { ROUTES } from "../../constants/constants";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import ModalRegisterUser from "../modalRegisterUser/ModalRegisterUser";
 import ModalSearch from "../modalSearch/ModalSearch";
 import { isValidObject } from "../../helpers/helpers";
 import CartRight from "../cartRight/CartRight";
+import { setActiveCart } from "../../features/cart/cart";
 
 const NavBar = () => {
 	const [isOpenAccessories, setIsOpenAccessories] = useState(false);
@@ -17,8 +18,9 @@ const NavBar = () => {
 	const nav = useNavigate();
 	const [isOpenModal, setIsOpenModal] = useState(false);
 	const [isOpenModalSearch, setIsOpenModalSearch] = useState(false);
-	const [isOpenCart, setIsOpenCart] = useState(false);
 	const userPage = useSelector((state) => state.user.data.user);
+	const listItemsCart = useSelector((state) => state.cart.data.list);
+	const dispatch=useDispatch();
 
 	const handlerOpenModalSearch = (e) => {
 		e.preventDefault();
@@ -26,7 +28,7 @@ const NavBar = () => {
 	}
 
 	const handlerOpencart=()=>{
-		setIsOpenCart(!isOpenCart);
+		dispatch(setActiveCart());
 	}
 
 	const handlerOpenModal = (e) => {
@@ -139,7 +141,7 @@ const NavBar = () => {
 					<div className="nav_container_icons">
 						<i className="uil uil-search icon_nav icon_menu" onClick={(e) => handlerOpenModalSearch(e)}></i>
 						<i className="uil uil-user icon_nav icon_menu" onClick={(e) => handlerOpenModal(e)}></i>
-						<i className="uil uil-shopping-cart icon_nav icon_menu" onClick={()=>handlerOpencart()}><span className="amount_cart_products">0</span></i>
+						<i className="uil uil-shopping-cart icon_nav icon_menu" onClick={()=>handlerOpencart()}><span className="amount_cart_products">{listItemsCart.length}</span></i>
 					</div>
 
 				</section>
@@ -147,7 +149,7 @@ const NavBar = () => {
 			</nav>
 			<ModalRegisterUser isOpenModal={isOpenModal} handlerOpenModal={handlerOpenModal} />
 			<ModalSearch isOpenModalSearch={isOpenModalSearch} handlerOpenModalSearch={handlerOpenModalSearch} />
-			<CartRight isOpenCart={isOpenCart} handlerOpencart={handlerOpencart}/>
+			<CartRight handlerOpencart={handlerOpencart}/>
 		</header>
 	)
 }

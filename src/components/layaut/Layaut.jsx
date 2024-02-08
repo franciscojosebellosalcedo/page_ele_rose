@@ -11,8 +11,9 @@ import { setProducts, setProductsFilter } from "../../features/product/product";
 import { getAllQualification } from "../../service/qualification.service";
 import { setQualification } from "../../features/qualification/qualification";
 import { getNewAccessTokenUser } from "../../service/user.service";
-import { getRefressTokenLocalStorage, saveRefressTokenLocalStorage } from "../../helpers/helpers";
+import { getRefressTokenLocalStorage, saveRefressTokenLocalStorage ,getCartLocalStorage} from "../../helpers/helpers";
 import { setUser } from "../../features/user/user";
+import { setCart } from "../../features/cart/cart";
 
 const Layaut = () => {
 	const token = useSelector((state) => state.user.data.user.token);
@@ -21,6 +22,9 @@ const Layaut = () => {
 
 	const getAllRegistersModules = async () => {
 		setIsLoader(true);
+
+		//CART
+		dispatch(setCart(getCartLocalStorage()))
 		//REFRESS TOKEN USER
 		try {
 			const token = getRefressTokenLocalStorage();
@@ -91,6 +95,7 @@ const Layaut = () => {
 			console.log(error)
 		}
 		setIsLoader(false);
+
 
 		// setIsLoader(true);
 		// getNewAccessTokenUserPage();

@@ -1,9 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getCartLocalStorage } from "../../helpers/helpers";
+import { saveCartLocalStorage } from "../../helpers/helpers";
 
 const initialState = {
   data: {
-    list: [] || getCartLocalStorage(),
+    list: [],
+	active:false
   },
 };
 
@@ -13,20 +14,26 @@ const cartSlice = createSlice({
   reducers: {
 		setCart:(state,action)=>{
 			state.data.list=action.payload;
+			saveCartLocalStorage(state.data.list);
 		},
 		addItemCart:(state,action)=>{
 			state.data.list.unshift(action.payload);
 		},
 		removeItemCart:(state,action)=>{
 			state.data.list.splice(action.payload,1);
+			saveCartLocalStorage(state.data.list);
 		},
 		clearCart:(state)=>{
 			state.data.list=[];
+		},
+		setActiveCart:(state)=>{
+			state.data.active=!state.data.active;
 		}
   },
 });
 export const {
 	addItemCart,
+	setActiveCart,
 	setCart,
 	removeItemCart,
 	clearCart

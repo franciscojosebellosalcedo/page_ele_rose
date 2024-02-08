@@ -10,7 +10,7 @@ export const getRefressTokenLocalStorage=()=>{
 }
 
 export const saveCartLocalStorage=(list)=>{
-	localStorage.setItem("cart",list);
+	localStorage.setItem("cart",JSON.stringify(list));
 }
 export const getCartLocalStorage=(list)=>{
 	return JSON.parse(localStorage.getItem("cart"));

@@ -2,8 +2,10 @@ import { useSelector } from "react-redux";
 import ItemProductCart from "../itemProductCart/ItemProductCart";
 import "./CartRight.css";
 
-const CartRight = ({ isOpenCart, handlerOpencart }) => {
+const CartRight = ({ handlerOpencart }) => {
 	const listItemCart=useSelector((state)=>state.cart.data.list);
+	const isOpenCart=useSelector((state)=>state.cart.data.active);
+
 	return (
 		<section className={`container_cart_right ${isOpenCart === true ? "see_cart" : ""}`}>
 			<i className="uil uil-times icon_close" onClick={() => handlerOpencart()}></i>
