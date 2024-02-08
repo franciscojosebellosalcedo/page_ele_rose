@@ -27,12 +27,29 @@
 .input_amount {
 	position: absolute;
 	border: 1px solid rgba(0, 0, 0, 0.445);
-	width: 50px;
+	width: 40px;
 	margin-left: 50px;
 	border-radius: var(--border-radius-box);
 	left: 60px;
 	padding: 3px;
 }
+.input_amount::-webkit-inner-spin-button, 
+.input_amount::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+.controllers{
+	position: absolute;
+	left: 150px;
+}
+.icon_controller{
+	font-size: 18px;
+	height: 10px;
+	width: 10px;
+	border-radius: 50%;
+}
+
+.input_amount { -moz-appearance:textfield; }
 .icon_delete_item_cart {
 	font-size: 20px;
 	cursor: pointer;

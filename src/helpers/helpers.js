@@ -9,6 +9,20 @@ export const getRefressTokenLocalStorage=()=>{
 	return sessionStorage.getItem("refressTokenEleRose");
 }
 
+export const getTotalPriceCart=(listItemCart)=>{
+	let priceTotal=0;
+	if(listItemCart.length>0){
+		for (let index = 0; index < listItemCart.length; index++) {
+			const item = listItemCart[index];
+			const subTotal=item?.product.pricePromotion > 0 ? item?.product.pricePromotion * item.amount: item?.product.realPrice * item.amount
+			priceTotal+=subTotal;
+		}
+		return priceTotal; 
+	}else{
+		return 0;
+	}
+}
+
 export const saveCartLocalStorage=(list)=>{
 	localStorage.setItem("cart",JSON.stringify(list));
 }

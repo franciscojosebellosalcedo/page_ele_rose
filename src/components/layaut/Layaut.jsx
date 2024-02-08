@@ -24,7 +24,7 @@ const Layaut = () => {
 		setIsLoader(true);
 
 		//CART
-		dispatch(setCart(getCartLocalStorage()))
+		dispatch(setCart(getCartLocalStorage()!==null?getCartLocalStorage():[]));
 		//REFRESS TOKEN USER
 		try {
 			const token = getRefressTokenLocalStorage();

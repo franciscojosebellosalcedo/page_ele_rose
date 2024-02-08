@@ -141,7 +141,7 @@ const NavBar = () => {
 					<div className="nav_container_icons">
 						<i className="uil uil-search icon_nav icon_menu" onClick={(e) => handlerOpenModalSearch(e)}></i>
 						<i className="uil uil-user icon_nav icon_menu" onClick={(e) => handlerOpenModal(e)}></i>
-						<i className="uil uil-shopping-cart icon_nav icon_menu" onClick={()=>handlerOpencart()}><span className="amount_cart_products">{listItemsCart.length}</span></i>
+						<i className="uil uil-shopping-cart icon_nav icon_menu" onClick={()=>handlerOpencart()}><span className="amount_cart_products">{listItemsCart.length>0?listItemsCart.length:0}</span></i>
 					</div>
 
 				</section>
