@@ -1,0 +1,68 @@
+.container_modal_order_info{
+	position: fixed;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	top: 0px;
+	bottom: 0px;
+	z-index: 30;
+	left: 0px;
+	right: 0px;
+	background-color: rgba(0, 0, 0, 0.608);
+	opacity: 0;
+	transition: 0.5s;
+	pointer-events: none;
+}
+.color_green{
+	color: green;
+}
+.color_red{
+ 	color: red;
+}
+
+.see_modal_info_order{
+	opacity: 1;
+	pointer-events: unset;
+
+}
+.img_modal_info_order{
+	margin: 15px auto;
+	position: relative;
+	left: 50%;
+	transform: translateX(-50%);
+}
+.modal_order_info{
+	background-color: var(--color-white);
+	box-shadow: var(--box-shadow-black-blur);
+	padding: 20px;
+	position: relative;
+	border-radius: var(--border-radius-box);
+	width: 95%;
+}
+.modal_order_info > div{
+	display: flex;
+	align-items: center;
+	justify-content: end;
+	margin-top: 25px;
+}
+.title_modal{
+	text-align: center;
+}
+.modal_text{
+	font-size: 15px;
+	text-align: center;
+}
+.btn_modal_info_order{
+	background-color: var(--color-text-titles);
+	padding: 8px;
+	font-size: 15px;
+	border-radius: var(--border-radius-box);
+	cursor: pointer;
+	color: var(--color-white);
+}
+
+@media screen and (min-width:600px) {
+	.modal_order_info{
+		width: 500px;
+	}
+}

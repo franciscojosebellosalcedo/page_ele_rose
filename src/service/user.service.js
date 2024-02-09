@@ -1,6 +1,6 @@
 import axios from "axios";
 import { HEADERS, URL_BASE } from "../constants/constants";
-import { headersWithToken } from "../helpers/helpers";
+import { headersWithToken } from "../utils/utils";
 
 export const createUser=async (data)=>{
 	const response=await fetch(`${URL_BASE}/user/user-page`,{

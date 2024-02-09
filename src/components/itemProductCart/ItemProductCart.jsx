@@ -1,12 +1,15 @@
 import { useDispatch } from "react-redux";
 import "./ItemProductCart.css";
-import { incrementAmountItem,decrementAmountItem, removeItemCart } from "../../features/cart/cart";
+import { incrementAmountItem,decrementAmountItem, removeItemCart, setActiveCart } from "../../features/cart/cart";
 
 const ItemProductCart = ({item,index}) => {
 	const dispatch=useDispatch();
 
 	const removeItem=()=>{
 		dispatch(removeItemCart(index));
+		if(index===0){
+			dispatch(setActiveCart());
+		}
 	}
 
 	const decrementAmount=(index,amount)=>{

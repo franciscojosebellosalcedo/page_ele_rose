@@ -5,9 +5,10 @@ import { ROUTES } from "../../constants/constants";
 import { useDispatch, useSelector } from "react-redux";
 import ModalRegisterUser from "../modalRegisterUser/ModalRegisterUser";
 import ModalSearch from "../modalSearch/ModalSearch";
-import { isValidObject } from "../../helpers/helpers";
+import { isValidObject } from "../../utils/utils";
 import CartRight from "../cartRight/CartRight";
 import { setActiveCart } from "../../features/cart/cart";
+import { setIsOpenModal } from "../../features/user/user";
 
 const NavBar = () => {
 	const [isOpenAccessories, setIsOpenAccessories] = useState(false);
@@ -16,7 +17,7 @@ const NavBar = () => {
 	const categories = useSelector((state) => state.category.data.list);
 	const collections = useSelector((state) => state.collection.data.list);
 	const nav = useNavigate();
-	const [isOpenModal, setIsOpenModal] = useState(false);
+	const isOpenModal=useSelector((state)=>state.user.data.isOpenModal)
 	const [isOpenModalSearch, setIsOpenModalSearch] = useState(false);
 	const userPage = useSelector((state) => state.user.data.user);
 	const listItemsCart = useSelector((state) => state.cart.data.list);
@@ -36,7 +37,7 @@ const NavBar = () => {
 		if (isValidObject(userPage) === true) {
 			nav(ROUTES.ACCOUNT);
 		} else {
-			setIsOpenModal(!isOpenModal);
+			dispatch(setIsOpenModal());
 		}
 	}
 

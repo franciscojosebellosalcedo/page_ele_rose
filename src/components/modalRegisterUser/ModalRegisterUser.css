@@ -5,6 +5,7 @@
 	justify-content: center;
 	top: 0px;
 	bottom: 0px;
+	z-index: 30;
 	left: 0px;
 	right: 0px;
 	background-color: rgba(0, 0, 0, 0.608);
@@ -21,7 +22,7 @@
 	padding: 4px;
 	color: rgb(255, 0, 0);
 	position: relative;
-	margin-bottom: 8px;
+	margin-bottom: 6px;
 	border-radius: var(--border-radius-box);
 	list-style-type: circle;
 }
@@ -40,7 +41,7 @@
 	text-transform: uppercase;
 	color: var(--color-text-titles);
 	font-size: 17px;
-	padding-bottom: 12px;
+	padding-bottom: 9px;
 }
 .icon_close_modal {
 	position: absolute;
@@ -58,7 +59,7 @@
 .form_modal {
 	display: flex;
 	flex-direction: column;
-	gap: 20px;
+	gap: 15px;
 	padding-top: 15px;
 	border-top: 1px solid rgba(0, 0, 0, 0.266);
 	width: 100%;
@@ -108,6 +109,10 @@
 .btn_register_user {
 	margin-left: 10px;
 	cursor: pointer;
+}
+.message_send_order{
+	font-size: 14px;
+	margin-bottom: 5px;
 }
 
 @media screen and (min-width: 700px) {

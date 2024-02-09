@@ -13,7 +13,7 @@ const ItemProduct = ({ product }) => {
 			const dataProductCart = { amount: 1, product };
 			list.unshift(dataProductCart);
 			dispatch(setCart(list));
-			if (isOpenCart === false) {
+			if (isOpenCart === false && cart.length===0) {
 				dispatch(setActiveCart());
 			}
 		}

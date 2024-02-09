@@ -5,7 +5,7 @@ import { AiOutlineStar, AiFillStar } from "react-icons/ai";
 import { INFO_ELEROSE, LIST_NUMBER_SCORE, SETTINGS_SLIDER_RESPONSIVE_RATINGS } from "../../constants/constants";
 import "./HappyClients.css";
 import { useSelector } from "react-redux";
-import { formatDate } from "../../helpers/helpers";
+import { formatDate } from "../../utils/utils";
 
 const HappyClients = () => {
 	const qualifications = useSelector((state) => state.qualification.data.list);

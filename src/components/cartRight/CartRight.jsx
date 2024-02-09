@@ -1,11 +1,58 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import ItemProductCart from "../itemProductCart/ItemProductCart";
 import "./CartRight.css";
-import { getTotalPriceCart } from "../../helpers/helpers";
+import { getTotalPriceCart, isValidObject, sendOrderUser } from "../../utils/utils";
+import { setActiveCart, setActiveSendOrder, setCart, setIsActiveModalInfoOrder } from "../../features/cart/cart";
+import { setIsOpenModal } from "../../features/user/user";
+import ModalOrderInfo from "../modalOrderInfo/ModalOrderInfo";
+import { useState } from "react";
 
 const CartRight = ({ handlerOpencart }) => {
 	const listItemCart=useSelector((state)=>state.cart.data.list);
 	const isOpenCart=useSelector((state)=>state.cart.data.active);
+	const user=useSelector((state)=>state.user.data.user);
+	const isActiveModalInfoOrder=useSelector((state)=>state.cart.data.isActiveModalInfoOrder);
+	const dispatch=useDispatch();
+	const [alertOrder,setAlertOrder]=useState({message:"",type:0,title:""});
+
+	const handlerOpenModalInfoOrder=()=>{
+		dispatch(setIsActiveModalInfoOrder(false));
+	}
+
+
+	const sendOrder=async (e)=>{
+		e.preventDefault();
+		try {
+			if(isValidObject(user)===false){
+				dispatch(setActiveSendOrder(true));
+				dispatch(setIsOpenModal());
+			}else{
+				const responseOrder=await sendOrderUser(listItemCart,user,user.token);
+				dispatch(setActiveCart());
+				if(responseOrder.status===201 && responseOrder.response){
+					dispatch(setCart([]));
+					setAlertOrder({
+						message:"Hemos recibido tu pedido y nos pondremos en contacto contigo en breve para confirmar todos los detalles y coordinar la entrega.",
+						title:responseOrder.message,
+						type:1
+					});
+				}else{
+					setAlertOrder({
+						message:"Se produjo un error al enviar el pedido, por favor intente nuevamente.",
+						title:responseOrder.message,
+						type:0
+					});
+				}
+			}
+		} catch (error) {
+			setAlertOrder({
+				message:"Se produjo un error al enviar el pedido, por favor intente nuevamente.",
+				title:"Error",
+				type:0
+			});
+		}
+		dispatch(setIsActiveModalInfoOrder(true));
+	}
 
 	return (
 		<section className={`container_cart_right ${isOpenCart === true ? "see_cart" : ""}`}>
@@ -17,7 +64,7 @@ const CartRight = ({ handlerOpencart }) => {
 						<>
 							{
 								listItemCart.map((item,index)=>{
-									return <ItemProductCart index={index} item={item} />
+									return <ItemProductCart key={index} index={index} item={item} />
 								})
 							}
 						</>
@@ -28,9 +75,10 @@ const CartRight = ({ handlerOpencart }) => {
 				<p className="title_total_price">Total: <span className="price_total">$ {getTotalPriceCart(listItemCart)}</span></p>
 				<section className="section_button_cart">
 					<button className="btn btn_cart">Ver carrito</button>
-					<button className="btn btn_cart">Pedir por Whatsapp</button>
+					<button className="btn btn_cart" onClick={(e)=>sendOrder(e)}>Pedir por Whatsapp</button>
 				</section>
 			</div>
+			<ModalOrderInfo alertOrder={alertOrder} isActiveModalInfoOrder={isActiveModalInfoOrder} handlerOpenModalInfoOrder={handlerOpenModalInfoOrder} />
 		</section>
 	);
 };

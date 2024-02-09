@@ -1,10 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { saveCartLocalStorage } from "../../helpers/helpers";
+import { saveCartLocalStorage } from "../../utils/utils";
 
 const initialState = {
   data: {
     list: [],
-	active:false
+		active:false,
+		activeSendOrder:false,
+		isActiveModalInfoOrder:false
   },
 };
 
@@ -54,11 +56,19 @@ const cartSlice = createSlice({
 		},
 		setActiveCart:(state)=>{
 			state.data.active=!state.data.active;
+		},
+		setActiveSendOrder:(state,action)=>{
+			state.data.activeSendOrder=action.payload;
+		},
+		setIsActiveModalInfoOrder:(state,action)=>{
+			state.data.isActiveModalInfoOrder=action.payload;
 		}
   },
 });
 export const {
 	addItemCart,
+	setIsActiveModalInfoOrder,
+	setActiveSendOrder,
 	decrementAmountItem,
 	setActiveCart,
 	incrementAmountItem,

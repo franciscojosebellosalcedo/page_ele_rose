@@ -1,4 +1,5 @@
 import { HEADERS } from "../constants/constants"
+import { sendOrder } from "../service/order.service";
 
 export const headersWithToken=(token)=>{
 	HEADERS["access-token"] = `bearer ${token}`;
@@ -17,9 +18,28 @@ export const getTotalPriceCart=(listItemCart)=>{
 			const subTotal=item?.product.pricePromotion > 0 ? item?.product.pricePromotion * item.amount: item?.product.realPrice * item.amount
 			priceTotal+=subTotal;
 		}
-		return priceTotal; 
+		return priceTotal;
 	}else{
 		return 0;
+	}
+}
+
+export const sendOrderUser=async(listProducts,user,token)=>{
+	try {
+		const totalPriceOrder=getTotalPriceCart(listProducts);
+		const dataOrder={
+			user:user._id,
+			total:totalPriceOrder
+		}
+		const list=[]
+		for (let index = 0; index < listProducts.length; index++) {
+			const item = listProducts[index];
+			list.push({product:item.product._id,amount:item.amount});
+		}
+		dataOrder["listProducts"]=list;
+		return (await sendOrder(token,dataOrder)).data;
+	} catch (error) {
+		return error;
 	}
 }
 
