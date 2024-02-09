@@ -21,8 +21,9 @@ const cartSlice = createSlice({
 			for (let index = 0; index < list.length; index++) {
 				const item = list[index];
 				if(index===action.payload.index){
-					const amount=item.amount+=action.payload.amount;
-					console.log(amount)
+					if(item.amount-action.payload.amount>0){
+						item.amount-=action.payload.amount;
+					}
 				}
 			}
 			state.data.list=list;
@@ -33,7 +34,9 @@ const cartSlice = createSlice({
 			for (let index = 0; index < list.length; index++) {
 				const item = list[index];
 				if(index===action.payload.index){
-					item.amount+=action.payload.amount;
+					if((item.amount+action.payload.amount)<=item.product.amount){
+						item.amount+=action.payload.amount;
+					}
 				}
 			}
 			state.data.list=list;

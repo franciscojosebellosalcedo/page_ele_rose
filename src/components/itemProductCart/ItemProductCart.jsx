@@ -24,9 +24,9 @@ const ItemProductCart = ({item,index}) => {
 				<section className="section_bottom_item_cart">
 					<div>
 						<p className="text_nowrap text_item_cart amout_item_cart">Qty: {item?.amount}</p>
-						<p className="text_nowrap text_item_cart name_item_cart">$ {item?.product?.pricePromotion >0 ? item?.product?.pricePromotion :item?.product?.realPrice}</p>
+						<p className="text_nowrap text_item_cart price_item_cart">$ {item?.product?.pricePromotion >0 ? item?.product?.pricePromotion :item?.product?.realPrice}</p>
 					</div>
-					<input className="input_amount" value={item?.amount} type="number" name="" id="" />
+					<input  className="input_amount" value={item?.amount} type="number" name="" id="" />
 					<div className="controllers">
 						<i onClick={()=>incremetAmount(index,1)} className="uil uil-arrow-up icon_controller"></i>
 						<i onClick={()=>decrementAmount(index,1)} className="uil uil-arrow-down icon_controller"></i>
