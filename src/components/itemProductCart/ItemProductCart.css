@@ -9,9 +9,7 @@
 	padding: 5px;
 	position: relative;
 	width: 100%;
-	/* height: 200px; */
 	display: flex;
-	/* overflow: hidden; */
 	gap: 15px;
 	border-bottom: 1px solid rgba(0, 0, 0, 0.267);
 }
@@ -47,7 +45,7 @@
 	left: 150px;
 }
 .icon_controller{
-	font-size: 16px;
+	font-size: 20px;
 }
 
 /* .input_amount { -moz-appearance:textfield; } */
