@@ -60,6 +60,8 @@ const cartSlice = createSlice({
 		setActiveSendOrder:(state,action)=>{
 			state.data.activeSendOrder=action.payload;
 		},
+
+		//quitar
 		setIsActiveModalInfoOrder:(state,action)=>{
 			state.data.isActiveModalInfoOrder=action.payload;
 		}

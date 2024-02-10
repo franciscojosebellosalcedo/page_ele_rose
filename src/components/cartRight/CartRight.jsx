@@ -14,7 +14,12 @@ const CartRight = ({ handlerOpencart }) => {
 	const user=useSelector((state)=>state.user.data.user);
 	const dispatch=useDispatch();
 	const [alertOrder,setAlertOrder]=useState({message:"",type:0,title:""});
-	const [isLoader,setIsLoader]=useState(false)
+	const [isLoader,setIsLoader]=useState(false);
+	const [isActiveModalInfoOrder,setIsActiveModalInfoOrder]=useState(false);
+
+	const handlerOpenModalInfoOrder=()=>{
+		setIsActiveModalInfoOrder(!isActiveModalInfoOrder);
+	}
 
 	const sendOrder=async (e)=>{
 		e.preventDefault();
@@ -41,7 +46,7 @@ const CartRight = ({ handlerOpencart }) => {
 							type:0
 						});
 					}
-					dispatch(setIsActiveModalInfoOrder(true));
+					handlerOpenModalInfoOrder();
 				}
 			}
 		} catch (error) {
@@ -78,7 +83,7 @@ const CartRight = ({ handlerOpencart }) => {
 					<button className="btn btn_cart btn_cart_send" onClick={(e)=>sendOrder(e)}>{isLoader===true ? <LoaderButton/>:"Pedir por Whatsapp"}</button>
 				</section>
 			</div>
-			<ModalOrderInfo alertOrder={alertOrder}/>
+			<ModalOrderInfo alertOrder={alertOrder} isActiveModalInfoOrder={isActiveModalInfoOrder} handlerOpenModalInfoOrder={handlerOpenModalInfoOrder}/>
 		</section>
 	);
 };
