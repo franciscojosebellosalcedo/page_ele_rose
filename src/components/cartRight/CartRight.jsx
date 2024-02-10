@@ -6,42 +6,42 @@ import { setActiveCart, setActiveSendOrder, setCart, setIsActiveModalInfoOrder }
 import { setIsOpenModal } from "../../features/user/user";
 import ModalOrderInfo from "../modalOrderInfo/ModalOrderInfo";
 import { useState } from "react";
+import LoaderButton from "../loaderButton/LoaderButton";
 
 const CartRight = ({ handlerOpencart }) => {
 	const listItemCart=useSelector((state)=>state.cart.data.list);
 	const isOpenCart=useSelector((state)=>state.cart.data.active);
 	const user=useSelector((state)=>state.user.data.user);
-	const isActiveModalInfoOrder=useSelector((state)=>state.cart.data.isActiveModalInfoOrder);
 	const dispatch=useDispatch();
 	const [alertOrder,setAlertOrder]=useState({message:"",type:0,title:""});
-
-	const handlerOpenModalInfoOrder=()=>{
-		dispatch(setIsActiveModalInfoOrder(false));
-	}
-
+	const [isLoader,setIsLoader]=useState(false)
 
 	const sendOrder=async (e)=>{
 		e.preventDefault();
+		setIsLoader(true);
 		try {
-			if(isValidObject(user)===false){
+			if(isValidObject(user)===false && listItemCart.length){
 				dispatch(setActiveSendOrder(true));
 				dispatch(setIsOpenModal());
 			}else{
-				const responseOrder=await sendOrderUser(listItemCart,user,user.token);
-				dispatch(setActiveCart());
-				if(responseOrder.status===201 && responseOrder.response){
-					dispatch(setCart([]));
-					setAlertOrder({
-						message:"Hemos recibido tu pedido y nos pondremos en contacto contigo en breve para confirmar todos los detalles y coordinar la entrega.",
-						title:responseOrder.message,
-						type:1
-					});
-				}else{
-					setAlertOrder({
-						message:"Se produjo un error al enviar el pedido, por favor intente nuevamente.",
-						title:responseOrder.message,
-						type:0
-					});
+				if(listItemCart.length>0){
+					const responseOrder=await sendOrderUser(listItemCart,user,user.token);
+					dispatch(setActiveCart());
+					if(responseOrder.status===201 && responseOrder.response){
+						dispatch(setCart([]));
+						setAlertOrder({
+							message:"Hemos recibido tu pedido y nos pondremos en contacto contigo en breve para confirmar todos los detalles y coordinar la entrega.",
+							title:responseOrder.message,
+							type:1
+						});
+					}else{
+						setAlertOrder({
+							message:"Se produjo un error al enviar el pedido, por favor intente nuevamente.",
+							title:responseOrder.message,
+							type:0
+						});
+					}
+					dispatch(setIsActiveModalInfoOrder(true));
 				}
 			}
 		} catch (error) {
@@ -51,7 +51,7 @@ const CartRight = ({ handlerOpencart }) => {
 				type:0
 			});
 		}
-		dispatch(setIsActiveModalInfoOrder(true));
+		setIsLoader(false);
 	}
 
 	return (
@@ -75,10 +75,10 @@ const CartRight = ({ handlerOpencart }) => {
 				<p className="title_total_price">Total: <span className="price_total">$ {getTotalPriceCart(listItemCart)}</span></p>
 				<section className="section_button_cart">
 					<button className="btn btn_cart">Ver carrito</button>
-					<button className="btn btn_cart" onClick={(e)=>sendOrder(e)}>Pedir por Whatsapp</button>
+					<button className="btn btn_cart btn_cart_send" onClick={(e)=>sendOrder(e)}>{isLoader===true ? <LoaderButton/>:"Pedir por Whatsapp"}</button>
 				</section>
 			</div>
-			<ModalOrderInfo alertOrder={alertOrder} isActiveModalInfoOrder={isActiveModalInfoOrder} handlerOpenModalInfoOrder={handlerOpenModalInfoOrder} />
+			<ModalOrderInfo alertOrder={alertOrder}/>
 		</section>
 	);
 };

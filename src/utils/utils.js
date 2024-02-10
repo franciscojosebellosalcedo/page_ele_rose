@@ -7,7 +7,7 @@ export const headersWithToken=(token)=>{
 }
 
 export const getRefressTokenLocalStorage=()=>{
-	return sessionStorage.getItem("refressTokenEleRose");
+	return localStorage.getItem("refressTokenEleRose");
 }
 
 export const getTotalPriceCart=(listItemCart)=>{
@@ -51,7 +51,7 @@ export const getCartLocalStorage=(list)=>{
 }
 
 export const saveRefressTokenLocalStorage=(token)=>{
-	sessionStorage.setItem("refressTokenEleRose",token);
+	localStorage.setItem("refressTokenEleRose",token);
 }
 
 export const isValidObject=(object)=>{

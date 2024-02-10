@@ -7,7 +7,8 @@ import { createUser, login } from "../../service/user.service";
 import { useDispatch, useSelector } from "react-redux";
 import { setIsOpenModal, setUser } from "../../features/user/user";
 import { ROUTES } from "../../constants/constants";
-import { setActiveSendOrder } from "../../features/cart/cart";
+import { setActiveCart, setActiveSendOrder, setCart, setIsActiveModalInfoOrder } from "../../features/cart/cart";
+import ModalOrderInfo from "../modalOrderInfo/ModalOrderInfo";
 
 const ModalRegisterUser = ({ isOpenModal, handlerOpenModal }) => {
 	const [isRegister, setIsRegister] = useState(false);
@@ -19,6 +20,7 @@ const ModalRegisterUser = ({ isOpenModal, handlerOpenModal }) => {
 	const [messageActiveSendOrder, setMessageActiveSendOrder] = useState("En cuanto te registres o inicies sesión se enviará tu pedido");
 	const isActiveSendOrder = useSelector((state) => state.cart.data.activeSendOrder);
 	const cart = useSelector((state) => state.cart.data.list);
+	const [alertOrder,setAlertOrder]=useState({message:"",type:0,title:""});
 
 	const handlerCreatedUser = (target, value) => {
 		setNewUser({ ...newUser, [target]: value });
@@ -39,7 +41,7 @@ const ModalRegisterUser = ({ isOpenModal, handlerOpenModal }) => {
 					setDataUser(data);
 					setNewUser({ name: "", address: "", isAdmin: false, phone: "", email: "", password: "" });
 					setAlertModal({ message: "", type: 0 });
-					navigate(ROUTES.ACCOUNT);
+					sendMessageOrder(e,data);
 					dispatch(setIsOpenModal());
 				} else {
 					setAlertModal({ message: responseLogin.message, type: 0 });
@@ -58,6 +60,32 @@ const ModalRegisterUser = ({ isOpenModal, handlerOpenModal }) => {
 		saveRefressTokenLocalStorage(refressToken);
 	}
 
+	const sendMessageOrder=async (e,data)=>{
+		if(isActiveSendOrder && cart.length>0){
+			const responseOrder=await sendOrderUser(cart,data.user,data.accessToken);
+			dispatch(setActiveCart());
+			if(responseOrder.status===201 && responseOrder.response){
+				setAlertOrder({
+					message:"Hemos recibido tu pedido y nos pondremos en contacto contigo en breve para confirmar todos los detalles y coordinar la entrega.",
+					title:responseOrder.message,
+					type:1
+				});
+				dispatch(setCart([]));
+			}else{
+				setAlertOrder({
+					message:"Se produjo un error al enviar el pedido, por favor intente nuevamente.",
+					title:responseOrder.message,
+					type:0
+				});
+			}
+			handlerOpenModal(e);
+			dispatch(setIsActiveModalInfoOrder(true));
+			dispatch(setActiveSendOrder(false));
+		}else{
+			navigate(ROUTES.ACCOUNT);
+		}
+	}
+
 	const createUserPage = async (e) => {
 		e.preventDefault();
 		setIsLoader(true);
@@ -74,12 +102,7 @@ const ModalRegisterUser = ({ isOpenModal, handlerOpenModal }) => {
 					setDataUser(data);
 					setNewUser({ name: "", address: "", isAdmin: false, phone: "", email: "", password: "" });
 					setAlertModal({ message: "", type: 0 });
-					if(isActiveSendOrder){
-						const responseData=await sendOrderUser(cart,data.user,data.accessToken);
-
-					}else{
-						navigate(ROUTES.ACCOUNT);
-					}
+					sendMessageOrder(e,data);
 				} else {
 					setAlertModal({ message: responseCreateUser.message, type: 0 });
 				}
@@ -131,6 +154,7 @@ const ModalRegisterUser = ({ isOpenModal, handlerOpenModal }) => {
 				</form>
 				<p className="not_account_use">{isRegister === false ? "¿No tienes cuenta?" : "¿Ya tienes cuenta?"}  <button className="btn btn_register_user" onClick={(e) => handlerIsRegister(e)}>{isRegister === false ? "Registrate aquí" : "Inicia sesión aquí"} <i className="uil uil-arrow-right"></i></button></p>
 			</div>
+			<ModalOrderInfo alertOrder={alertOrder}/>
 		</section>
 	)
 }
