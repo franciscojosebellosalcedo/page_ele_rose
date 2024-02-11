@@ -7,6 +7,8 @@ import { setIsOpenModal } from "../../features/user/user";
 import ModalOrderInfo from "../modalOrderInfo/ModalOrderInfo";
 import { useState } from "react";
 import LoaderButton from "../loaderButton/LoaderButton";
+import { useNavigate } from "react-router-dom";
+import { ROUTES } from "../../constants/constants";
 
 const CartRight = ({ handlerOpencart }) => {
 	const listItemCart=useSelector((state)=>state.cart.data.list);
@@ -16,6 +18,15 @@ const CartRight = ({ handlerOpencart }) => {
 	const [alertOrder,setAlertOrder]=useState({message:"",type:0,title:""});
 	const [isLoader,setIsLoader]=useState(false);
 	const [isActiveModalInfoOrder,setIsActiveModalInfoOrder]=useState(false);
+	const navigate=useNavigate();
+
+	const goTo=(e)=>{
+		e.preventDefault();
+		if(isOpenCart){
+			handlerOpencart();
+		}
+		navigate(`${ROUTES.CART}`);
+	}
 
 	const handlerOpenModalInfoOrder=()=>{
 		setIsActiveModalInfoOrder(!isActiveModalInfoOrder);
@@ -31,8 +42,8 @@ const CartRight = ({ handlerOpencart }) => {
 			}else{
 				if(listItemCart.length>0){
 					const responseOrder=await sendOrderUser(listItemCart,user,user.token);
-					dispatch(setActiveCart());
 					if(responseOrder.status===201 && responseOrder.response){
+						dispatch(setActiveCart());
 						dispatch(setCart([]));
 						setAlertOrder({
 							message:"Hemos recibido tu pedido y nos pondremos en contacto contigo en breve para confirmar todos los detalles y coordinar la entrega.",
@@ -79,7 +90,7 @@ const CartRight = ({ handlerOpencart }) => {
 			<div className="content_bottom_cart">
 				<p className="title_total_price">Total: <span className="price_total">$ {getTotalPriceCart(listItemCart)}</span></p>
 				<section className="section_button_cart">
-					<button className="btn btn_cart">Ver carrito</button>
+					<button className="btn btn_cart" onClick={(e)=>goTo(e)}>Ver carrito</button>
 					<button className="btn btn_cart btn_cart_send" onClick={(e)=>sendOrder(e)}>{isLoader===true ? <LoaderButton/>:"Pedir por Whatsapp"}</button>
 				</section>
 			</div>

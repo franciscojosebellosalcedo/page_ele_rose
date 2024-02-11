@@ -7,6 +7,8 @@ import Footer from "../../components/footer/Footer";
 import { useSelector } from "react-redux";
 import { ROUTES } from "../../constants/constants";
 import ListProducts from "../../components/listProducts/ListProducts";
+import SliderSmallCategories from "../../components/sliderCategoriesSmall/SliderSmallCategories";
+import FilterProducts from "../../components/filterProducts/FilterProducts";
 
 const OneCategory = () => {
 	const params=useParams();
@@ -33,6 +35,8 @@ const OneCategory = () => {
 		<div className="container_one_collection">
 			<NavBar/>
 			<HeaderSection title={params?.name}/>
+			<SliderSmallCategories/>
+			<FilterProducts/>
 			<ListProducts products={listProducts}/>
 			<Footer/>
 		</div>

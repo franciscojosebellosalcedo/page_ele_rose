@@ -46,9 +46,30 @@ const ModalRegisterUser = ({ isOpenModal, handlerOpenModal }) => {
 					setDataUser(data);
 					setNewUser({ name: "", address: "", isAdmin: false, phone: "", email: "", password: "" });
 					setAlertModal({ message: "", type: 0 });
-					sendMessageOrder(e, data);
-					dispatch(setIsOpenModal());
-					sendMessageOrder(e,data);
+					// dispatch(setIsOpenModal());
+					if (isActiveSendOrder && cart.length > 0) {
+						const responseOrder = await sendOrderUser(cart, data.user, data.accessToken);
+						if (responseOrder.status === 201 && responseOrder.response) {
+							dispatch(setActiveCart());
+							setAlertOrder({
+								message: "Hemos recibido tu pedido y nos pondremos en contacto contigo en breve para confirmar todos los detalles y coordinar la entrega.",
+								title: responseOrder.message,
+								type: 1
+							});
+							dispatch(setCart([]));
+						} else {
+							setAlertOrder({
+								message: "Se produjo un error al enviar el pedido, por favor intente nuevamente.",
+								title: responseOrder.message,
+								type: 0
+							});
+						}
+						handlerOpenModalInfoOrder();
+						dispatch(setActiveSendOrder(false));
+					} else {
+						navigate(ROUTES.ACCOUNT);
+					}
+					handlerOpenModal(e);
 				} else {
 					setAlertModal({ message: responseLogin.message, type: 0 });
 				}
@@ -111,7 +132,30 @@ const ModalRegisterUser = ({ isOpenModal, handlerOpenModal }) => {
 					setDataUser(data);
 					setNewUser({ name: "", address: "", isAdmin: false, phone: "", email: "", password: "" });
 					setAlertModal({ message: "", type: 0 });
-					sendMessageOrder(e, data);
+					// sendMessageOrder(e, data);
+					if (isActiveSendOrder && cart.length > 0) {
+						const responseOrder = await sendOrderUser(cart, data.user, data.accessToken);
+						dispatch(setActiveCart());
+						if (responseOrder.status === 201 && responseOrder.response) {
+							setAlertOrder({
+								message: "Hemos recibido tu pedido y nos pondremos en contacto contigo en breve para confirmar todos los detalles y coordinar la entrega.",
+								title: responseOrder.message,
+								type: 1
+							});
+							dispatch(setCart([]));
+						} else {
+							setAlertOrder({
+								message: "Se produjo un error al enviar el pedido, por favor intente nuevamente.",
+								title: responseOrder.message,
+								type: 0
+							});
+						}
+						handlerOpenModalInfoOrder();
+						dispatch(setActiveSendOrder(false));
+					} else {
+						navigate(ROUTES.ACCOUNT);
+					}
+					handlerOpenModal(e);
 				} else {
 					setAlertModal({ message: responseCreateUser.message, type: 0 });
 				}

@@ -25,22 +25,19 @@ export const getTotalPriceCart=(listItemCart)=>{
 }
 
 export const sendOrderUser=async(listProducts,user,token)=>{
-	try {
-		const totalPriceOrder=getTotalPriceCart(listProducts);
-		const dataOrder={
-			user:user._id,
-			total:totalPriceOrder
-		}
-		const list=[]
-		for (let index = 0; index < listProducts.length; index++) {
-			const item = listProducts[index];
-			list.push({product:item.product._id,amount:item.amount});
-		}
-		dataOrder["listProducts"]=list;
-		return (await sendOrder(token,dataOrder)).data;
-	} catch (error) {
-		return error;
+	const totalPriceOrder=getTotalPriceCart(listProducts);
+	const dataOrder={
+		user:user._id,
+		total:totalPriceOrder
 	}
+	const list=[]
+	for (let index = 0; index < listProducts.length; index++) {
+		const item = listProducts[index];
+		list.push({product:item.product._id,amount:item.amount});
+	}
+	dataOrder["listProducts"]=list;
+	return (await sendOrder(token,dataOrder)).data;
+	
 }
 
 export const saveCartLocalStorage=(list)=>{
