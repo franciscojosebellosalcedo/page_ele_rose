@@ -74,19 +74,23 @@ const CartRight = ({ handlerOpencart }) => {
 		<section className={`container_cart_right ${isOpenCart === true ? "see_cart" : ""}`}>
 			<i className="uil uil-times icon_close" onClick={() => handlerOpencart()}></i>
 			<p className="amout_product">{listItemCart.length}</p>
-			<article className="list_products">
 				{
 					listItemCart && listItemCart.length >0 ?
 						<>
+							<article className="list_products">
 							{
 								listItemCart.map((item,index)=>{
 									return <ItemProductCart key={index} index={index} item={item} />
 								})
 							}
+							</article>
 						</>
-					:""
+					:
+					<section className="text_cart_empty">
+							<h3>Carrito de compras vacio</h3>
+							<button className="btn" onClick={()=>{navigate(ROUTES.ACCESORIES);handlerOpencart()}}>Ver productos</button>
+					</section>
 				}
-			</article>
 			<div className="content_bottom_cart">
 				<p className="title_total_price">Total: <span className="price_total">$ {getTotalPriceCart(listItemCart)}</span></p>
 				<section className="section_button_cart">

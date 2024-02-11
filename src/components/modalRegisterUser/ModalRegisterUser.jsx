@@ -46,7 +46,6 @@ const ModalRegisterUser = ({ isOpenModal, handlerOpenModal }) => {
 					setDataUser(data);
 					setNewUser({ name: "", address: "", isAdmin: false, phone: "", email: "", password: "" });
 					setAlertModal({ message: "", type: 0 });
-					// dispatch(setIsOpenModal());
 					if (isActiveSendOrder && cart.length > 0) {
 						const responseOrder = await sendOrderUser(cart, data.user, data.accessToken);
 						if (responseOrder.status === 201 && responseOrder.response) {
@@ -75,7 +74,7 @@ const ModalRegisterUser = ({ isOpenModal, handlerOpenModal }) => {
 				}
 			}
 		} catch (error) {
-			setAlertModal({ message: "Error en el servidor", type: 0 });
+			setAlertModal({ message: "Correo o contraseña no válida", type: 0 });
 		}
 		setIsLoader(false);
 	}

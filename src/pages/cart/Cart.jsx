@@ -4,13 +4,13 @@ import NavBar from "../../components/navBar/NavBar";
 import "./Cart.css";
 
 const Cart = () => {
-  return (
-    <section className="container_cart">
-        <NavBar />
-		<HeaderSection title={"Carrito"} />
-        <Footer/>
-    </section>
-  )
-}
+	return (
+		<section className="container_cart">
+			<NavBar />
+			<HeaderSection title={"Carrito"} />
+			<Footer />
+		</section>
+	);
+};
 
 export default Cart;
