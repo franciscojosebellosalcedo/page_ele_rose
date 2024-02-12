@@ -1,12 +1,12 @@
-.container_table_cart{
-    width: var(--width-container);
-    margin: 40px auto;
+.container_table_cart {
+	width: var(--width-container);
+	margin: 40px auto;
 }
 table {
 	width: 100%;
 	background: white;
 	margin-bottom: 1.25em;
-	border: solid 1px #dddddd;
+	border: solid 1px var(--color-text-titles);
 	border-collapse: collapse;
 	border-spacing: 0;
 }
@@ -23,6 +23,65 @@ table tr.even,
 table tr.alt,
 table tr:nth-of-type(even) {
 	background: #f9f9f9;
+}
+
+table > tbody > tr > td {
+	text-align: center;
+}
+
+.icon_delete_product_cart {
+	cursor: pointer;
+	color: var(--color-icon);
+	font-size: 25px;
+}
+.content_product_table {
+	display: flex;
+	align-items: center;
+}
+.name_product_cart {
+	margin-left: 10px;
+}
+.imagen_product_cart {
+	width: 100px;
+	height: 100px;
+	object-fit: cover;
+}
+.content_cart_empty > button{
+	margin-top: 20px;
+	padding: 8px 10px;
+	cursor: pointer;
+	font-size: 15px;
+	background-color: rgba(0, 0, 0, 0.408);
+	color: var(--color-white);
+	border-radius: var(--border-radius-box);
+	transition: 0.5s;
+}
+
+.content_cart_empty > button:hover{
+	background-color: rgba(0, 0, 0, 0.685);
+}
+
+.total_price_order{
+	margin-top: 40px;
+	margin-bottom: 40px;
+	color: var(--color-icon);
+}
+.total_price_order > span{
+	margin-left: 30px;
+}
+.btn_cart_page {
+	padding: 8px 20px;
+	border-radius: var(--border-radius-box);
+	cursor: pointer;
+	background-color: rgba(0, 0, 0, 0.425);
+	color: var(--color-white);
+	font-size: 15px;
+	transition: 0.5s;
+	height: 40px;
+	width: 190px;
+}
+.btn_cart_page:hover {
+	background-color: rgba(0, 0, 0, 0.685);
 }
 
 @media only screen and (max-width: 768px) {
@@ -46,7 +105,8 @@ table tr:nth-of-type(even) {
 
 	.resp tbody tr {
 		margin: 1em 0;
-		border: 1px solid #2ba6cb;
+		border: 1px solid var(--color-text-titles);
+		border-radius: var(--border-radius-box);
 	}
 
 	.resp td {
@@ -76,26 +136,26 @@ table tr:nth-of-type(even) {
 		font-weight: bold;
 	}
 	td:nth-of-type(1):before {
-		content: "Titulo";
+		content: "Producto";
 	}
 
 	td:nth-of-type(2):before {
-		content: "A\00f1o";
+		content: "Precio";
 	}
 
 	td:nth-of-type(3):before {
-		content: "Formato";
+		content: "Disponibles";
 	}
 
 	td:nth-of-type(4):before {
-		content: "Autor";
+		content: "Cantidad";
 	}
 
 	td:nth-of-type(5):before {
-		content: "Tama\00f1o";
+		content: "Total";
 	}
 
 	td:nth-of-type(6):before {
-		content: "Precio";
+		content: "Acciones";
 	}
 }
