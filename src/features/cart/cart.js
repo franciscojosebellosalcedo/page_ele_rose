@@ -18,6 +18,10 @@ const cartSlice = createSlice({
 			state.data.list=action.payload;
 			saveCartLocalStorage(state.data.list);
 		},
+		setAmountItemCart:(state,action)=>{
+			const index=state.data.list.findIndex((item)=>item.product._id===action.payload.product._id);
+			state.data.list[index].amount=action.payload.amount;
+		},
 		decrementAmountItem:(state,action)=>{
 			const list=state.data.list;
 			for (let index = 0; index < list.length; index++) {
@@ -60,17 +64,12 @@ const cartSlice = createSlice({
 		setActiveSendOrder:(state,action)=>{
 			state.data.activeSendOrder=action.payload;
 		},
-
-		//quitar
-		setIsActiveModalInfoOrder:(state,action)=>{
-			state.data.isActiveModalInfoOrder=action.payload;
-		}
   },
 });
 export const {
 	addItemCart,
-	setIsActiveModalInfoOrder,
 	setActiveSendOrder,
+	setAmountItemCart,
 	decrementAmountItem,
 	setActiveCart,
 	incrementAmountItem,

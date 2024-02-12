@@ -93,6 +93,9 @@
 	flex-direction: column;
 	justify-content: center;
 }
+.text_cart_empty > h3{
+	color: var(--color-icon);
+}
 .text_cart_empty > button{
 	margin-top: 20px;
 	padding: 8px 10px;

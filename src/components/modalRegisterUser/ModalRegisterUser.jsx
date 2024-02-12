@@ -86,35 +86,6 @@ const ModalRegisterUser = ({ isOpenModal, handlerOpenModal }) => {
 		saveRefressTokenLocalStorage(refressToken);
 	}
 
-	const sendMessageOrder = async (e, data) => {
-		setIsLoader(true);
-		if (isActiveSendOrder && cart.length > 0) {
-			const responseOrder = await sendOrderUser(cart, data.user, data.accessToken);
-			dispatch(setActiveCart());
-			if (responseOrder.status === 201 && responseOrder.response) {
-				setAlertOrder({
-					message: "Hemos recibido tu pedido y nos pondremos en contacto contigo en breve para confirmar todos los detalles y coordinar la entrega.",
-					title: responseOrder.message,
-					type: 1
-				});
-				dispatch(setCart([]));
-			} else {
-				setAlertOrder({
-					message: "Se produjo un error al enviar el pedido, por favor intente nuevamente.",
-					title: responseOrder.message,
-					type: 0
-				});
-			}
-			handlerOpenModalInfoOrder();
-			dispatch(setActiveSendOrder(false));
-		} else {
-			navigate(ROUTES.ACCOUNT);
-		}
-		handlerOpenModal(e);
-		setIsLoader(false);
-
-	}
-
 	const createUserPage = async (e) => {
 		e.preventDefault();
 		setIsLoader(true);
