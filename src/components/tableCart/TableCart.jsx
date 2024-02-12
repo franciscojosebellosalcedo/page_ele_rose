@@ -23,8 +23,8 @@ const TableCart = () => {
 		setIsActiveModalInfoOrder(!isActiveModalInfoOrder);
 	}
 
-	const navigate = () => {
-		nav(ROUTES.ACCESORIES);
+	const navigate = (url) => {
+		nav(url);
 		if (isActiveCart) {
 			dispatch(setActiveCart());
 		}
@@ -108,7 +108,10 @@ const TableCart = () => {
 												{item?.product?.amount}
 											</td>
 											<td>
-												{item?.amount}
+												<div>
+												<input className="input_amount_cart" type="number" defaultValue={item?.amount} />
+
+												</div>
 											</td>
 											<td>
 												$ {item?.product?.pricePromotion > 0 ? item?.product?.pricePromotion * item?.amount : item?.product?.realPrice * item?.amount}
@@ -127,11 +130,14 @@ const TableCart = () => {
 								<button onClick={(e) => sendOrder(e)} className="btn_cart btn_cart_page">{isLoader === true ? <LoaderButton /> : "Pedir por WhatsApp"}</button>
 								: ""
 						}
+						<div>
+							<button onClick={()=>navigate(ROUTES.ACCESORIES)} className="btn_cart_page_add_much_p">Agregar Más Productos</button>
+						</div>
 					</>
 					:
 					<section className="content_cart_empty">
 						<h3>Carrito de compras vacio</h3>
-						<button className="btn" onClick={() => { navigate() }}>Ver productos</button>
+						<button className="btn" onClick={() => { navigate(ROUTES.ACCESORIES) }}>Ver productos</button>
 					</section>
 			}
 			<ModalOrderInfo alertOrder={alertOrder} isActiveModalInfoOrder={isActiveModalInfoOrder} handlerOpenModalInfoOrder={handlerOpenModalInfoOrder} />

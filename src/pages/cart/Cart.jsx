@@ -8,7 +8,7 @@ const Cart = () => {
 	return (
 		<section className="container_cart">
 			<NavBar/>
-			<HeaderSection title={"Carrito"} />
+			<HeaderSection title={"Carrito de compras"} />
 			<TableCart/>
 			<Footer/>
 		</section>
