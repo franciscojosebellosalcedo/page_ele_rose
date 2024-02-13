@@ -3,8 +3,8 @@
 	bottom: -700px;
 	right: 30px;
 	background-color: #f1a0b5;
-	height: 50px;
-	width: 50px;
+	height: 45px;
+	width: 45px;
 	display: flex;
 	transition: .6s;
 	align-items: center;
@@ -17,5 +17,5 @@
 	box-shadow: var(--box-shadow-black-blur);
 }
 .see_to_up{
-	bottom: 70px;
+	bottom: 90px;
 }
