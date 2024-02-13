@@ -16,7 +16,7 @@
 	padding-left: 20px;
 	text-align: center;
 }
-.content_info_footer li{
+.content_info_footer li,.content_info_footer a{
 	margin-top: 15px;
 	font-size: 13px;
 	cursor: pointer;

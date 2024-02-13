@@ -8,8 +8,8 @@ const Footer = () => {
 					<h1 className="info_footer_title">Información</h1>
 					<ul className="list_info_ele_rose">
 						<li>Mi cuenta</li>
-						<li>Whatsapp +57 305 355 9355</li>
-						<li>elerose@gmail.com</li>
+						<li><a href="https://api.whatsapp.com/message/24YJVHRVEYC3P1?autoload=1&app_absent=0" target="_blank" >Whatsapp +57 305 355 9355</a></li>
+						<li><a href="mailto:laurasalguedo24@gmail.com?subject=Servicio%20al%20cliente&" target="_blank">elerose@gmail.com</a></li>
 					</ul>
 				</div>
 
@@ -22,15 +22,15 @@ const Footer = () => {
 				</div>
 
 				<div className="content_info_footer">
-					<figure className="icon_media">
+					<a href="https://www.instagram.com/elerose_accesorios" target="_blank" className="icon_media">
 						<i className="uil uil-instagram"></i>
-					</figure>
-					<figure className="icon_media">
+					</a>
+					<a href="https://api.whatsapp.com/message/24YJVHRVEYC3P1?autoload=1&app_absent=0" target="_blank" className="icon_media">
 						<i className="uil uil-whatsapp"></i>
-					</figure>
-					<figure className="icon_media">
+					</a>
+					<a href="https://www.tiktok.com/@elerose_?_t=8jrOAosRLvR&_r=1" target="_blank" className="icon_media">
 						<img src={require("../../assest/tik-tok.png")} alt="" />
-					</figure>
+					</a>
 				</div>
 			</section>
 

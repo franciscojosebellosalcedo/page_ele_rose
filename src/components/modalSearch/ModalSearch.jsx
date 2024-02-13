@@ -26,7 +26,7 @@ const ModalSearch = ({ isOpenModalSearch, handlerOpenModalSearch }) => {
 	}, [value]);
 
 	return (
-		<section className={`modal_search ${isOpenModalSearch == true ? "see_modal_search" : ""}`}>
+		<section className={`modal_search ${isOpenModalSearch === true ? "see_modal_search" : ""}`}>
 			<i className="uil uil-times icon_close_modal_search" onClick={(e) => handlerOpenModalSearch(e)}></i>
 			<h2 className="modal_search_title">Encuentra lo que estás buscando en nuestro catálogo</h2>
 			<form className="form_search">
