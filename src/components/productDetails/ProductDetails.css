@@ -1,0 +1,4 @@
+.container_product_details{
+    width: var(--width-container);
+    margin: 40px auto;
+}

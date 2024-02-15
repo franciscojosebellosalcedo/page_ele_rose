@@ -1,11 +1,14 @@
 import { useDispatch, useSelector } from "react-redux";
 import "./ItemProduct.css";
 import { setActiveCart, setCart } from "../../features/cart/cart";
+import { useNavigate } from "react-router-dom";
+import { ROUTES } from "../../constants/constants";
 
 const ItemProduct = ({ product }) => {
 	const dispatch = useDispatch();
 	const cart = useSelector((state) => state.cart.data.list);
 	const isOpenCart = useSelector((state) => state.cart.data.active);
+	const navigate=useNavigate();
 
 	const addProductCart = (e, product) => {
 		if (cart.some((item) => item.product._id === product._id) === false) {
@@ -20,7 +23,7 @@ const ItemProduct = ({ product }) => {
 	};
 
 	return (
-		<div className="grid_item_product">
+		<div className="grid_item_product" onClick={()=>navigate(ROUTES.PRODUCT+`/${product.name}`)}>
 			{product?.isNow === true ? (
 				<div className="stick_product_new">
 					<span className="stick_text">Nuevo</span>

@@ -18,18 +18,18 @@ const OneCategory = () => {
 	const [listProducts,setListProducts]=useState([]);
 
 	useEffect(()=>{
-		let list=[];
 		if(categories.length >0){
-			const catFound=categories.find((cat)=>cat.name===params.name);
-			if(!catFound){
-				navigate(ROUTES.NOT_FOUND);
+			const nameCategory=params.name;
+			const catFound=categories.find((cat)=>cat.name===nameCategory);
+			if(catFound){
+				const list=products.filter((pro)=>pro.category?._id===catFound._id);
+				setListProducts(list);
 			}else{
-				list=products.filter((pro)=>pro.category?._id===catFound._id);
+				navigate(ROUTES.NOT_FOUND);
 			}
-			setListProducts(list);
 		}
 
-	});
+	},[params]);
 
 	return (
 		<div className="container_one_collection">

@@ -1,11 +1,19 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import "./ModalSearch.css";
+import { useNavigate } from "react-router-dom";
+import { ROUTES } from "../../constants/constants";
 
 const ModalSearch = ({ isOpenModalSearch, handlerOpenModalSearch }) => {
 	const products = useSelector((state) => state.product.data.list);
 	const [productsFound, setProductsFound] = useState([]);
 	const [value, setValue] = useState("");
+	const navigate=useNavigate();
+
+	const goToProduct=(e,pro)=>{
+		handlerOpenModalSearch(e);
+		navigate(ROUTES.PRODUCT+`/${pro?.name}`);
+	}
 
 	const handlerSearch = (value) => {
 		setValue(value);
@@ -42,7 +50,7 @@ const ModalSearch = ({ isOpenModalSearch, handlerOpenModalSearch }) => {
 						<section className="list_product_found">
 							{
 								productsFound.map((pro) => {
-									return <div className="item_list_product">
+									return <div className="item_list_product" onClick={(e)=>goToProduct(e,pro)}>
 										<img className="img_product_item_list" src={pro?.imagen} alt="" />
 										<article className="info_item_product">
 											<p>{pro?.name}</p>

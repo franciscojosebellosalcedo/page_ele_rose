@@ -102,7 +102,6 @@ const ModalRegisterUser = ({ isOpenModal, handlerOpenModal }) => {
 					setDataUser(data);
 					setNewUser({ name: "", address: "", isAdmin: false, phone: "", email: "", password: "" });
 					setAlertModal({ message: "", type: 0 });
-					// sendMessageOrder(e, data);
 					if (isActiveSendOrder && cart.length > 0) {
 						const responseOrder = await sendOrderUser(cart, data.user, data.accessToken);
 						dispatch(setActiveCart());
