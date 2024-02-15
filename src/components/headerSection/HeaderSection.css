@@ -10,6 +10,7 @@
 	color: var(--color-icon);
 	text-transform: uppercase;
 	position: relative;
+	text-align: center;
 	font-size: 25px;
 }
 

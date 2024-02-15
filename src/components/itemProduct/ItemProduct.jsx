@@ -11,6 +11,8 @@ const ItemProduct = ({ product }) => {
 	const navigate=useNavigate();
 
 	const addProductCart = (e, product) => {
+		e.preventDefault();
+		e.stopPropagation();
 		if (cart.some((item) => item.product._id === product._id) === false) {
 			const list = [...cart];
 			const dataProductCart = { amount: 1, product };
@@ -59,7 +61,7 @@ const ItemProduct = ({ product }) => {
 				onClick={(e) => addProductCart(e, product)}
 			>
 				{cart.some((item) => item.product._id === product._id) === true
-					? "En carrito"
+					? "Producto en carrito"
 					: "Agregar al carrito"}
 				<i
 					title="Agregar al carrito"

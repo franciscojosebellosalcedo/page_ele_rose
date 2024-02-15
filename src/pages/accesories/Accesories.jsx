@@ -14,7 +14,7 @@ const Accesories = () => {
 			<NavBar />
 			<HeaderSection title={"Accesorios"} />
 			<SliderSmallCategories/>
-			<FilterProducts />
+			{/* <FilterProducts /> */}
 			<ListProducts products={products} />
 			<Footer />
 		</section>

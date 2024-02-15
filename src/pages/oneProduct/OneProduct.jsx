@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { ROUTES } from "../../constants/constants";
 import ProductDetails from "../../components/productDetails/ProductDetails";
+import InfoAditionalProduct from "../../components/infoAditionalProduct/InfoAditionalProduct";
 
 const OneProduct = () => {
 	const params = useParams();
@@ -22,14 +23,15 @@ const OneProduct = () => {
 			}else{
 				navigate(ROUTES.NOT_FOUND);
 			}
-		}		
+		}
     },[]);
 
 	return (
 		<section>
 			<NavBar />
 			<HeaderSection title={params.name} />
-			<ProductDetails/>
+			<ProductDetails product={product}/>
+			<InfoAditionalProduct/>
 			<Footer />
 		</section>
 	);
