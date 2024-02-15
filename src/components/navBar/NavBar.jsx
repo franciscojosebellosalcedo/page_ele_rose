@@ -103,7 +103,7 @@ const NavBar = () => {
 								</ul>
 							</div>
 
-							{/* <div className="nav_ul_li">
+							<div className="nav_ul_li">
 								<li  className="list_item">
 									<NavLink  className={({ isActive }) => isActive === true ? "item " : "item"} >Colecciones</NavLink>
 									<i className={`uil uil-angle-right icon_arrow ${isOpenCollections ? "rotate_arrow" : ""}`}  onClick={(e) => handlerOpenCollections(e)}></i>
@@ -133,7 +133,7 @@ const NavBar = () => {
 								<li className="list_item">
 									<NavLink to={ROUTES.CONTACT} className={({ isActive }) => isActive === true ? "item " : "item"} >Contacto</NavLink>
 								</li>
-							</div> */}
+							</div>
 
 						</div>
 						<button className="btn btn_close_menu" onClick={(e) => handlerOpenMenu(e)}>Cerrar menú</button>
