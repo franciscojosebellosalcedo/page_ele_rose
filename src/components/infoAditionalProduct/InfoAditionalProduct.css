@@ -36,3 +36,30 @@
 .see_element_before_title::before{
 	width: 100%;
 }
+.text_info_shipping{
+	width: var(--width-container);
+	margin: 0px auto;
+	text-align: center;
+	font-size: 14px;
+	color: var(--color-icon);
+}
+.content_description{
+	width: var(--width-container);
+	margin: 0px auto;
+}
+.title_description{
+	color: var(--color-text-titles);
+	text-transform: uppercase;
+	text-align: center;
+}
+.list_tips{
+	list-style-type: disc;
+	width: var(--width-container);
+	margin: 30px auto;
+}
+.list_tips >li{
+	margin-left: 10px;
+	margin-bottom: 10px;
+	font-size: 14px;
+	color: var(--color-icon);
+}

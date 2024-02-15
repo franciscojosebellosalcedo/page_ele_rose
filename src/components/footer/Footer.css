@@ -5,6 +5,9 @@
 	padding-bottom: 0;
 	background-color: rgba(0, 0, 0, 0.585);
 }
+.list_info_ele_rose{
+	list-style-type: none;
+}
 .info_footer{
 	display: flex;
 	align-items: center;
