@@ -1,8 +1,9 @@
 import { useState } from "react";
 import "./InfoAditionalProduct.css";
 import { INFO_ELEROSE } from "../../constants/constants";
+import Qualification from "../qualification/Qualification";
 
-const InfoAditionalProduct = () => {
+const InfoAditionalProduct = ({product}) => {
 	const [openContent, setOpenContent] = useState({
 		description: true,
 		shipping: false,
@@ -57,6 +58,11 @@ const InfoAditionalProduct = () => {
 						</ul>
 					</div>
 					: ""
+			}
+			{
+				openContent.comments=== true ?
+					<Qualification product={product}/>
+				:""
 			}
 		</section>
 	)

@@ -1,6 +1,6 @@
 .container_product_details {
 	width: var(--width-container);
-	margin: 30px auto;
+	margin: 0px auto;
 	overflow: hidden;
 }
 .content_img{

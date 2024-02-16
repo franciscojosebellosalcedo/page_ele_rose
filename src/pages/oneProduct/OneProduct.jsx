@@ -8,6 +8,7 @@ import { useSelector } from "react-redux";
 import { ROUTES } from "../../constants/constants";
 import ProductDetails from "../../components/productDetails/ProductDetails";
 import InfoAditionalProduct from "../../components/infoAditionalProduct/InfoAditionalProduct";
+import SliderSmallCategories from "../../components/sliderCategoriesSmall/SliderSmallCategories";
 
 const OneProduct = () => {
 	const params = useParams();
@@ -30,8 +31,9 @@ const OneProduct = () => {
 		<section>
 			<NavBar />
 			<HeaderSection title={params.name} />
+			<SliderSmallCategories/>
 			<ProductDetails product={product}/>
-			<InfoAditionalProduct/>
+			<InfoAditionalProduct product={product}/>
 			<Footer />
 		</section>
 	);

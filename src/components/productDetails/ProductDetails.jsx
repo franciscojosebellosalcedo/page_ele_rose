@@ -111,22 +111,6 @@ const ProductDetails = ({ product }) => {
 							<p className="error_amount">Cantidad ingresada incorrecta</p>
 							: ""
 					}
-					<div className="container_categories">
-						<span className="list_categories">
-							<label>Categorías:</label>
-							{
-								categories && categories.length > 0 ?
-									<>
-										{
-											categories.map((cat, index) => {
-												return index === categories.length - 1 ? <Link key={cat.name} to={ROUTES.ONE_CATEGORY + `/${cat?.name}`}>{cat?.name}</Link> : <Link key={cat.name} to={ROUTES.ONE_CATEGORY + `/${cat?.name}`}>{cat?.name},</Link>
-											})
-										}
-									</>
-									: ""
-							}
-						</span>
-					</div>
 				</div>
 
 			</section>
