@@ -10,6 +10,10 @@
 	justify-content: center;
 	background-color: rgb(255, 255, 255);
 }
+.text_loader{
+	font-size: 14.5px;
+	color: var(--color-icon);
+}
 .logo_loader{
 	position: absolute;
 	top: 35%;
@@ -20,8 +24,8 @@
   height: 12px;
   border-radius: 50%;
   display: block;
-  margin:15px auto;
-  position: relative;
+	top: 55%;
+  position: absolute;
   color: #f5a6a6;
   box-sizing: border-box;
   animation: animloader 2s linear infinite;

@@ -73,6 +73,7 @@
 .forgot_password {
 	color: var(--color-icon);
 	font-size: 13px;
+	cursor: pointer;
 }
 .btn_login {
 	padding: 10px;

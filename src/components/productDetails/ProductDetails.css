@@ -125,3 +125,24 @@
 	padding: 6px;
 	border: 1px red dashed;
 }
+@media screen and (min-width:777px) {
+	.box_flex_details_product{
+		flex-direction: row;
+	}
+	.content_img{
+		width: 450px;
+	}
+	.name_product_details{
+		font-size: 25px;
+	}
+}
+@media screen and (min-width:999px) {
+	.content_img{
+		width: 550px;
+	}
+}
+@media screen and (min-width:1160px) {
+	.content_img{
+		width:680px;
+	}
+}

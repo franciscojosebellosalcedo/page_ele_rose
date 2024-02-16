@@ -63,3 +63,15 @@
 	font-size: 14px;
 	color: var(--color-icon);
 }
+@media screen and (min-width:777px) {
+	.list_title_info{
+		flex-direction: row;
+	}
+	.list_tips >li{
+		font-size: 16px;
+	}
+	.text_info_shipping{
+		font-size: 16px;
+	}
+}
+

@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { ROUTES } from "../../constants/constants";
 import { setActiveCart, setActiveSendOrder, setCart } from "../../features/cart/cart";
-import { setIsOpenModal, setUser } from "../../features/user/user";
+import { setUser } from "../../features/user/user";
 import { createUser, login } from "../../service/user.service";
 import { isValidObject, saveRefressTokenLocalStorage, sendOrderUser } from "../../utils/utils";
 import LoaderButton from "../loaderButton/LoaderButton";
@@ -22,6 +22,12 @@ const ModalRegisterUser = ({ isOpenModal, handlerOpenModal }) => {
 	const cart = useSelector((state) => state.cart.data.list);
 	const [alertOrder, setAlertOrder] = useState({ message: "", type: 0, title: "" });
 	const [isActiveModalInfoOrder, setIsActiveModalInfoOrder] = useState(false);
+	const [isForgotPassword, setIsForgotPassword] = useState(false);
+
+	const handlerOpenForgotPassword = (e) => {
+		e.preventDefault();
+		setIsForgotPassword(!isForgotPassword);
+	}
 
 	const handlerOpenModalInfoOrder = () => {
 		setIsActiveModalInfoOrder(!isActiveModalInfoOrder);
@@ -138,6 +144,17 @@ const ModalRegisterUser = ({ isOpenModal, handlerOpenModal }) => {
 	const handlerIsRegister = (e) => {
 		e.preventDefault();
 		setIsRegister(!isRegister);
+		setIsForgotPassword(false);
+	}
+
+	const getTitleModal = () => {
+		if (isRegister === true) {
+			return "Crear tu cuenta";
+		} else if (isForgotPassword === true) {
+			return "Restablece tu contraseña"
+		} else if (isRegister === false) {
+			return "Inicia sesión";
+		}
 	}
 
 	return (
@@ -146,7 +163,7 @@ const ModalRegisterUser = ({ isOpenModal, handlerOpenModal }) => {
 				<div className={`modal`}>
 					<i className="uil uil-times icon_close_modal" onClick={(e) => { handlerOpenModal(e); setAlertModal({ message: "", type: 0 }); dispatch(setActiveSendOrder(false)) }}></i>
 					<img className="logo_modal" src={require("../../assest/logo.jpeg")} alt="" />
-					<h3 className="title_modal">{isRegister === false ? "Inicia sesión" : "Crear tu cuenta"}</h3>
+					<h3 className="title_modal">{getTitleModal()}</h3>
 					<p className={`alert_modal_user ${alertModal.type === 0 ? "color_alert_red" : "color_alert_green"}`}>{alertModal.message}</p>
 					{
 						isActiveSendOrder === true ?
@@ -162,24 +179,45 @@ const ModalRegisterUser = ({ isOpenModal, handlerOpenModal }) => {
 							</> : ""
 						}
 						<input value={newUser.email} onInput={(e) => handlerCreatedUser("email", e.target.value)} className="input" type="email" placeholder="Correo electrónico" />
-						<input value={newUser.password} onInput={(e) => handlerCreatedUser("password", e.target.value)} className="input" type="password" placeholder="Contraseña" />
 						{
-							isRegister === false ?
-								<Link className="forgot_password">¿Olvidó la contraseña?</Link>
-								: ""
+							isForgotPassword === true ? "" :
+								<input value={newUser.password} onInput={(e) => handlerCreatedUser("password", e.target.value)} className="input" type="password" placeholder="Contraseña" />
 						}
 						{
-							isRegister === false ?
-								<button className="btn_form btn_login" onClick={(e) => loginUser(e)}>{isLoader === true ? <LoaderButton /> : "Iniciar sesión"}</button>
+							isForgotPassword === true ? "" :
+								<>
+									{
+										isRegister === false ?
+											<a onClick={(e) => handlerOpenForgotPassword(e)} className="forgot_password">¿Olvidó la contraseña?</a>
+											: ""
+									}
+								</>
+						}
+						{
+							isForgotPassword === true ?
+								<button className="btn_login">Enviar</button> :
+								""
+						}
+						{
+							isForgotPassword === true ?
+								<button onClick={(e)=>handlerOpenForgotPassword(e)} className="btn_login">Cancelar</button>
 								:
-								<button className={`btn_form btn_login ${isLoader === true ? "none_cursor" : ""}`} onClick={(e) => createUserPage(e)}>{isLoader === true ? <LoaderButton /> : "Crear cuenta"}</button>
+								<>
+									{
+										isRegister === false ?
+											<button className="btn_form btn_login" onClick={(e) => loginUser(e)}>{isLoader === true ? <LoaderButton /> : "Iniciar sesión"}</button>
+											:
+											<button className={`btn_form btn_login ${isLoader === true ? "none_cursor" : ""}`} onClick={(e) => createUserPage(e)}>{isLoader === true ? <LoaderButton /> : "Crear cuenta"}</button>
+									}
+								</>
 						}
+
 					</form>
 					<p className="not_account_use">{isRegister === false ? "¿No tienes cuenta?" : "¿Ya tienes cuenta?"}  <button className="btn btn_register_user" onClick={(e) => handlerIsRegister(e)}>{isRegister === false ? "Registrate aquí" : "Inicia sesión aquí"} <i className="uil uil-arrow-right"></i></button></p>
 				</div>
 
 			</section>
-				<ModalOrderInfo alertOrder={alertOrder} isActiveModalInfoOrder={isActiveModalInfoOrder} handlerOpenModalInfoOrder={handlerOpenModalInfoOrder} />
+			<ModalOrderInfo alertOrder={alertOrder} isActiveModalInfoOrder={isActiveModalInfoOrder} handlerOpenModalInfoOrder={handlerOpenModalInfoOrder} />
 		</>
 	)
 }

@@ -1,14 +1,11 @@
-import { useDispatch, useSelector } from "react-redux";
-import "./ProductDetails.css";
-import { Link } from "react-router-dom";
-import { ROUTES } from "../../constants/constants";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { setActiveCart, setCart } from "../../features/cart/cart";
+import "./ProductDetails.css";
 
 const ProductDetails = ({ product }) => {
 	const [amount, setAmount] = useState(1);
 	const [isValidAmount, setIsValidAmount] = useState(true);
-	const categories = useSelector((state) => state.category.data.list);
 	const dispatch = useDispatch();
 	const cart = useSelector((state) => state.cart.data.list);
 	const isOpenCart = useSelector((state) => state.cart.data.active);
@@ -82,35 +79,37 @@ const ProductDetails = ({ product }) => {
 				</div>
 
 				<div className="info_product_details">
-					<h3 className="name_product_details">{product?.name}</h3>
-					{
-						product?.pricePromotion > 0 ?
-							<article className="info_price_product">
-								<p>Precio descuento de {product.percentage}% :</p>
-								<div>
-									<p>${product?.realPrice}</p>
-									<p>${product?.pricePromotion}</p>
-								</div>
-							</article>
-							:
-							<p className="price_product">Precio: <span>$ {product?.realPrice}</span></p>
-					}
-					<p className="amount_product_details" >Disponibles: <span >{product?.amount}</span></p>
-					<div className="box_btn_add_cart">
-						<i onClick={() => incrementAmount(1)} className="uil uil-arrow-up icon_arrow_product details icon_controller_details1"></i>
-						<i onClick={() => decrementAmount(1)} className="uil uil-arrow-down icon_arrow_product details icon_controller_details2"></i>
-						<button onClick={(e) => addProductCart(e)} className="btn btn_add_cart_product_details">
-							{cart.some((item) => item?.product?._id === product?._id) === true
-								? "Producto en carrito"
-								: "Agregar al carrito"}
-						</button>
-						<input onInput={(e) => handlerAmountInput(e.target.value)} value={amount} className="input_amount_product_details" type="number" />
+					<div>
+						<h3 className="name_product_details">{product?.name}</h3>
+						{
+							product?.pricePromotion > 0 ?
+								<article className="info_price_product">
+									<p>Precio descuento de {product.percentage}% :</p>
+									<div>
+										<p>${product?.realPrice}</p>
+										<p>${product?.pricePromotion}</p>
+									</div>
+								</article>
+								:
+								<p className="price_product">Precio: <span>$ {product?.realPrice}</span></p>
+						}
+						<p className="amount_product_details" >Disponibles: <span >{product?.amount}</span></p>
+						<div className="box_btn_add_cart">
+							<i onClick={() => incrementAmount(1)} className="uil uil-arrow-up icon_arrow_product details icon_controller_details1"></i>
+							<i onClick={() => decrementAmount(1)} className="uil uil-arrow-down icon_arrow_product details icon_controller_details2"></i>
+							<button onClick={(e) => addProductCart(e)} className="btn btn_add_cart_product_details">
+								{cart.some((item) => item?.product?._id === product?._id) === true
+									? "Producto en carrito"
+									: "Agregar al carrito"}
+							</button>
+							<input onInput={(e) => handlerAmountInput(e.target.value)} value={amount} className="input_amount_product_details" type="number" />
+						</div>
+						{
+							isValidAmount === false ?
+								<p className="error_amount">Cantidad ingresada incorrecta</p>
+								: ""
+						}
 					</div>
-					{
-						isValidAmount === false ?
-							<p className="error_amount">Cantidad ingresada incorrecta</p>
-							: ""
-					}
 				</div>
 
 			</section>
