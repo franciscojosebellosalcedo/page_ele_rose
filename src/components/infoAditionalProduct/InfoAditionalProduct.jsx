@@ -2,13 +2,16 @@ import { useState } from "react";
 import "./InfoAditionalProduct.css";
 import { INFO_ELEROSE } from "../../constants/constants";
 import Qualification from "../qualification/Qualification";
+import { useDispatch, useSelector } from "react-redux";
+import { setActiveQualification } from "../../features/qualification/qualification";
 
 const InfoAditionalProduct = ({product}) => {
 	const [openContent, setOpenContent] = useState({
 		description: true,
 		shipping: false,
 		comments: false
-	})
+	});
+	const dispatch=useDispatch();
 
 	const handlerOpenContent = (target) => {
 		const keys = Object.keys(openContent);
@@ -16,6 +19,11 @@ const InfoAditionalProduct = ({product}) => {
 		for (let index = 0; index < keys.length; index++) {
 			const key = keys[index];
 			contents[key] = false;
+		}
+		if(target==="comments" && contents[`${target}`]===false){
+			dispatch(setActiveQualification(false));
+		}else{
+			dispatch(setActiveQualification(true));
 		}
 		contents[`${target}`] = true;
 		setOpenContent({ ...contents });

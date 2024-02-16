@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import "./Qualification.css";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { createQualification, getAllQualificationByIdProduct } from "../../service/qualification.service";
 import { AiOutlineStar, AiFillStar } from "react-icons/ai";
 import { LIST_NUMBER_SCORE } from "../../constants/constants";
 import LoaderButton from "../loaderButton/LoaderButton";
-import { formatDate } from "../../utils/utils";
+import { formatDate, isValidObject } from "../../utils/utils";
+import { setIsOpenModal } from "../../features/user/user";
 
 
 const Qualification = ({ product }) => {
@@ -16,8 +17,9 @@ const Qualification = ({ product }) => {
 	const [isLoaderComments, setIsLoaderComments] = useState(false);
 	const [isLoader, setIsLoader] = useState(false);
 	const [openWriteComment, setOpenWriteComment] = useState(false);
-	const [newComment, setNewComment] = useState({ title: "", description: "", score: 0, user: user?._id, product: product?._id });
+	const [newComment, setNewComment] = useState({ title: "", description: "", score: 0, user: null, product: product?._id });
 	const [alert, setAlert] = useState({ message: "", type: 0, view: false });
+	const dispatch=useDispatch();
 
 	const handlerFormComment = (target, value) => {
 		setNewComment({ ...newComment, [target]: value });
@@ -55,8 +57,11 @@ const Qualification = ({ product }) => {
 		try {
 			if (newComment.description === "") {
 				setAlert({ message: "Escriba un comentario 😔", type: 0, view: true });
+			} else if (!isValidObject(user)) {
+				dispatch(setIsOpenModal());
 			} else {
 				newComment.score = score;
+				newComment.user = user?._id;
 				const responseCreatedQualification = (await createQualification(token, newComment)).data;
 				if (responseCreatedQualification.status === 201 && responseCreatedQualification.response) {
 					const data = responseCreatedQualification.data;
@@ -69,6 +74,7 @@ const Qualification = ({ product }) => {
 				}
 			}
 		} catch (error) {
+			console.log(error);
 			setAlert({ message: "Se produjo un error al enviar tu comentario 😔", type: 0, view: true });
 		}
 		setIsLoader(false);

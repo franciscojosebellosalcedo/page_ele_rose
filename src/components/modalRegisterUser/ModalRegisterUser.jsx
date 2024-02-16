@@ -43,7 +43,7 @@ const ModalRegisterUser = ({ isOpenModal, handlerOpenModal }) => {
 		try {
 			const dataLogin = { email: newUser.email, password: newUser.password };
 			if (isValidObject(dataLogin) === false) {
-				setAlertModal({ message: "Llene todos los campos", type: 0 });
+				setAlertModal({ message: "Llene todos los campos 😔", type: 0 });
 			}
 			else {
 				const responseLogin = (await login(dataLogin)).data;
@@ -64,15 +64,13 @@ const ModalRegisterUser = ({ isOpenModal, handlerOpenModal }) => {
 							dispatch(setCart([]));
 						} else {
 							setAlertOrder({
-								message: "Se produjo un error al enviar el pedido, por favor intente nuevamente.",
+								message: "Se produjo un error al enviar el pedido, por favor intente nuevamente. 😔",
 								title: responseOrder.message,
 								type: 0
 							});
 						}
 						handlerOpenModalInfoOrder();
 						dispatch(setActiveSendOrder(false));
-					} else {
-						navigate(ROUTES.ACCOUNT);
 					}
 					handlerOpenModal(e);
 				} else {
@@ -80,7 +78,7 @@ const ModalRegisterUser = ({ isOpenModal, handlerOpenModal }) => {
 				}
 			}
 		} catch (error) {
-			setAlertModal({ message: "Correo o contraseña no válida", type: 0 });
+			setAlertModal({ message: "Correo o contraseña no válida 😔", type: 0 });
 		}
 		setIsLoader(false);
 	}
@@ -97,9 +95,9 @@ const ModalRegisterUser = ({ isOpenModal, handlerOpenModal }) => {
 		setIsLoader(true);
 		try {
 			if (!isValidObject(newUser)) {
-				setAlertModal({ message: "Llene todos los campos", type: 0 });
+				setAlertModal({ message: "Llene todos los campos 😔", type: 0 });
 			} else if (newUser.password.length < 8) {
-				setAlertModal({ message: "Por los menos 8 caracteres en la contraseña", type: 0 });
+				setAlertModal({ message: "Por los menos 8 caracteres en la contraseña 😔", type: 0 });
 			} else {
 				setAlertModal({ type: 0, message: "" });
 				const responseCreateUser = await createUser(newUser);
@@ -120,23 +118,22 @@ const ModalRegisterUser = ({ isOpenModal, handlerOpenModal }) => {
 							dispatch(setCart([]));
 						} else {
 							setAlertOrder({
-								message: "Se produjo un error al enviar el pedido, por favor intente nuevamente.",
+								message: "Se produjo un error al enviar el pedido, por favor intente nuevamente. 😔",
 								title: responseOrder.message,
 								type: 0
 							});
 						}
 						handlerOpenModalInfoOrder();
 						dispatch(setActiveSendOrder(false));
-					} else {
-						navigate(ROUTES.ACCOUNT);
 					}
+
 					handlerOpenModal(e);
 				} else {
 					setAlertModal({ message: responseCreateUser.message, type: 0 });
 				}
 			}
 		} catch (error) {
-			setAlertModal({ message: "Error en el servidor", type: 0 });
+			setAlertModal({ message: "Error en el servidor 😔", type: 0 });
 		}
 		setIsLoader(false);
 	}
