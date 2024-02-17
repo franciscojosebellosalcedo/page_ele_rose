@@ -2,7 +2,7 @@ import { HEADERS } from "../constants/constants"
 import { sendOrder } from "../service/order.service";
 
 export const headersWithToken=(token)=>{
-	HEADERS["access-token"] = `bearer ${token}`;
+	HEADERS["access-x"] = `bearer ${token}`;
 	return HEADERS;
 }
 
@@ -37,7 +37,7 @@ export const sendOrderUser=async(listProducts,user,token)=>{
 	}
 	dataOrder["listProducts"]=list;
 	return (await sendOrder(token,dataOrder)).data;
-	
+
 }
 
 export const saveCartLocalStorage=(list)=>{
