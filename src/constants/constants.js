@@ -378,7 +378,7 @@ export const SETTINGS_SLIDER_MAIN = {
 };
 
 export const HEADERS = {
-	"Access-Control-Allow-Origin": "*",
+	"Access-Control-Allow-Origin": "https://page-ele-rose.vercel.app/",
 	"Access-Control-Allow-Methods": "GET, POST, PUT, DELETE",
 	"Access-Control-Allow-Headers": "Content-Type",
 	"Content-Type": "application/json",
