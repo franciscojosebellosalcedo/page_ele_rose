@@ -2,13 +2,15 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { AiOutlineStar, AiFillStar } from "react-icons/ai";
-import { INFO_ELEROSE, LIST_NUMBER_SCORE, SETTINGS_SLIDER_RESPONSIVE_RATINGS } from "../../constants/constants";
+import { INFO_ELEROSE, LIST_NUMBER_SCORE, ROUTES, SETTINGS_SLIDER_RESPONSIVE_RATINGS } from "../../constants/constants";
 import "./HappyClients.css";
 import { useSelector } from "react-redux";
 import { formatDate } from "../../utils/utils";
+import { useNavigate } from "react-router-dom";
 
 const HappyClients = () => {
 	const qualifications = useSelector((state) => state.qualification.data.list);
+	const navigate=useNavigate();
 
 	return (
 		<section className="container container_happy_clients">
@@ -34,7 +36,7 @@ const HappyClients = () => {
 											<section className="content_info_rating">
 												<p className="text_nowrap name_client_rating">{qual?.user?.name}</p>
 												<p className="date_rating">{formatDate(qual?.createdAt)}</p>
-												<img className="slider_imagen_rating" src={qual?.product?.imagen} alt="" />
+												<img onClick={()=>navigate(ROUTES.PRODUCT+`/${qual?.product?.name}`)} className="slider_imagen_rating" src={qual?.product?.imagen} alt="" />
 												<p className="text_nowrap name_product_rating">{qual?.product?.name}</p>
 											</section>
 

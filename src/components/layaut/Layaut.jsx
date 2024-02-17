@@ -7,7 +7,7 @@ import Loader from "../loader/Loader";
 import { getAllCollections } from "../../service/collection.service";
 import { setCollections, setCollectionsReverse } from "../../features/collection/collection";
 import { getAllProducts } from "../../service/product.service";
-import { setProducts, setProductsFilter } from "../../features/product/product";
+import { setProducts, setProductsFilter, setProductsNew } from "../../features/product/product";
 import { getAllQualification } from "../../service/qualification.service";
 import { setQualification } from "../../features/qualification/qualification";
 import { getNewAccessTokenUser } from "../../service/user.service";
@@ -60,6 +60,7 @@ const Layaut = () => {
 			if (responseProducts.status === 200 && responseProducts.response) {
 				const data = responseProducts.data;
 				dispatch(setProducts(data));
+				dispatch(setProductsNew(data.filter((pro)=>pro?.isNow===true)));
 				dispatch(setProductsFilter(data));
 			}
 		} catch (error) {

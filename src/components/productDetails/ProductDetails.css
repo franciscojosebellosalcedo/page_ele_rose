@@ -140,6 +140,13 @@
 	.content_img{
 		width: 550px;
 	}
+	.name_product_details{
+		font-size: 45px;
+		margin-bottom: 50px;
+	}
+	.price_product{
+		margin-bottom: 20px;
+	}
 }
 @media screen and (min-width:1160px) {
 	.content_img{

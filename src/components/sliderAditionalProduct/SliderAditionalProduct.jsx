@@ -10,7 +10,6 @@ import ItemProduct from "../itemProduct/ItemProduct";
 const SliderAditionalProduct = ({product}) => {
 	const [productByCat,setProductsByCar]=useState([]);
 	const products=useSelector((state)=>state.product.data.list);
-	const navigate=useNavigate();
 
 
 	useEffect(()=>{
@@ -26,7 +25,7 @@ const SliderAditionalProduct = ({product}) => {
 						<Slider {...SETTINGS_SLIDER_RESPONSIVE}>
 								{
 									productByCat.map((pro, index) => {
-										return index<6 ? <a href={ROUTES.PRODUCT+`/${pro?.name}`}><ItemProduct product={pro}/></a>:""
+										return index<6 ? <div key={index}><ItemProduct product={pro}/></div>:""
 									})
 								}
 							</Slider>

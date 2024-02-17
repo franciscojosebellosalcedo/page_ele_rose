@@ -17,10 +17,14 @@ const qualificationSlice = createSlice({
 		setActiveQualification:(state,action)=>{
 			state.data.active=action.payload;
 		},
+		addQualification:(state,action)=>{
+			state.data.list.unshift(action.payload);
+		}
   },
 });
 export const {
 	setQualification,
-	setActiveQualification
+	setActiveQualification,
+	addQualification,
 } = qualificationSlice.actions;
 export default qualificationSlice.reducer;

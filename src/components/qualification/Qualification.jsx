@@ -7,7 +7,7 @@ import { LIST_NUMBER_SCORE } from "../../constants/constants";
 import LoaderButton from "../loaderButton/LoaderButton";
 import { formatDate, isValidObject } from "../../utils/utils";
 import { setIsOpenModal } from "../../features/user/user";
-
+import { addQualification } from "../../features/qualification/qualification";
 
 const Qualification = ({ product }) => {
 	const token = useSelector((state) => state.user.data.user.token);
@@ -67,6 +67,7 @@ const Qualification = ({ product }) => {
 					const data = responseCreatedQualification.data;
 					const list = qualifications;
 					list.unshift(data);
+					dispatch(addQualification(data));
 					setQualification(list);
 					setAlert({ message: "Tu comentario se envió correctamente 😊", type: 1, view: true });
 					setNewComment({ ...newComment, title: "", description: "" });
