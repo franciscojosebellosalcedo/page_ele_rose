@@ -8,7 +8,7 @@ const initialState = {
 			address:"",
 			email:"",
 			_id:"",
-			token:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im9iamVjdEBnbWFpbC5jb20iLCJfaWQiOiI2NWNmZjY4NjAwOWY4ZDQyYTc0ZWRhMGYiLCJpYXQiOjE3MDgxMjc5MTl9.Ma8Y26giLmm1HhJugkG_nw_1peJoalglsjRkpUl9DGU"
+			token:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im9iamVjdEBnbWFpbC5jb20iLCJfaWQiOiI2NWNmZjY4NjAwOWY4ZDQyYTc0ZWRhMGYiLCJpYXQiOjE3MDgxMjg0MDR9.iw_e6PrSjSO-qCXgW2SeGPkV0wh3pxGjvisYBPpi2dE"
 		},
 		isOpenModal:false
 	}
