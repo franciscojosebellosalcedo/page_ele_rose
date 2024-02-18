@@ -11,9 +11,13 @@ export const createUser=async (data)=>{
 	return response.json();
 }
 
+export const resetPassword=async (data)=>{
+	return await axios.post(`${URL_BASE}/user/reset-password`,{...data});
+}
 export const login=async (data)=>{
 	return await axios.post(`${URL_BASE}/user/login-user-page`,{...data});
 }
+
 export const getNewAccessTokenUser=async (token)=>{
 	return await axios.get(`${URL_BASE}/user/refress-token`,{
 		headers:headersWithToken(token)

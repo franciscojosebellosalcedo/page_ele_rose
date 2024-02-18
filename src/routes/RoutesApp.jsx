@@ -6,6 +6,7 @@ import { ROUTES } from "../constants/constants";
 import NotFound from "../pages/notFound/NotFound";
 import Cart from "../pages/cart/Cart";
 import OneProduct from "../pages/oneProduct/OneProduct";
+import ResetPassword from "../pages/resetPassword/ResetPassword";
 
 const RoutesPages = () => {
   return (
@@ -16,6 +17,7 @@ const RoutesPages = () => {
             <Route path={ROUTES.ONE_CATEGORY+"/:name"} element={<OneCategory/>}></Route>
             <Route path={ROUTES.PRODUCT+"/:name"} element={<OneProduct/>}></Route>
             <Route path={ROUTES.CART} element={<Cart/>}></Route>
+            <Route path={ROUTES.RESET_PASSWORD+`/:token`} element={<ResetPassword/>}></Route>
             <Route path={ROUTES.ACCOUNT} element={<>vista de ver la cuenta del usuario</>}></Route>
             <Route path={ROUTES.ABOUT} element={<>vista de ver sobre nosotros</>}></Route>
             <Route path={ROUTES.CONTACT} element={<>vista de ver contantenos</>}></Route>

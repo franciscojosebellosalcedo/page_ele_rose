@@ -1,10 +1,8 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { ROUTES } from "../../constants/constants";
 import { setActiveCart, setActiveSendOrder, setCart } from "../../features/cart/cart";
 import { setUser } from "../../features/user/user";
-import { createUser, login } from "../../service/user.service";
+import { createUser, login, resetPassword } from "../../service/user.service";
 import { isValidObject, saveRefressTokenLocalStorage, sendOrderUser } from "../../utils/utils";
 import LoaderButton from "../loaderButton/LoaderButton";
 import ModalOrderInfo from "../modalOrderInfo/ModalOrderInfo";
@@ -16,7 +14,6 @@ const ModalRegisterUser = ({ isOpenModal, handlerOpenModal }) => {
 	const [newUser, setNewUser] = useState({ name: "", address: "", phone: "", email: "", password: "", isAdmin: false });
 	const [isLoader, setIsLoader] = useState(false);
 	const dispatch = useDispatch();
-	const navigate = useNavigate();
 	const [messageActiveSendOrder, setMessageActiveSendOrder] = useState("En cuanto te registres o inicies sesión se enviará tu pedido");
 	const isActiveSendOrder = useSelector((state) => state.cart.data.activeSendOrder);
 	const cart = useSelector((state) => state.cart.data.list);
@@ -24,9 +21,31 @@ const ModalRegisterUser = ({ isOpenModal, handlerOpenModal }) => {
 	const [isActiveModalInfoOrder, setIsActiveModalInfoOrder] = useState(false);
 	const [isForgotPassword, setIsForgotPassword] = useState(false);
 
+	const sendDataResetPassword=async(e)=>{
+		setIsLoader(true);
+		e.preventDefault();
+		try {
+			if(isValidObject({email:newUser.email})===false){
+				setAlertModal({message:"Llene el campo por favor 😔",type:0});
+			}else{
+				const responseResetPassword=(await resetPassword({email:newUser.email})).data;
+				if(responseResetPassword.status===200 && responseResetPassword.response){
+					setAlertModal({message:responseResetPassword.message,type:1});
+				}else{
+					setAlertModal({message:responseResetPassword.message,type:0});
+				}
+			}
+		} catch (error) {
+			setAlertModal({message:"Asegurate de que estés registrado y también que ese sea el correo",type:0});
+
+		}
+		setIsLoader(false);
+	}
+
 	const handlerOpenForgotPassword = (e) => {
 		e.preventDefault();
 		setIsForgotPassword(!isForgotPassword);
+		setAlertModal({message:"",type:0});
 	}
 
 	const handlerOpenModalInfoOrder = () => {
@@ -192,7 +211,7 @@ const ModalRegisterUser = ({ isOpenModal, handlerOpenModal }) => {
 						}
 						{
 							isForgotPassword === true ?
-								<button className="btn_login">Enviar</button> :
+								<button onClick={(e)=>sendDataResetPassword(e)} className="btn_login">{isLoader===true ? <LoaderButton/>:"Enviar"}</button> :
 								""
 						}
 						{

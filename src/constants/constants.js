@@ -8,7 +8,7 @@ export const ROUTES = {
 	PRODUCT: "/accesories/product",
 	CART: "/cart",
 	ACCOUNT: "/account",
-
+	RESET_PASSWORD:"/reset-password",
 	ABOUT: "/about",
 	CONTACT: "/contact",
 	NOT_FOUND: "/not-found",
