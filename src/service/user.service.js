@@ -14,6 +14,11 @@ export const createUser=async (data)=>{
 export const resetPassword=async (data)=>{
 	return await axios.post(`${URL_BASE}/user/reset-password`,{...data});
 }
+
+export const setNewPassword=async (token,data)=>{
+	return await axios.put(`${URL_BASE}/user/reset-password/${token}`,{...data});
+}
+
 export const login=async (data)=>{
 	return await axios.post(`${URL_BASE}/user/login-user-page`,{...data});
 }
