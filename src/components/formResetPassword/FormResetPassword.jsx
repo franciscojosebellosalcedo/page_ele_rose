@@ -19,11 +19,19 @@ const FormResetPassword = ({token}) => {
 			try {
 				if(isValidObject(dataPassword)===false){
 					setAlertForm({message:"Llene los campos",type:0});
+				}else if(dataPassword.password.length<8){
+					setAlertForm({message:"La contraseña debe de tener mínimo 8 caracteres",type:0});
+				}else if(dataPassword.password!==dataPassword.repetPassword){
+					setAlertForm({message:"Las contraseñas no coiciden",type:0});
 				}else{
-					const responseResetPassword=await setNewPassword(token,dataPassword);
+					const responseResetPassword=(await setNewPassword(token,dataPassword)).data;
+					if(responseResetPassword.status===200 && responseResetPassword.response){
+						setAlertForm({message:responseResetPassword.message,type:1});
+						setDataPassword({password:"",repetPassword:""});
+					}
 				}
 			} catch (error) {
-				console.log(error);
+				setAlertForm({message:"Tu contraseña ya fue restablecida, de lo contrario debes de hacer el proceso nuevamente",type:0});
 			}
 			setIsLoader(false);
 		}

@@ -9,6 +9,7 @@ import OneProduct from "../pages/oneProduct/OneProduct";
 import ResetPassword from "../pages/resetPassword/ResetPassword";
 
 const RoutesPages = () => {
+
   return (
     <BrowserRouter>
         <Routes>
