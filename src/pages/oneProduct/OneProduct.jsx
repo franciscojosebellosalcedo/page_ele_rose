@@ -29,7 +29,7 @@ const OneProduct = () => {
 				navigate(ROUTES.NOT_FOUND);
 			}
 		}
-	}, []);
+	});
 
 	return (
 		<section>
