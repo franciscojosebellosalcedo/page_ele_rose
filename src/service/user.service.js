@@ -11,6 +11,15 @@ export const createUser=async (data)=>{
 	return response.json();
 }
 
+export const editUser=async(token,data,id)=>{
+	const response=await fetch(`${URL_BASE}/user/${id}`,{
+		method:"PUT",
+		body:JSON.stringify(data),
+		headers:headersWithToken(token)
+	});
+	return response.json();
+}
+
 export const resetPassword=async (data)=>{
 	return await axios.post(`${URL_BASE}/user/reset-password`,{...data});
 }

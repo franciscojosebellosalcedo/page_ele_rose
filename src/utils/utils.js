@@ -6,6 +6,33 @@ export const headersWithToken=(token)=>{
 	return HEADERS;
 }
 
+export const compareObjects=(object1,object2)=>{
+	const keys=Object.keys(object1);
+	let aux=0;
+	for (let index = 0; index < keys.length; index++) {
+		const key = keys[index];
+		if(typeof object1[`${key}`]==="string"){
+			if(object1[`${key}`].trim()===object2[`${key}`].trim()){
+				aux++;
+			}else{
+				if(aux>0){
+					aux--;
+				}
+			}
+		}else{
+			if(object1[`${key}`]===object2[`${key}`]){
+				aux++;
+			}else{
+				if(aux>0){
+					aux--;
+				}
+			}
+		}
+	}
+	if(aux ===keys.length) return true;
+	else return false;
+}
+
 export const getRefressTokenLocalStorage=()=>{
 	return localStorage.getItem("refressTokenEleRose");
 }
@@ -50,6 +77,12 @@ export const getCartLocalStorage=(list)=>{
 export const saveRefressTokenLocalStorage=(token)=>{
 	localStorage.setItem("refressTokenEleRose",token);
 }
+
+export const isEmailValid = (email) => {
+	const regex =
+	  /[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,5}/;
+	return regex.test(email);
+};
 
 export const isValidObject=(object)=>{
 	const listValues=[null,""," ",undefined,0];

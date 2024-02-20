@@ -34,6 +34,16 @@
 }
 .input_form_details_user{
 	font-size: 15px;
+	border: none;
+	outline: none;
+	pointer-events: none;
+	transition: .5s;
+}
+.see_input{
+	padding: 5px;
+	border: 1px solid rgba(0, 0, 0, 0.408) ;
+	pointer-events: unset;
+	border-radius: var(--border-radius-box);
 }
 .container_btn_form_details_user{
 	display: flex;
