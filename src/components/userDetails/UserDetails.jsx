@@ -12,6 +12,9 @@ const UserDetails = () => {
 
 	return (
 		<section className="container_user_details">
+			<div className="section_btn_logout">
+			<button className="btn btn_logout">Cerrar sesión</button>
+			</div>
 			<p className="text_user_details">
 				Te damos las gracias de corazón por elegir Ele Rose Accesorios como tu destino de compras para accesorios extraordinarios.
 				En cada compra, colaboras en darle vida a Ele Rose, transformándola en un rincón especial, impregnado de estilo y elegancia. 😊

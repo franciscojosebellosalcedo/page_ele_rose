@@ -22,7 +22,7 @@ const SliderAditionalProduct = ({ product }) => {
 	useEffect(() => {
 		const list = products.filter((pro) => pro.category?._id === product?.category?._id && pro?._id !== product?._id);
 		setProductsByCar(list);
-	}, []);
+	},[]);
 	return (
 		productByCat && productByCat.length > 0 ?
 			<section className="container container_main_categories list_products_relationals">

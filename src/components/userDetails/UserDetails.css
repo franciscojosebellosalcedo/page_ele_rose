@@ -61,7 +61,21 @@
 	width: var(--width-container);
 	margin: 0 auto;
 }
-
+.btn_logout{
+	background:none;
+	cursor: pointer;
+	font-size: 14px;
+	margin-top: 20px;
+	position: relative;
+	color: var(--color-icon);
+	border-bottom: 1px solid rgba(0, 0, 0, 0.447);
+}
+.section_btn_logout{
+	width: var(--width-container);
+	margin: 0px auto;
+	display: flex;
+	justify-content: end;
+}
 @media screen  and (min-width:488px){
 	.container_btn_form_details_user{
 		width: 320px;
