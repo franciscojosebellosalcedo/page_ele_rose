@@ -67,6 +67,10 @@ export const sendOrderUser=async(listProducts,user,token)=>{
 
 }
 
+export const deleteFromLocalStorage=(key)=>{
+	localStorage.removeItem(key);
+}
+
 export const saveCartLocalStorage=(list)=>{
 	localStorage.setItem("cart",JSON.stringify(list));
 }
