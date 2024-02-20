@@ -14,6 +14,7 @@
 :root {
 	--margin-top-section:70px;
 	--color-text-paragraph: rgba(0, 0, 0, 0.198);
+	--bg-row-table: #f1a0b642;
 	--color-text-titles: #f1a0b5;
 	--bg-section-app: #f1a0b645;
 	--border-radius-box: 6px;

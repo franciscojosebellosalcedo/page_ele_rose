@@ -19,6 +19,7 @@ const UserDetails = () => {
 	const [dataPassword, setDataPassword] = useState({ password: "", currentPassword: "" });
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
+	const  [isLoaderLogout,setIsLoaderLogout]=useState(false);
 
 	const handlerIsEditingUser = (e) => {
 		e.preventDefault();
@@ -99,6 +100,7 @@ const UserDetails = () => {
 
 	const logoutUser = (e) => {
 		e.preventDefault();
+		setIsLoaderLogout(true);
 		deleteFromLocalStorage("refressTokenEleRose");
 		dispatch(setUser({
 			name: "",
@@ -109,6 +111,7 @@ const UserDetails = () => {
 			token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im9iamVjdEBnbWFpbC5jb20iLCJfaWQiOiI2NWNmZjY4NjAwOWY4ZDQyYTc0ZWRhMGYiLCJpYXQiOjE3MDgxMjg0MDR9.iw_e6PrSjSO-qCXgW2SeGPkV0wh3pxGjvisYBPpi2dE"
 		}));
 		navigate(ROUTES.INIT);
+		setIsLoaderLogout(false);
 	}
 
 	useEffect(() => {
@@ -118,7 +121,7 @@ const UserDetails = () => {
 	return (
 		<section className="container_user_details">
 			<div className="section_btn_logout">
-				<button onClick={(e) => logoutUser(e)} className="btn btn_logout">Cerrar sesión</button>
+				<button onClick={(e) => logoutUser(e)} className="btn btn_logout">{isLoaderLogout ? <LoaderButton/>:"Cerrar sesión"}</button>
 			</div>
 			<p className="text_user_details">
 				Te damos las gracias de corazón por elegir Ele Rose Accesorios como tu destino de compras para accesorios extraordinarios.
