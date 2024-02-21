@@ -13,7 +13,9 @@ const User = () => {
 			<NavBar/>
 			<HeaderSection title={`Hola ${user?.name}`}/>
 			<UserDetails/>
-			<HistoryOrderUser/>
+			{
+				user ? <HistoryOrderUser user={user}/>:""
+			}
 			<Footer/>
 		</section>
 	)

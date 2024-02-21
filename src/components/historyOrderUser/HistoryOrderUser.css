@@ -15,104 +15,52 @@
 	width: 100px;
 	border-radius: var(--border-radius-box);
 }
-
-.resp_order {
-	width: 100%;
-	background: white;
-	margin-bottom: 1.25em;
-	border: solid 1px var(--color-text-titles);
-	border-collapse: collapse;
-	border-spacing: 0;
+.info_order{
+	display: grid;
+	grid-template-columns: repeat(1,1fr);
+	gap: 30px;
 }
-
-.resp_order tr th,
-.resp_order tr td {
-	padding: 0.5625em 0.625em;
-	font-size: 0.875em;
-	color: #222222;
-	border: 1px solid #dddddd;
+.content_info_order{
+	border: 1px solid rgba(0, 0, 0, 0.301);
+	padding: 10px;
 }
-
-.resp_order tr.even,
-.resp_order tr.alt,
-.resp_order tr:nth-of-type(even) {
-	background: var(--bg-row-table);
+.item_info > p{
+	font-weight: bold;
+	margin-bottom: 4px;
+	font-size: 14px;
 }
-
-.resp_order > tbody > tr > td {
-	text-align: center;
+.item_info > p >span{
+	font-size: 14px;
+	color: var(--color-icon);
 }
-
-
-@media only screen and (max-width: 768px) {
-	table.resp_order,
-	.resp_order thead,
-	.resp_order tbody,
-	.resp_order tr,
-	.resp_order th,
-	.resp_order td,
-	.resp_order caption {
-		display: block;
+.btn_view_details{
+	padding: 5px 8px;
+	border-radius: var(--border-radius-box);
+	margin-top: 15px;
+	display: flex;
+	align-items: center;
+	transition: 0.6s;
+	background-color: rgba(0, 0, 0, 0.507);
+	gap: 10px;
+	cursor: pointer;
+	color: white;
+}
+.btn_view_details:hover {
+	background-color: rgba(0, 0, 0, 0.725);
+}
+.btn_view_details> i{
+	font-size: 20px;
+}
+@media screen and (min-width:600px) {
+	.info_order{
+		display: grid;
+		grid-template-columns: repeat(2,1fr);
+		gap: 30px;
 	}
-
-	table.resp_order {
-		border: none;
+}
+@media screen and (min-width:900px) {
+	.info_order{
+		display: grid;
+		grid-template-columns: repeat(3,1fr);
 	}
-
-	.resp_order thead tr {
-		display: none;
-	}
-
-	.resp_order tbody tr {
-		margin: 1em 0;
-		border: 1px solid var(--color-text-titles);
-		border-radius: var(--border-radius-box);
-	}
-
-	.resp_order td {
-		border: none;
-		border-bottom: 1px solid #dddddd;
-		position: relative;
-		padding-left: 45%;
-		text-align: left;
-	}
-
-	.resp_order tr td:last-child {
-		border-bottom: 1px double #dddddd;
-	}
-
-	.resp_order tr:last-child td:last-child {
-		border: none;
-	}
-
-	.resp_order td:before {
-		position: absolute;
-		top: 6px;
-		left: 6px;
-		width: 45%;
-		padding-right: 10px;
-		white-space: nowrap;
-		text-align: left;
-		font-weight: bold;
-	}
-	td:nth-of-type(1):before {
-		content: "Productos";
-	}
-
-	td:nth-of-type(2):before {
-		content: "Total";
-	}
-
-	td:nth-of-type(3):before {
-		content: "Fecha";
-	}
-
-	td:nth-of-type(4):before {
-		content: "Estado";
-	}
-
-	td:nth-of-type(5):before {
-		content: "Dirección";
-	}
-
 }
