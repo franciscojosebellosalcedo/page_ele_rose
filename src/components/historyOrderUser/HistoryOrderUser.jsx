@@ -15,6 +15,7 @@ const HistoryOrderUser = () => {
 							<th scope="col">Dirección</th>
 						</tr>
 					</thead>
+
 					<tbody>
 						<tr>
 							<td>
