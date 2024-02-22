@@ -83,7 +83,8 @@ const Qualification = ({ product }) => {
 
 	useEffect(() => {
 		getAllQualificationsByProduct();
-	}, []);
+		setAlert({ message: "", type: 0, view: false });
+	}, [product]);
 
 	return (
 		<section className="container_qualifications_product">

@@ -39,7 +39,7 @@ const OneProduct = () => {
 			<ProductDetails product={product} />
 			<InfoAditionalProduct product={product} />
 			{
-				product ? <SliderAditionalProduct product={product} />: ""
+				product ? <SliderAditionalProduct product={product} setProduct={setProduct} />: ""
 			}
 			{
 				product && isActiveQualifications===true ? <Qualification product={product} /> : ""
