@@ -33,6 +33,15 @@ export const compareObjects=(object1,object2)=>{
 	else return false;
 }
 
+export const getAllAmountPoductsOrder=(listProducts)=>{
+	let amount=0;
+	for (let index = 0; index < listProducts.length; index++) {
+		const item = listProducts[index];
+		amount+=item.amount;
+	}
+	return amount;
+}
+
 export const getRefressTokenLocalStorage=()=>{
 	return localStorage.getItem("refressTokenEleRose");
 }

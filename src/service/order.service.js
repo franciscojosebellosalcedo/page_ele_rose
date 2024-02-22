@@ -7,3 +7,8 @@ export const sendOrder=async (token,data)=>{
 		headers:headersWithToken(token)
 	});
 }
+export const getAllOrdersByUser=async (user)=>{
+	return await axios.get(`${URL_BASE}/order/allOrders/${user?._id}`,{
+		headers:headersWithToken(user.token)
+	});
+}

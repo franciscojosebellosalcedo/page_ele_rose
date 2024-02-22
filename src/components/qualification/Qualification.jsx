@@ -89,20 +89,22 @@ const Qualification = ({ product }) => {
 	return (
 		<section className="container_qualifications_product">
 			<h3 className="title_qualifications_product">Comentarios de clientes</h3>
-			{qualifications && qualifications.length === 0 ? (
-				<div className="content_not_commets">
-					<p className="text_not_comments">Sin comentarios</p>
-					<div>
-						{LIST_NUMBER_SCORE.map((num) => {
-							return <AiOutlineStar key={num} className="icon_rating" />;
-						})}
-					</div>
-				</div>
-			) : (
+			{
 				isLoaderComments === true ?
-					<div className="box_loader">
-						<LoaderButton />
-					</div> :
+				<div className="box_loader">
+					<LoaderButton />
+				</div>
+			 : (
+				qualifications && qualifications.length === 0 ? (
+					<div className="content_not_commets">
+						<p className="text_not_comments">Sin comentarios</p>
+						<div>
+							{LIST_NUMBER_SCORE.map((num) => {
+								return <AiOutlineStar key={num} className="icon_rating" />;
+							})}
+						</div>
+					</div>
+				):
 					<section className="section_list_comments_recents">
 						<p className="title_list_qualifications">Comentarios más recientes</p>
 						<div className="list_comments">
