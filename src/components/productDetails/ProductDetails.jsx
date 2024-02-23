@@ -100,7 +100,7 @@ const ProductDetails = ({ product }) => {
 							<button onClick={(e) => addProductCart(e)} className="btn btn_add_cart_product_details">
 								{cart.some((item) => item?.product?._id === product?._id) === true
 									? "Producto en carrito"
-									: "Agregar al carrito"}
+									: "Añadir al carrito"}
 							</button>
 							<input onInput={(e) => handlerAmountInput(e.target.value)} value={amount} className="input_amount_product_details" type="number" />
 						</div>

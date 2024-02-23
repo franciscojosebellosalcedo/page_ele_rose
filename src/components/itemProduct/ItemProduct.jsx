@@ -61,8 +61,8 @@ const ItemProduct = ({ product }) => {
 				onClick={(e) => addProductCart(e, product)}
 			>
 				{cart.some((item) => item.product._id === product._id) === true
-					? "Producto en carrito"
-					: "Agregar al carrito"}
+					? "En carrito"
+					: "Añadir al carrito"}
 				<i
 					title="Agregar al carrito"
 					className="uil uil-shopping-bag icon_item_grid"

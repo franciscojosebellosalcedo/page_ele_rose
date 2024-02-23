@@ -10,7 +10,7 @@
 .img_grid_item{
 	width: 100%;
 	transition: .4s ease-out;
-	height: 50%;
+	height: 60%;
 	object-fit: cover;
 	border-top-right-radius:var(--border-radius-box) ;
 	border-top-left-radius:var(--border-radius-box) ;
@@ -22,7 +22,7 @@
 	width: 100%;
 	height: max-content;
 	position: absolute;
-	top: 50%;
+	top: 60%;
 	z-index: 1;
 	background-color: var(--color-white);
 	height: 50px;
@@ -47,7 +47,7 @@
 .btn_add_car{
 	width: 100%;
 	position: absolute;
-	font-size: 14px;
+	font-size: 12px;
 	left: 0px;
 	border-bottom-right-radius: var(--border-radius-box);
 	border-bottom-left-radius: var(--border-radius-box);

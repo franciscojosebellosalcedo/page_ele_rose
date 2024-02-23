@@ -1,9 +1,11 @@
 import { useDispatch, useSelector } from "react-redux";
 import { decrementAmountItem, incrementAmountItem, removeItemCart, setActiveCart, setAmountItemCart } from "../../features/cart/cart";
 import "./ItemProductCart.css";
+import { useState } from "react";
 
 const ItemProductCart = ({item,index}) => {
 	const cart=useSelector((state)=>state.cart.data.list);
+	const [num,setNum]=useState(1);
 	const dispatch=useDispatch();
 
 	const removeItem=()=>{
@@ -48,10 +50,10 @@ const ItemProductCart = ({item,index}) => {
 						<p className="text_nowrap text_item_cart amout_item_cart">Qty: {item?.amount}</p>
 						<p className="text_nowrap text_item_cart price_item_cart">$ {item?.product?.pricePromotion >0 ? item?.product?.pricePromotion :item?.product?.realPrice}</p>
 					</div>
-					{/* <input value={item?.amount} className="input_amount"  type="number" name="" id="" /> */}
+					<input value={1} onInput={(e)=>{console.log(e.target.value)}}  className="input_amount"  type="number" name="" id="" />
 					<div className="controllers">
-						<i onClick={()=>incremetAmount(index,1)} className="uil uil-arrow-up icon_controller"></i>
-						<i onClick={()=>decrementAmount(index,1)} className="uil uil-arrow-down icon_controller"></i>
+						<i onClick={()=>setNum(7)} className="uil uil-arrow-up icon_controller"></i>
+						<i className="uil uil-arrow-down icon_controller"></i>
 					</div>
 				</section>
 			</div>
