@@ -4,6 +4,9 @@
 	object-fit: cover;
 	border-radius: var(--border-radius-box);
 }
+.container_item_cart{
+	border-bottom: 1px solid rgba(0, 0, 0, 0.267);
+}
 
 .content_product_cart {
 	padding: 5px;
@@ -11,7 +14,9 @@
 	width: 100%;
 	display: flex;
 	gap: 15px;
-	border-bottom: 1px solid rgba(0, 0, 0, 0.267);
+}
+.error_item_cart{
+	margin-bottom: 6px;
 }
 .text_item_cart {
 	font-size: 14px;
