@@ -1,13 +1,14 @@
 import { useDispatch, useSelector } from "react-redux";
 import { decrementAmountItem, incrementAmountItem, removeItemCart, setActiveCart, setAmountItemCart } from "../../features/cart/cart";
 import "./ItemProductCart.css";
-import { useEffect, useState } from "react";
+import { useEffect, useState,useRef } from "react";
 
 const ItemProductCart = ({item,index}) => {
 	const cart=useSelector((state)=>state.cart.data.list);
 	let [amount,setAmount]=useState(1);
 	const [isValidAmount,setIsValidAmount]=useState(true);
 	const dispatch=useDispatch();
+	const refInput=useRef();
 
 	const removeItem=()=>{
 		dispatch(removeItemCart(index));
@@ -46,8 +47,14 @@ const ItemProductCart = ({item,index}) => {
 		dispatch(incrementAmountItem({index,amount:num}));
 		if((cart[index].amount+num)<=item.product.amount){
 			const newAmount=parseInt(amount)+num;
-			setAmount(amount=== ""? 0 :);
+			if(amount>item.product.amount){
+				refInput.current.value="password";
+				console.log("yaa")
+				// setAmount(1);
+			}
+			setAmount(amount=== ""? 1 :newAmount);
 		}
+		setIsValidAmount(true);
 	}
 
 	useEffect(()=>{
@@ -68,14 +75,14 @@ const ItemProductCart = ({item,index}) => {
 						<p className="text_nowrap text_item_cart amout_item_cart">Qty: {item?.amount}</p>
 						<p className="text_nowrap text_item_cart price_item_cart">$ {item?.product?.pricePromotion >0 ? item?.product?.pricePromotion :item?.product?.realPrice}</p>
 					</div>
-					<input onInput={(e)=>handlerAmount(e.target.value)} value={amount}  className="input_amount"  type="number"/>
+					<input ref={refInput} onInput={(e)=>handlerAmount(e.target.value)} value={amount}  className="input_amount"  type="number"/>
 					<div className="controllers">
 						<i onClick={()=>incremetAmount(index,1)}  className="uil uil-arrow-up icon_controller"></i>
 						<i onClick={()=>decrementAmount(index,1)}  className="uil uil-arrow-down icon_controller"></i>
 					</div>
 				</section>
 			</div>
-			
+
 
 			<i className="uil uil-times icon_delete_item_cart" onClick={()=>removeItem()}></i>
 		</div>
