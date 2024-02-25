@@ -15,6 +15,9 @@
 	width: 100px;
 	border-radius: var(--border-radius-box);
 }
+.imagen_product_cart{
+	width: 70px;
+}
 .info_order{
 	display: grid;
 	grid-template-columns: repeat(1,1fr);
@@ -82,7 +85,11 @@
 .table_order_details > tbody > tr > td {
 	text-align: center;
 }
-
+@media screen and (min-width:700px){
+	.imagen_product_cart{
+		width: 90px;
+	}
+}
 @media only screen and (max-width: 768px) {
 	table.table_details,
 	.table_details thead,
