@@ -17,6 +17,7 @@ const ModalRegisterUser = ({ isOpenModal, handlerOpenModal }) => {
 	const [messageActiveSendOrder, setMessageActiveSendOrder] = useState("En cuanto te registres o inicies sesión se enviará tu pedido");
 	const isActiveSendOrder = useSelector((state) => state.cart.data.activeSendOrder);
 	const cart = useSelector((state) => state.cart.data.list);
+	const isActiveCart = useSelector((state) => state.cart.data.active);
 	const [alertOrder, setAlertOrder] = useState({ message: "", type: 0, title: "" });
 	const [isActiveModalInfoOrder, setIsActiveModalInfoOrder] = useState(false);
 	const [isForgotPassword, setIsForgotPassword] = useState(false);
@@ -83,7 +84,7 @@ const ModalRegisterUser = ({ isOpenModal, handlerOpenModal }) => {
 						}else{
 							const responseOrder = await sendOrderUser(cart, data.user, data.accessToken);
 							if (responseOrder.status === 201 && responseOrder.response) {
-								dispatch(setActiveCart());
+								if(isActiveCart)  dispatch(setActiveCart());
 								setAlertOrder({
 									message: "Hemos recibido tu pedido y nos pondremos en contacto contigo en breve para confirmar todos los detalles y coordinar la entrega.",
 									title: responseOrder.message,
@@ -146,7 +147,7 @@ const ModalRegisterUser = ({ isOpenModal, handlerOpenModal }) => {
 							});
 						}else{
 							const responseOrder = await sendOrderUser(cart, data.user, data.accessToken);
-							dispatch(setActiveCart());
+							if(isActiveCart)  dispatch(setActiveCart());
 							if (responseOrder.status === 201 && responseOrder.response) {
 								setAlertOrder({
 									message: "Hemos recibido tu pedido y nos pondremos en contacto contigo en breve para confirmar todos los detalles y coordinar la entrega.",
