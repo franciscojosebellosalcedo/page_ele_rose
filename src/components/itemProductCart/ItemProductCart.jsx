@@ -5,6 +5,7 @@ import { useEffect, useState,useRef } from "react";
 
 const ItemProductCart = ({item,index}) => {
 	const cart=useSelector((state)=>state.cart.data.list);
+	const isActiveCart=useSelector((state)=>state.cart.data.active);
 	let [amount,setAmount]=useState(1);
 	const [isValidAmount,setIsValidAmount]=useState(true);
 	const dispatch=useDispatch();
@@ -56,6 +57,18 @@ const ItemProductCart = ({item,index}) => {
 			setAmount(cart[index].amount);
 		}
 	},[]);
+
+	useEffect(()=>{
+		if(cart.length>0){
+			setAmount(cart[index].amount);
+		}
+	},[cart.length]);
+
+	useEffect(()=>{
+		if(cart.length>0){
+			setAmount(cart[index].amount);
+		}
+	},[isActiveCart]);
 
 	return (
 		<section className="container_item_cart">

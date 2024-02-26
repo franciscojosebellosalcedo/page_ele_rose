@@ -5,7 +5,7 @@ import { ROUTES } from "../../constants/constants";
 import { useDispatch, useSelector } from "react-redux";
 import ModalRegisterUser from "../modalRegisterUser/ModalRegisterUser";
 import ModalSearch from "../modalSearch/ModalSearch";
-import { isValidObject } from "../../utils/utils";
+import { getAllAmountPoductsOrder, isValidObject } from "../../utils/utils";
 import CartRight from "../cartRight/CartRight";
 import { setActiveCart } from "../../features/cart/cart";
 import { setIsOpenModal } from "../../features/user/user";
@@ -142,7 +142,7 @@ const NavBar = () => {
 					<div className="nav_container_icons">
 						<i className="uil uil-search icon_nav icon_menu" onClick={(e) => handlerOpenModalSearch(e)}></i>
 						<i className="uil uil-user icon_nav icon_menu" onClick={(e) => handlerOpenModal(e)}></i>
-						<i className="uil uil-shopping-cart icon_nav icon_menu" onClick={()=>handlerOpencart()}><span className="amount_cart_products">{listItemsCart.length>0?listItemsCart.length:0}</span></i>
+						<i className="uil uil-shopping-cart icon_nav icon_menu" onClick={()=>handlerOpencart()}><span className="amount_cart_products">{getAllAmountPoductsOrder(listItemsCart)}</span></i>
 					</div>
 
 				</section>

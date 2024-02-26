@@ -18,13 +18,13 @@
 }
 .amount_cart_products{
 	position: absolute;
-	top: -3px;
+	top: -7px;
 	border-radius: 50%;
 	right: -5px;
 	font-size: 13px;
 	color: white;
-	width: 20px;
-	height: 20px;
+	width: 23px;
+	height: 23px;
 	display: flex;
 	align-items: center;
 	justify-content: center;

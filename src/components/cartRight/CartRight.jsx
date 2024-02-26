@@ -9,6 +9,7 @@ import {
 } from "../../features/cart/cart";
 import { setIsOpenModal } from "../../features/user/user";
 import {
+	getAllAmountPoductsOrder,
 	getTotalPriceCart,
 	isValidCart,
 	isValidObject,
@@ -110,7 +111,7 @@ const CartRight = ({ handlerOpencart }) => {
 				className="uil uil-times icon_close"
 				onClick={() => handlerOpencart()}
 			></i>
-			<p className="amout_product">{listItemCart.length}</p>
+			<p className="amout_product">{getAllAmountPoductsOrder(listItemCart)}</p>
 			{listItemCart && listItemCart.length > 0 ? (
 				<>
 					<article className="list_products">

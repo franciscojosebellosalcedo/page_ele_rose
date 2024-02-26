@@ -28,6 +28,7 @@ const HistoryOrderUser = ({ user }) => {
 			if (user) {
 				const responseOrders = (await getAllOrdersByUser(user)).data;
 				const data = responseOrders.data;
+				console.log(data)
 				const list=[];
 				for (let index = 0; index < data.length; index++) {
 					list.push({isOpen:false,index});
@@ -54,7 +55,7 @@ const HistoryOrderUser = ({ user }) => {
 							orders && orders.length > 0 ?
 								<>
 									<section className="container_orders_user">
-										<h1 className="container_title title_history_orders">Mis historial de pedidos</h1>
+										<h1 className="container_title title_history_orders">Mi historial de pedidos</h1>
 										{
 											orders.map((or,index) => {
 												return <>
