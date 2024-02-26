@@ -8,6 +8,7 @@ import Cart from "../pages/cart/Cart";
 import OneProduct from "../pages/oneProduct/OneProduct";
 import ResetPassword from "../pages/resetPassword/ResetPassword";
 import User from "../pages/user/User";
+import Collections from "../pages/collections/Collections";
 
 const RoutesPages = () => {
 
@@ -16,6 +17,7 @@ const RoutesPages = () => {
         <Routes>
             <Route path={ROUTES.INIT} element={<IndexPage/>}></Route>
             <Route path={ROUTES.ACCESORIES} element={<Accesories/>}></Route>
+            <Route path={ROUTES.COLLECTIONS} element={<Collections/>}></Route>
             <Route path={ROUTES.ONE_CATEGORY+"/:name"} element={<OneCategory/>}></Route>
             <Route path={ROUTES.PRODUCT+"/:name"} element={<OneProduct/>}></Route>
             <Route path={ROUTES.CART} element={<Cart/>}></Route>

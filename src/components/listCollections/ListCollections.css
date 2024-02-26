@@ -1,0 +1,26 @@
+.container_list_collections{
+	width: var(--width-container);
+	margin: 25px auto;
+	display: grid;
+	grid-template-columns: repeat(1,1fr);
+	gap: 20px;
+}
+
+@media screen and (min-width:664px) {
+	.container_list_collections{
+		grid-template-columns: repeat(2,1fr);
+	}
+
+}
+
+@media screen and (min-width:964px) {
+	.container_list_collections{
+		grid-template-columns: repeat(3,1fr);
+	}
+}
+
+@media screen and (min-width:1164px) {
+	.container_list_collections{
+		grid-template-columns: repeat(4,1fr);
+	}
+}

@@ -4,6 +4,7 @@ import PrevArrow from "../components/prevArrow/PrevArrow.jsx";
 export const ROUTES = {
 	INIT: "/",
 	ACCESORIES: "/accesories/all",
+	COLLECTIONS: "/collections/all",
 	ONE_CATEGORY: "/accesories/category",
 	PRODUCT: "/accesories/product",
 	CART: "/cart",

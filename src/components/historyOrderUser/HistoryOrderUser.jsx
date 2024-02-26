@@ -3,11 +3,14 @@ import "./HistoryOrderUser.css";
 import { getAllOrdersByUser } from "../../service/order.service";
 import LoaderButton from "../loaderButton/LoaderButton";
 import { formatDate, getAllAmountPoductsOrder } from "../../utils/utils";
+import { useNavigate } from "react-router-dom";
+import { ROUTES } from "../../constants/constants";
 
 const HistoryOrderUser = ({ user }) => {
 	const [orders, setOrders] = useState([]);
 	const [isLoader, setIsLoader] = useState(false);
 	const [viewOrder,setViewOrder]=useState([]);
+	const navigate=useNavigate();
 
 	const handlerIsOpenDetailsOrdersUser = (i) => {
 		const list=viewOrder;
@@ -102,7 +105,7 @@ const HistoryOrderUser = ({ user }) => {
 																								or.listProducts.map((item,index) => {
 																									return <tr key={index}>
 																										<td>
-																											<div className="content_product_table">
+																											<div onClick={(e)=>navigate(ROUTES.PRODUCT+`/${item.product.name}`)} className="content_product_table">
 																												<img className="imagen_product_cart" src={item.product.imagen} alt="" />
 																												<p className="name_product_cart">{item.product.name}</p>
 																											</div>

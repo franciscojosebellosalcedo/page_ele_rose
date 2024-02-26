@@ -105,7 +105,7 @@ const NavBar = () => {
 
 							<div className="nav_ul_li">
 								<li  className="list_item">
-									<NavLink  className={({ isActive }) => isActive === true ? "item " : "item"} >Colecciones</NavLink>
+									<NavLink to={ROUTES.COLLECTIONS} className={({ isActive }) => isActive === true ? "item " : "item"} >Colecciones</NavLink>
 									<i className={`uil uil-angle-right icon_arrow ${isOpenCollections ? "rotate_arrow" : ""}`}  onClick={(e) => handlerOpenCollections(e)}></i>
 								</li>
 								<ul className={`sub_list sub_list_accessories ${isOpenCollections ? "see_sub_list" : ""}`}>

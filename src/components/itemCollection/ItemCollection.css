@@ -1,0 +1,30 @@
+.item_collection{
+	border-radius: var(--border-radius-box);
+	box-shadow: var(--box-shadow-black-blur);
+	position: relative;
+	overflow: hidden;
+	cursor: pointer;
+}
+.item_collection:hover .item_collection_img{
+	transform: scale(1.1);
+}
+.content_img_item_collection{
+	border-radius: var(--border-radius-box);
+	height: 300px;
+	overflow: hidden;
+}
+.item_collection_img{
+	border-radius: var(--border-radius-box);
+	width: 100%;
+	height: 100%;
+	transition: .6s;
+	object-fit: cover;
+}
+.item_name_collection{
+	bottom: 50px;
+}
+.item_collection_amount_product{
+	text-align: center;
+	padding: 8px;
+	color: var(--color-icon);
+}
