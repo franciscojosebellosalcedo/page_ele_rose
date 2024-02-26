@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setActiveCart, setActiveSendOrder, setCart } from "../../features/cart/cart";
 import { setUser } from "../../features/user/user";
 import { createUser, login, resetPassword } from "../../service/user.service";
-import { isValidObject, saveRefressTokenLocalStorage, sendOrderUser } from "../../utils/utils";
+import { isValidCart, isValidObject, saveRefressTokenLocalStorage, sendOrderUser } from "../../utils/utils";
 import LoaderButton from "../loaderButton/LoaderButton";
 import ModalOrderInfo from "../modalOrderInfo/ModalOrderInfo";
 import "./ModalRegisterUser.css";
@@ -72,24 +72,34 @@ const ModalRegisterUser = ({ isOpenModal, handlerOpenModal }) => {
 					setNewUser({ name: "", address: "", isAdmin: false, phone: "", email: "", password: "" });
 					setAlertModal({ message: "", type: 0 });
 					if (isActiveSendOrder && cart.length > 0) {
-						const responseOrder = await sendOrderUser(cart, data.user, data.accessToken);
-						if (responseOrder.status === 201 && responseOrder.response) {
-							dispatch(setActiveCart());
+						if (!isValidCart(cart)) {
+							handlerOpenModalInfoOrder();
 							setAlertOrder({
-								message: "Hemos recibido tu pedido y nos pondremos en contacto contigo en breve para confirmar todos los detalles y coordinar la entrega.",
-								title: responseOrder.message,
-								type: 1
+								message:
+									"Verifica que la cantidad ingresada en los productos sea la correcta, no debe superar lo disponible",
+								title: "Error",
+								type: 0,
 							});
-							dispatch(setCart([]));
-						} else {
-							setAlertOrder({
-								message: "Se produjo un error al enviar el pedido, por favor intente nuevamente. 😔",
-								title: responseOrder.message,
-								type: 0
-							});
+						}else{
+							const responseOrder = await sendOrderUser(cart, data.user, data.accessToken);
+							if (responseOrder.status === 201 && responseOrder.response) {
+								dispatch(setActiveCart());
+								setAlertOrder({
+									message: "Hemos recibido tu pedido y nos pondremos en contacto contigo en breve para confirmar todos los detalles y coordinar la entrega.",
+									title: responseOrder.message,
+									type: 1
+								});
+								dispatch(setCart([]));
+							} else {
+								setAlertOrder({
+									message: "Se produjo un error al enviar el pedido, por favor intente nuevamente. 😔",
+									title: responseOrder.message,
+									type: 0
+								});
+							}
+							handlerOpenModalInfoOrder();
+							dispatch(setActiveSendOrder(false));
 						}
-						handlerOpenModalInfoOrder();
-						dispatch(setActiveSendOrder(false));
 					}
 					handlerOpenModal(e);
 				} else {
@@ -126,24 +136,34 @@ const ModalRegisterUser = ({ isOpenModal, handlerOpenModal }) => {
 					setNewUser({ name: "", address: "", isAdmin: false, phone: "", email: "", password: "" });
 					setAlertModal({ message: "", type: 0 });
 					if (isActiveSendOrder && cart.length > 0) {
-						const responseOrder = await sendOrderUser(cart, data.user, data.accessToken);
-						dispatch(setActiveCart());
-						if (responseOrder.status === 201 && responseOrder.response) {
+						if (!isValidCart(cart)) {
+							handlerOpenModalInfoOrder();
 							setAlertOrder({
-								message: "Hemos recibido tu pedido y nos pondremos en contacto contigo en breve para confirmar todos los detalles y coordinar la entrega.",
-								title: responseOrder.message,
-								type: 1
+								message:
+									"Verifica que la cantidad ingresada en los productos sea la correcta, no debe superar lo disponible",
+								title: "Error",
+								type: 0,
 							});
-							dispatch(setCart([]));
-						} else {
-							setAlertOrder({
-								message: "Se produjo un error al enviar el pedido, por favor intente nuevamente. 😔",
-								title: responseOrder.message,
-								type: 0
-							});
+						}else{
+							const responseOrder = await sendOrderUser(cart, data.user, data.accessToken);
+							dispatch(setActiveCart());
+							if (responseOrder.status === 201 && responseOrder.response) {
+								setAlertOrder({
+									message: "Hemos recibido tu pedido y nos pondremos en contacto contigo en breve para confirmar todos los detalles y coordinar la entrega.",
+									title: responseOrder.message,
+									type: 1
+								});
+								dispatch(setCart([]));
+							} else {
+								setAlertOrder({
+									message: "Se produjo un error al enviar el pedido, por favor intente nuevamente. 😔",
+									title: responseOrder.message,
+									type: 0
+								});
+							}
+							handlerOpenModalInfoOrder();
+							dispatch(setActiveSendOrder(false));
 						}
-						handlerOpenModalInfoOrder();
-						dispatch(setActiveSendOrder(false));
 					}
 
 					handlerOpenModal(e);

@@ -8,7 +8,6 @@ const ItemProductCart = ({item,index}) => {
 	let [amount,setAmount]=useState(1);
 	const [isValidAmount,setIsValidAmount]=useState(true);
 	const dispatch=useDispatch();
-	const refInput=useRef();
 
 	const removeItem=()=>{
 		dispatch(removeItemCart(index));
@@ -18,7 +17,7 @@ const ItemProductCart = ({item,index}) => {
 	}
 
 	const handlerAmount=(value)=>{
-		if(value===""){
+		if(value==="" || parseInt(value)===0){
 			dispatch(setAmountItemCart({product:item.product,amount:0}));
 			setAmount("");
 			setIsValidAmount(false);
@@ -47,12 +46,7 @@ const ItemProductCart = ({item,index}) => {
 		dispatch(incrementAmountItem({index,amount:num}));
 		if((cart[index].amount+num)<=item.product.amount){
 			const newAmount=parseInt(amount)+num;
-			if(amount>item.product.amount){
-				refInput.current.value="password";
-				console.log("yaa")
-				// setAmount(1);
-			}
-			setAmount(amount=== ""? 1 :newAmount);
+			setAmount(amount === ""? 1 :amount <=0 || amount>item.product.amount ? 1:newAmount);
 		}
 		setIsValidAmount(true);
 	}
@@ -75,7 +69,7 @@ const ItemProductCart = ({item,index}) => {
 						<p className="text_nowrap text_item_cart amout_item_cart">Qty: {item?.amount}</p>
 						<p className="text_nowrap text_item_cart price_item_cart">$ {item?.product?.pricePromotion >0 ? item?.product?.pricePromotion :item?.product?.realPrice}</p>
 					</div>
-					<input ref={refInput} onInput={(e)=>handlerAmount(e.target.value)} value={amount}  className="input_amount"  type="number"/>
+					<input onInput={(e)=>handlerAmount(e.target.value)} value={amount}  className="input_amount"  type="number"/>
 					<div className="controllers">
 						<i onClick={()=>incremetAmount(index,1)}  className="uil uil-arrow-up icon_controller"></i>
 						<i onClick={()=>decrementAmount(index,1)}  className="uil uil-arrow-down icon_controller"></i>

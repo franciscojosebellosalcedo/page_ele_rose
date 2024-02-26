@@ -21,6 +21,7 @@ const cartSlice = createSlice({
 		setAmountItemCart:(state,action)=>{
 			const index=state.data.list.findIndex((item)=>item.product._id===action.payload.product._id);
 			state.data.list[index].amount=action.payload.amount;
+			saveCartLocalStorage(state.data.list);
 		},
 		decrementAmountItem:(state,action)=>{
 			const list=state.data.list;

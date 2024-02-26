@@ -92,16 +92,33 @@ table > tbody > tr > td {
 .btn_cart_page_add_much_p:hover {
 	background-color: rgba(0, 0, 0, 0.685);
 }
-
+.input_amount_cart::-webkit-inner-spin-button,
+.input_amount_cart::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 .input_amount_cart{
 	border: 1px solid rgba(0, 0, 0, 0.225);
-	width: 80px;
+	width: 50px;
 	height: 50px;
 	padding: 5px;
 	border-radius: var(--border-radius-box);
 }
+.controllers_inputs_table{
+	display: flex;
+	flex-direction: column;
+}
+.container_input{
+	display: flex;
+	align-items: center;
+	gap: 5px;
+	justify-content: center;
+}
 
 @media only screen and (max-width: 768px) {
+	.container_input{
+		justify-content: start;
+	}
 	table.resp,
 	.resp thead,
 	.resp tbody,

@@ -76,6 +76,16 @@ export const sendOrderUser=async(listProducts,user,token)=>{
 
 }
 
+export const isValidCart=(cart)=>{
+	let aux=0;
+	for (let index = 0; index < cart.length; index++) {
+		const item = cart[index];
+		if(item.amount===0) aux++;
+	}
+	if(aux>0) return false;
+	else return true;
+}
+
 export const deleteFromLocalStorage=(key)=>{
 	localStorage.removeItem(key);
 }

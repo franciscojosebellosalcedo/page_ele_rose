@@ -98,8 +98,8 @@ const HistoryOrderUser = ({ user }) => {
 																					or?.listProducts && or?.listProducts.length > 0 ?
 																						<>
 																							{
-																								or.listProducts.map((item) => {
-																									return <tr>
+																								or.listProducts.map((item,index) => {
+																									return <tr key={index}>
 																										<td>
 																											<div className="content_product_table">
 																												<img className="imagen_product_cart" src={item.product.imagen} alt="" />
