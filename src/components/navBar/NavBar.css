@@ -65,7 +65,7 @@ i {
 	top: 0px;
 	right: 0px;
 	bottom: 0px;
-	z-index: 600;
+	z-index: 100;
 	transition: 0.4s ease-in-out;
 	transform: translateX(-1000px);
 	background-color: var(--color-white);
