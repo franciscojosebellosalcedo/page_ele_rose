@@ -13,13 +13,15 @@ const ItemProduct = ({ product }) => {
 	const addProductCart = (e, product) => {
 		e.preventDefault();
 		e.stopPropagation();
-		if (cart.some((item) => item.product._id === product._id) === false) {
-			const list = [...cart];
-			const dataProductCart = { amount: 1, product };
-			list.unshift(dataProductCart);
-			dispatch(setCart(list));
-			if (isOpenCart === false && cart.length===0) {
-				dispatch(setActiveCart());
+		if(product?.amount!=0){
+			if (cart.some((item) => item.product._id === product._id) === false) {
+				const list = [...cart];
+				const dataProductCart = { amount: 1, product };
+				list.unshift(dataProductCart);
+				dispatch(setCart(list));
+				if (isOpenCart === false && cart.length===0) {
+					dispatch(setActiveCart());
+				}
 			}
 		}
 	};
@@ -62,7 +64,7 @@ const ItemProduct = ({ product }) => {
 			>
 				{cart.some((item) => item.product._id === product._id) === true
 					? "En carrito"
-					: "Añadir al carrito"}
+					: product?.amount===0 ? "Agotado":"Añadir al carrito"}
 				<i
 					title="Agregar al carrito"
 					className="uil uil-shopping-bag icon_item_grid"

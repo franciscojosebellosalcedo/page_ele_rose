@@ -8,6 +8,7 @@ import { useSelector } from "react-redux";
 import ListProducts from "../../components/listProducts/ListProducts";
 import { ROUTES } from "../../constants/constants";
 import FilterProducts from "../../components/filterProducts/FilterProducts";
+import SliderSmallCollections from "../../components/sliderCollectionsSmall/SliderSmallCategories";
 
 function OneCollection() {
   const params=useParams();
@@ -33,6 +34,7 @@ function OneCollection() {
     <section>
         <NavBar/>
         <HeaderSection title={params?.name}/>
+				<SliderSmallCollections/>
         <FilterProducts/>
         <ListProducts products={listProducts}/>
         <Footer/>

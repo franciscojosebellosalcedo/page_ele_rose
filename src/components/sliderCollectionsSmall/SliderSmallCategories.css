@@ -1,0 +1,29 @@
+.container_slider_categories_accesories{
+	width: 90%;
+	margin: 20px auto;
+	margin-bottom: 0px;
+	height: 90px;
+	overflow: hidden;
+}
+.content_item_slider{
+	text-align: center;
+}
+.item_slider_categories{
+	font-size: 14px;
+	color: var(--color-text-title);
+	cursor: pointer;
+	position: relative;
+}
+.item_slider_categories::before{
+	position: absolute;
+	transition: .4s;
+	content: "";
+	left: 0px;
+	width: 0px;
+	height: 1px;
+	background-color: black;
+	bottom: 0px;
+}
+.item_slider_categories:hover::before{
+	width: 100%;
+}

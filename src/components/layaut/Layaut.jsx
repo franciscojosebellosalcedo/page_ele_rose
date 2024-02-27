@@ -56,7 +56,7 @@ const Layaut = () => {
 		// PRODUCTS
 
 		try {
-			const responseProducts = (await getAllProducts(token)).data;
+			const responseProducts = (await getAllProducts(token));
 			if (responseProducts.status === 200 && responseProducts.response) {
 				const data = responseProducts.data;
 				dispatch(setProducts(data));

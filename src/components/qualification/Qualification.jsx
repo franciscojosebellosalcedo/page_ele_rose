@@ -75,7 +75,6 @@ const Qualification = ({ product }) => {
 				}
 			}
 		} catch (error) {
-			console.log(error);
 			setAlert({ message: "Se produjo un error al enviar tu comentario 😔", type: 0, view: true });
 		}
 		setIsLoader(false);
