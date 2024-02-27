@@ -14,16 +14,18 @@ const ProductDetails = ({ product }) => {
 	const addProductCart = (e) => {
 		e.preventDefault();
 		e.stopPropagation();
-		if (cart.some((item) => item.product._id === product._id) === false) {
-			if (isValidAmount) {
-				const list = [...cart];
-				const dataProductCart = { amount: parseInt(amount), product };
-				list.unshift(dataProductCart);
-				dispatch(setCart(list));
-				if (isOpenCart === false && cart.length === 0) {
-					dispatch(setActiveCart());
+		if (product.amount != 0) {
+			if (cart.some((item) => item.product._id === product._id) === false) {
+				if (isValidAmount) {
+					const list = [...cart];
+					const dataProductCart = { amount: parseInt(amount), product };
+					list.unshift(dataProductCart);
+					dispatch(setCart(list));
+					if (isOpenCart === false && cart.length === 0) {
+						dispatch(setActiveCart());
+					}
+					setAmount(1);
 				}
-				setAmount(1);
 			}
 		}
 	};
@@ -95,14 +97,21 @@ const ProductDetails = ({ product }) => {
 						}
 						<p className="amount_product_details" >Disponibles: <span >{product?.amount}</span></p>
 						<div className="box_btn_add_cart">
-							<i onClick={() => incrementAmount(1)} className="uil uil-arrow-up icon_arrow_product details icon_controller_details1"></i>
-							<i onClick={() => decrementAmount(1)} className="uil uil-arrow-down icon_arrow_product details icon_controller_details2"></i>
 							<button onClick={(e) => addProductCart(e)} className="btn btn_add_cart_product_details">
 								{cart.some((item) => item?.product?._id === product?._id) === true
 									? "Producto en carrito"
-									: "Añadir al carrito"}
+									: product?.amount === 0 ? "Agotado" : "Añadir al carrito"}
 							</button>
-							<input onInput={(e) => handlerAmountInput(e.target.value)} value={amount} className="input_amount_product_details" type="number" />
+							{
+								product?.amount != 0 ?
+									<>
+										<input onInput={(e) => handlerAmountInput(e.target.value)} value={amount} className="input_amount_product_details" type="number" />
+										<i onClick={() => incrementAmount(1)} className="uil uil-arrow-up icon_arrow_product details icon_controller_details1"></i>
+										<i onClick={() => decrementAmount(1)} className="uil uil-arrow-down icon_arrow_product details icon_controller_details2"></i>
+									</>
+									:
+									""
+							}
 						</div>
 						{
 							isValidAmount === false ?
