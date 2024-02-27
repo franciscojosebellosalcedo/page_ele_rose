@@ -5,6 +5,7 @@ export const ROUTES = {
 	INIT: "/",
 	ACCESORIES: "/accesories/all",
 	COLLECTIONS: "/collections/all",
+	ONE_COLLECTION: "/collections/collection",
 	ONE_CATEGORY: "/accesories/category",
 	PRODUCT: "/accesories/product",
 	CART: "/cart",

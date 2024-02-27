@@ -36,7 +36,7 @@ const OneCategory = () => {
 			<NavBar/>
 			<HeaderSection title={params?.name}/>
 			<SliderSmallCategories/>
-			{/* <FilterProducts/> */}
+			<FilterProducts/>
 			<ListProducts products={listProducts}/>
 			<Footer/>
 		</div>

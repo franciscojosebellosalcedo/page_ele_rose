@@ -114,7 +114,7 @@ const NavBar = () => {
 											<>
 												{
 													collections.map((coll,index)=>{
-														return <li key={index} className="sub_list_item">{coll?.name}</li>
+														return <li onClick={()=>nav(ROUTES.ONE_COLLECTION+`/${coll?.name}`)} key={index} className="sub_list_item">{coll?.name}</li>
 													})
 												}
 											</>

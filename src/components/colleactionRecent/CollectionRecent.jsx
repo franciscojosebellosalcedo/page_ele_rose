@@ -1,8 +1,11 @@
 import { useSelector } from "react-redux";
 import "./CollectionRecent.css";
+import { ROUTES } from "../../constants/constants";
+import { useNavigate } from "react-router-dom";
 
 const CollectionRecent = () => {
 	const collectionsReverse = useSelector((state) => state.collection.data.reverse);
+	const navigate=useNavigate();
 
 	return (
 		<section className="container container_collections_recent">
@@ -14,7 +17,7 @@ const CollectionRecent = () => {
 							{
 								collectionsReverse.map((col, index) => {
 									return index < 3 ?
-										<div key={index} className="content_collection">
+										<div onClick={()=>navigate(ROUTES.ONE_COLLECTION+`/${col?.name}`)} key={index} className="content_collection">
 											<img className="imagen_collection_recent" src={col?.imagen} alt="" />
 											<h4 className="name_collection_recent">{col?.name}</h4>
 										</div>
