@@ -1,4 +1,3 @@
-import axios from "axios";
 import { headersWithToken } from "../utils/utils";
 import { URL_BASE } from "../constants/constants";
 

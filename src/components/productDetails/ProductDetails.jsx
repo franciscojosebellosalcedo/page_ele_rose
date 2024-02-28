@@ -14,7 +14,7 @@ const ProductDetails = ({ product }) => {
 	const addProductCart = (e) => {
 		e.preventDefault();
 		e.stopPropagation();
-		if (product.amount != 0) {
+		if (product.amount !== 0) {
 			if (cart.some((item) => item.product._id === product._id) === false) {
 				if (isValidAmount) {
 					const list = [...cart];
@@ -103,7 +103,7 @@ const ProductDetails = ({ product }) => {
 									: product?.amount === 0 ? "Agotado" : "Añadir al carrito"}
 							</button>
 							{
-								product?.amount != 0 ?
+								product?.amount !== 0 ?
 									<>
 										<input onInput={(e) => handlerAmountInput(e.target.value)} value={amount} className="input_amount_product_details" type="number" />
 										<i onClick={() => incrementAmount(1)} className="uil uil-arrow-up icon_arrow_product details icon_controller_details1"></i>
