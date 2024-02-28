@@ -133,3 +133,57 @@ export const formatDate=(fechaString)=> {
 
   return `${dia}/${mes}/${año}`;
 }
+
+//filters
+
+export const sortProductsAlphabeticallyAZ=(products)=> {
+	products.sort((a, b) => {
+    const nameA = a.name.toLowerCase();
+    const nameB = b.name.toLowerCase();
+
+    if (nameA < nameB) {
+      return -1;
+    } else if (nameA > nameB) {
+      return 1;
+    } else {
+      return 0;
+    }
+  });
+
+  return products;
+}
+
+export const sortProductsAlphabeticallyZA=(products)=> {
+  products.sort((a, b) => {
+    const nameA = a.name.toLowerCase();
+    const nameB = b.name.toLowerCase();
+
+    if (nameA > nameB) {
+      return -1;
+    } else if (nameA < nameB) {
+      return 1;
+    } else {
+      return 0;
+    }
+  });
+  return products;
+}
+
+export const  sortProductsByPriceDescending=(products)=> {
+  products.sort((a, b) => {
+    return b.realPrice - a.realPrice;
+  });
+  return products;
+}
+
+export const sortProductsByPriceAscending=(products) =>{
+	products.sort((a, b) => {
+		return a.realPrice - b.realPrice;
+  });
+  return products;
+}
+
+export const sortProductsByIsNow=(products,bool)=>{
+	return products.filter((pro)=>pro.isNow===bool);
+}
+

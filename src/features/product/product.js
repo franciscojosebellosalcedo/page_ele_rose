@@ -4,7 +4,7 @@ const initialState = {
   data: {
     list: [],
     filter: [],
-	productsFilterSelect:[],
+		productsFilterSelect:[],
     productsNew:[]
   },
 };
