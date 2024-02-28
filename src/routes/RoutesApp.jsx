@@ -11,6 +11,7 @@ import User from "../pages/user/User";
 import Collections from "../pages/collections/Collections";
 import OneCollection from "../pages/oneCollection/OneCollection";
 import About from "../pages/about/About";
+import Contact from "../pages/contact/Contact";
 
 const RoutesPages = () => {
 
@@ -27,7 +28,7 @@ const RoutesPages = () => {
             <Route path={ROUTES.RESET_PASSWORD+`/:token`} element={<ResetPassword/>}></Route>
             <Route path={ROUTES.ACCOUNT} element={<User/>}></Route>
             <Route path={ROUTES.ABOUT} element={<About/>}></Route>
-            <Route path={ROUTES.CONTACT} element={<>vista de ver contantenos</>}></Route>
+            <Route path={ROUTES.CONTACT} element={<Contact/>}></Route>
             <Route path="*" element={<NotFound/>}></Route>
         </Routes>
     </BrowserRouter>

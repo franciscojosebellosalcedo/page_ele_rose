@@ -1,0 +1,68 @@
+.content_contact{
+	display: flex;
+	flex-direction: column-reverse;
+	width: var(--width-container);
+	margin: 20px auto;
+	gap: 30px;
+}
+.box_content_contact{
+	display: flex;
+	gap: 15px;
+	flex-direction: column;
+}
+.box_content_contact > div:nth-child(2),.box_content_contact > div:nth-child(3){
+	cursor: pointer;
+}
+.item_box_title{
+	color: var(--color-icon);
+	font-size: 15px;
+}
+.item_box_title ~ p{
+	font-size: 14px;
+}
+
+.form_contact{
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+}
+.form_contact > textarea{
+	resize: none;
+	width: 100% !important;
+	padding: 10px;
+	height: 150px !important;
+	border: 1px solid rgba(0, 0, 0, 0.266);
+	border-radius: var(--border-radius-box);
+}
+.alert_form_contact{
+	width: 100%;
+}
+.btn_send_message_contact{
+	width: 150px;
+	background-color: rgba(0, 0, 0, 0.527);
+	color: var(--color-white);
+	height: 35px;
+	cursor: pointer;
+	transition: .5s;
+	border-radius: var(--border-radius-box);
+}
+.btn_send_message_contact:hover{
+	background-color: rgba(0, 0, 0, 0.725);
+}
+
+@media screen and (min-width:774px) {
+	.content_contact{
+		flex-direction: row;
+		justify-content: center;
+		gap: 100px;
+	}
+	.form_contact{
+		width: 40%;
+	}
+	.box_content_contact{
+		gap: 35px;
+	}
+	.box_content_contact > div{
+		width: max-content;
+	}
+}

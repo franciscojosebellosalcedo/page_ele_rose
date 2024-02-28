@@ -10,13 +10,10 @@ const  SliderMain=()=> {
 		<div className="container container_slider">
 			<Slider {...SETTINGS_SLIDER_MAIN}>
 				<div className="slider-container">
-					<img className="slider_imagen" src={require("./../../assest/example-treme-1.webp")} alt="" />
+					<img className="slider_imagen" src={require("./../../assest/example-img-slider.jpeg")} alt="" />
 				</div>
 				<div className="slider-container">
-					<img className="slider_imagen" src={require("./../../assest/example-treme-2.webp")} alt="" />
-				</div>
-				<div className="slider-container">
-					<img className="slider_imagen" src={require("./../../assest/example-treme-3.webp")} alt="" />
+					<img className="slider_imagen" src={require("./../../assest/example-img-slider.jpeg")} alt="" />
 				</div>
 			</Slider>
 		</div>

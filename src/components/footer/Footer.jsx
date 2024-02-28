@@ -19,8 +19,8 @@ const Footer = () => {
 				<div className="content_info_footer">
 					<h1 className="info_footer_title">Ele rose</h1>
 					<ul className="list_info_ele_rose">
-						<li>Sobre nosotros</li>
-						<li>Contacto</li>
+						<li onClick={()=>navigate(ROUTES.ABOUT)}>Sobre nosotros</li>
+						<li onClick={()=>navigate(ROUTES.CONTACT)}>Contacto</li>
 					</ul>
 				</div>
 
