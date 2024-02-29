@@ -23,7 +23,7 @@ const productSlice = createSlice({
 		state.data.productsNew=action.payload;
 	},
 	setProductsFilter:(state,action)=>{
-		state.data.filter=action.payload;
+		state.data.filter=[...action.payload];
 	},
   },
 });

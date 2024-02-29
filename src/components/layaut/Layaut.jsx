@@ -1,19 +1,19 @@
 import { useEffect, useState } from "react";
-import RoutesApp from "../../routes/RoutesApp";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllCategories } from "../../service/category.service";
-import { setCategories } from "../../features/category/category";
-import Loader from "../loader/Loader";
-import { getAllCollections } from "../../service/collection.service";
-import { setCollections, setCollectionsReverse } from "../../features/collection/collection";
-import { getAllProducts } from "../../service/product.service";
-import { setProducts, setProductsFilter, setProductsNew } from "../../features/product/product";
-import { getAllQualification } from "../../service/qualification.service";
-import { setQualification } from "../../features/qualification/qualification";
-import { getNewAccessTokenUser } from "../../service/user.service";
-import { getRefressTokenLocalStorage, saveRefressTokenLocalStorage ,getCartLocalStorage} from "../../utils/utils";
-import { setUser } from "../../features/user/user";
 import { setCart } from "../../features/cart/cart";
+import { setCategories } from "../../features/category/category";
+import { setCollections, setCollectionsReverse } from "../../features/collection/collection";
+import { setProducts, setProductsNew } from "../../features/product/product";
+import { setQualification } from "../../features/qualification/qualification";
+import { setUser } from "../../features/user/user";
+import RoutesApp from "../../routes/RoutesApp";
+import { getAllCategories } from "../../service/category.service";
+import { getAllCollections } from "../../service/collection.service";
+import { getAllProducts } from "../../service/product.service";
+import { getAllQualification } from "../../service/qualification.service";
+import { getNewAccessTokenUser } from "../../service/user.service";
+import { getCartLocalStorage, getRefressTokenLocalStorage, saveRefressTokenLocalStorage } from "../../utils/utils";
+import Loader from "../loader/Loader";
 
 const Layaut = () => {
 	const token = useSelector((state) => state.user.data.user.token);
@@ -61,7 +61,6 @@ const Layaut = () => {
 				const data = responseProducts.data;
 				dispatch(setProducts(data));
 				dispatch(setProductsNew(data.filter((pro)=>pro?.isNow===true)));
-				dispatch(setProductsFilter(data));
 			}
 		} catch (error) {
 			console.log(error)

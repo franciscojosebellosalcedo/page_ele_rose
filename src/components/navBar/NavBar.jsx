@@ -9,6 +9,7 @@ import { getAllAmountPoductsOrder, isValidObject } from "../../utils/utils";
 import CartRight from "../cartRight/CartRight";
 import { setActiveCart } from "../../features/cart/cart";
 import { setIsOpenModal } from "../../features/user/user";
+import { setProductsFilter } from "../../features/product/product";
 
 const NavBar = () => {
 	const [isOpenAccessories, setIsOpenAccessories] = useState(false);
@@ -17,18 +18,18 @@ const NavBar = () => {
 	const categories = useSelector((state) => state.category.data.list);
 	const collections = useSelector((state) => state.collection.data.list);
 	const nav = useNavigate();
-	const isOpenModal=useSelector((state)=>state.user.data.isOpenModal)
+	const isOpenModal = useSelector((state) => state.user.data.isOpenModal)
 	const [isOpenModalSearch, setIsOpenModalSearch] = useState(false);
 	const userPage = useSelector((state) => state.user.data.user);
 	const listItemsCart = useSelector((state) => state.cart.data.list);
-	const dispatch=useDispatch();
+	const dispatch = useDispatch();
 
 	const handlerOpenModalSearch = (e) => {
 		e.preventDefault();
 		setIsOpenModalSearch(!isOpenModalSearch);
 	}
 
-	const handlerOpencart=()=>{
+	const handlerOpencart = () => {
 		dispatch(setActiveCart());
 	}
 
@@ -85,7 +86,9 @@ const NavBar = () => {
 
 							<div className="nav_ul_li">
 								<li className="list_item">
-									<NavLink to={ROUTES.ACCESORIES} className={({ isActive }) => isActive === true ? "item " : "item"} >Accesorios</NavLink>
+									<NavLink onClick={() => {
+										dispatch(setProductsFilter([]));
+									}} to={ROUTES.ACCESORIES} className={({ isActive }) => isActive === true ? "item " : "item"} >Accesorios</NavLink>
 									<i className={`uil uil-angle-right icon_arrow ${isOpenAccessories ? "rotate_arrow" : ""}`} onClick={(e) => handlerOpenAccessories(e)}></i>
 								</li>
 								<ul className={`sub_list sub_list_accessories ${isOpenAccessories ? "see_sub_list" : ""}`}>
@@ -104,28 +107,28 @@ const NavBar = () => {
 							</div>
 
 							<div className="nav_ul_li">
-								<li  className="list_item">
+								<li className="list_item">
 									<NavLink to={ROUTES.COLLECTIONS} className={({ isActive }) => isActive === true ? "item " : "item"} >Colecciones</NavLink>
-									<i className={`uil uil-angle-right icon_arrow ${isOpenCollections ? "rotate_arrow" : ""}`}  onClick={(e) => handlerOpenCollections(e)}></i>
+									<i className={`uil uil-angle-right icon_arrow ${isOpenCollections ? "rotate_arrow" : ""}`} onClick={(e) => handlerOpenCollections(e)}></i>
 								</li>
 								<ul className={`sub_list sub_list_accessories ${isOpenCollections ? "see_sub_list" : ""}`}>
 									{
-										collections && collections.length >0 ?
+										collections && collections.length > 0 ?
 											<>
 												{
-													collections.map((coll,index)=>{
-														return <li onClick={()=>nav(ROUTES.ONE_COLLECTION+`/${coll?.name}`)} key={index} className="sub_list_item">{coll?.name}</li>
+													collections.map((coll, index) => {
+														return <li onClick={() => nav(ROUTES.ONE_COLLECTION + `/${coll?.name}`)} key={index} className="sub_list_item">{coll?.name}</li>
 													})
 												}
 											</>
-										:""
+											: ""
 									}
 								</ul>
 							</div>
 
 							<div className="nav_ul_li">
 								<li className="list_item">
-									<NavLink  to={ROUTES.ABOUT} className={({ isActive }) => isActive === true ? "item " : "item"} >Nosotros</NavLink>
+									<NavLink to={ROUTES.ABOUT} className={({ isActive }) => isActive === true ? "item " : "item"} >Nosotros</NavLink>
 								</li>
 							</div>
 
@@ -142,7 +145,7 @@ const NavBar = () => {
 					<div className="nav_container_icons">
 						<i className="uil uil-search icon_nav icon_menu" onClick={(e) => handlerOpenModalSearch(e)}></i>
 						<i className="uil uil-user icon_nav icon_menu" onClick={(e) => handlerOpenModal(e)}></i>
-						<i className="uil uil-shopping-cart icon_nav icon_menu" onClick={()=>handlerOpencart()}><span className="amount_cart_products">{getAllAmountPoductsOrder(listItemsCart)}</span></i>
+						<i className="uil uil-shopping-cart icon_nav icon_menu" onClick={() => handlerOpencart()}><span className="amount_cart_products">{getAllAmountPoductsOrder(listItemsCart)}</span></i>
 					</div>
 
 				</section>
@@ -150,7 +153,7 @@ const NavBar = () => {
 			</nav>
 			<ModalRegisterUser isOpenModal={isOpenModal} handlerOpenModal={handlerOpenModal} />
 			<ModalSearch isOpenModalSearch={isOpenModalSearch} handlerOpenModalSearch={handlerOpenModalSearch} />
-			<CartRight handlerOpencart={handlerOpencart}/>
+			<CartRight handlerOpencart={handlerOpencart} />
 		</header>
 	)
 }

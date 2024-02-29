@@ -16,8 +16,9 @@ const OneCategory = () => {
 	const navigate = useNavigate();
 	const categories = useSelector((state) => state.category.data.list);
 	const allProducts = useSelector((state) => state.product.data.list);
-	const products = useSelector((state) => state.product.data.filter);
-	const productsFilter = useSelector((state) => state.product.data.productsFilterSelect);
+
+	const productsList = useSelector((state) => state.product.data.filter);
+	const productsFilterList = useSelector((state) => state.product.data.productsFilterSelect);
 	const dispatch = useDispatch();
 
 	useEffect(() => {
@@ -28,11 +29,11 @@ const OneCategory = () => {
 				const list = allProducts.filter((pro) => pro.category?._id === catFound._id);
 				dispatch(setProductsFilter([...list]));
 				dispatch(setProductsFilterSelect([]));
-			} else {
+			}
+			else {
 				navigate(ROUTES.NOT_FOUND);
 			}
 		}
-
 	}, [params]);
 
 	return (
@@ -40,10 +41,10 @@ const OneCategory = () => {
 			<NavBar />
 			<HeaderSection title={params?.name} />
 			<SliderSmallCategories />
-			{/* <FilterProducts /> */}
+			<FilterProducts />
 			{
-				productsFilter.length > 0 ?
-					<ListProducts products={productsFilter} /> : <ListProducts products={products} />
+				productsFilterList.length > 0 ?
+					<ListProducts products={productsFilterList} /> : <ListProducts products={productsList} />
 			}
 			<Footer />
 		</div>
