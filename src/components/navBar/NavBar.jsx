@@ -86,9 +86,7 @@ const NavBar = () => {
 
 							<div className="nav_ul_li">
 								<li className="list_item">
-									<NavLink onClick={() => {
-										dispatch(setProductsFilter([]));
-									}} to={ROUTES.ACCESORIES} className={({ isActive }) => isActive === true ? "item " : "item"} >Accesorios</NavLink>
+									<NavLink to={ROUTES.ACCESORIES} className={({ isActive }) => isActive === true ? "item " : "item"} >Accesorios</NavLink>
 									<i className={`uil uil-angle-right icon_arrow ${isOpenAccessories ? "rotate_arrow" : ""}`} onClick={(e) => handlerOpenAccessories(e)}></i>
 								</li>
 								<ul className={`sub_list sub_list_accessories ${isOpenAccessories ? "see_sub_list" : ""}`}>
