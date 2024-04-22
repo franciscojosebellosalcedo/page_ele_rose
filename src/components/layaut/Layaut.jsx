@@ -33,7 +33,7 @@ const Layaut = () => {
 				if (responseToken.status === 200 && responseToken.response) {
 					const data = responseToken.data;
 					const {user}=data;
-					const dataUser={name:user.name,address:user.address,_id:user._id,email:user.email,phone:user.phone,token:data.accessToken};
+					const dataUser={name:user.name,address:user.address,_id:user._id,email:user.email,phone:user.phone,token:data.accessToken,createdAt:user.createdAt,updatedAt:user.updatedAt};
 					saveRefressTokenLocalStorage(data.refressToken);
 					dispatch(setUser({...dataUser}));
 				}

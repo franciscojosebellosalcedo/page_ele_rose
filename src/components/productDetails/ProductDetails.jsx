@@ -16,7 +16,7 @@ const ProductDetails = ({ product }) => {
 		e.stopPropagation();
 		if (product.amount !== 0) {
 			if (cart.some((item) => item.product._id === product._id) === false) {
-				if (isValidAmount) {
+				if (isValidAmount || !String(amount).includes(".")) {
 					const list = [...cart];
 					const dataProductCart = { amount: parseInt(amount), product };
 					list.unshift(dataProductCart);
@@ -32,8 +32,8 @@ const ProductDetails = ({ product }) => {
 
 
 	const incrementAmount = (n) => {
-		let newAmount = amount + n;
-		if (amount === "") {
+		let newAmount = parseInt(amount) + parseInt(n);
+		if (amount === "" || String(amount).includes(".")) {
 			newAmount = 1;
 		}
 		if (newAmount <= product?.amount) {
@@ -43,7 +43,7 @@ const ProductDetails = ({ product }) => {
 	}
 
 	const handlerAmountInput = (value) => {
-		if (value > product?.amount || value < 1) {
+		if (value > product?.amount || value < 1 || value.toString().includes(".")) {
 			setIsValidAmount(false);
 		} else {
 			setIsValidAmount(true);
@@ -52,7 +52,14 @@ const ProductDetails = ({ product }) => {
 	}
 
 	const decrementAmount = (n) => {
-		let newAmount = amount - n;
+		let newAmount =0;
+		if (amount === "" || String(amount).includes(".")) {
+			newAmount = parseInt(n) - 1;
+			console.log(amount)
+			console.log(newAmount)
+		}else{
+			newAmount = parseInt(amount) - parseInt(n);
+		}
 		if (!newAmount < 1) {
 			setAmount(newAmount);
 		}

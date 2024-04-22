@@ -115,7 +115,7 @@ const ModalRegisterUser = ({ isOpenModal, handlerOpenModal }) => {
 
 	const setDataUser = (data) => {
 		const { user, refressToken } = data;
-		const dataUser = { name: user.name, address: user.address, _id: user._id, email: user.email, phone: user.phone, token: data.accessToken };
+		const dataUser = { name: user.name, address: user.address, _id: user._id, email: user.email, phone: user.phone, token: data.accessToken ,createdAt:user.createdAt,updatedAt:user.updatedAt};
 		dispatch(setUser({ ...dataUser }));
 		saveRefressTokenLocalStorage(refressToken);
 	}
