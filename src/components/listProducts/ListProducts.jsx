@@ -10,7 +10,7 @@ const ListProducts = ({products}) => {
 						<>
 							{
 								products.map((product,index)=>{
-									return <ItemProduct key={index} product={product}/>
+									return product.status=== true ? product.category !== null ?<ItemProduct key={index} product={product}/>: "":""
 								})
 							}
 						</>

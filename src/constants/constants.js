@@ -349,7 +349,7 @@ export const SETTINGS_SLIDER_RESPONSIVE_CATEGORIES_ACCESORIES = {
 	autoplay: true,
 	slidesToScroll: 4,
 	initialSlide: 0,
-	infinite: true,
+	infinite: false,
 	responsive: [
 		{
 			breakpoint: 700,
