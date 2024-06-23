@@ -5,8 +5,8 @@ import { useDispatch } from 'react-redux';
 import { io } from 'socket.io-client';
 import { setAmountView } from './features/amountView/amountView';
 
-const url = process.env.REACT_APP_URL_API.split("api")[0];
-
+const url = process.env.REACT_APP_URL_SOCKET;
+console.log(url);
 
 const SocketContext = createContext(null);
 
