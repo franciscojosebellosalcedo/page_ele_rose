@@ -5,6 +5,7 @@ import ProductReducer from "../features/product/product";
 import QualificationReducer from "../features/qualification/qualification";
 import UserReducer from "../features/user/user";
 import CartReducer from "../features/cart/cart";
+import AmountViewReducer from "../features/amountView/amountView";
 
 export const store = configureStore({
 	reducer: {
@@ -14,5 +15,6 @@ export const store = configureStore({
 		qualification: QualificationReducer,
 		user: UserReducer,
 		cart: CartReducer,
+		amountView: AmountViewReducer,
 	},
 });

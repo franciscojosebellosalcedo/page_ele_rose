@@ -10,6 +10,8 @@ const ProductDetails = ({ product }) => {
 	const cart = useSelector((state) => state.cart.data.list);
 	const isOpenCart = useSelector((state) => state.cart.data.active);
 
+	const amountView = useSelector((state)=> state.amountView.data);
+
 
 	const addProductCart = (e) => {
 		e.preventDefault();
@@ -129,6 +131,10 @@ const ProductDetails = ({ product }) => {
 				</div>
 
 			</section>
+
+			<div className="amount_view">
+				Actualmente, hay {amountView} personas en esta página
+			</div>
 		</section>
 	)
 }

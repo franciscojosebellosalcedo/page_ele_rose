@@ -3,7 +3,7 @@ import ListProducts from "../listProducts/ListProducts";
 import "./ProductsNews.css";
 
 const ProductsNews = () => {
-	const products=useSelector((state)=>state.product.data.productsNew);
+	const products=useSelector((state)=>state.product.data.productsNew.filter((pro) => pro.isNow === true && pro.status == true));
 	return (
 		products.length >0 ?
 		<section className='container container_products_news'>

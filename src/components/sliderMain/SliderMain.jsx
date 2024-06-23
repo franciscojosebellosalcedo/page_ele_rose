@@ -12,9 +12,6 @@ const  SliderMain=()=> {
 				<div className="slider-container">
 					<img className="slider_imagen" src={require("./../../assest/example-img-slider.jpeg")} alt="" />
 				</div>
-				<div className="slider-container">
-					<img className="slider_imagen" src={require("./../../assest/example-img-slider.jpeg")} alt="" />
-				</div>
 			</Slider>
 		</div>
 	);

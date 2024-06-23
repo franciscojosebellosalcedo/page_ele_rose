@@ -3,6 +3,13 @@
 	margin: 0px auto;
 	overflow: hidden;
 }
+
+.amount_view{
+	margin-top: 20px;
+	font-size: 16px;
+	color: var(--color-icon);
+
+}
 .content_img{
 	width: 100%;
 	position: relative;
