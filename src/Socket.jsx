@@ -6,11 +6,10 @@ import { io } from 'socket.io-client';
 import { setAmountView } from './features/amountView/amountView';
 
 const url = process.env.REACT_APP_URL_SOCKET;
-console.log(url);
 
 const SocketContext = createContext(null);
 
-const socket = io(url);
+// const socket = io(url);
 
 export const useSocket = () => {
   const context = useContext(SocketContext);
