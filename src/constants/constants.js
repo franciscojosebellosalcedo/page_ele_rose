@@ -194,8 +194,9 @@ export const SETTINGS_SLIDER_RESPONSIVE_RATINGS = {
 };
 export const SETTINGS_SLIDER_RESPONSIVE = {
 	dots: true,
-	infinite: false,
+	infinite: true,
 	speed: 500,
+	autoplay: true,
 	slidesToShow: 4,
 	slidesToScroll: 4,
 	initialSlide: 0,
@@ -344,12 +345,12 @@ export const SETTINGS_SLIDER_RESPONSIVE = {
 };
 export const SETTINGS_SLIDER_RESPONSIVE_CATEGORIES_ACCESORIES = {
 	dots: true,
-	speed: 500,
+	speed: 800,
 	slidesToShow: 4,
 	autoplay: true,
 	slidesToScroll: 4,
 	initialSlide: 0,
-	infinite: false,
+	infinite: true,
 	responsive: [
 		{
 			breakpoint: 700,
