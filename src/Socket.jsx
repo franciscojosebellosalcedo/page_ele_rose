@@ -24,17 +24,17 @@ export const SocketProvider = ({ children }) => {
 
   useEffect( ()=>{
 
-		socket.emit("get:amount");
+		// socket.emit("get:amount");
 
-		socket.on("get:amount", (data)=>{
-			dispatch(setAmountView(data))
-		});
+		// socket.on("get:amount", (data)=>{
+		// 	dispatch(setAmountView(data))
+		// });
 
   },[])
 
 
   return (
-    <SocketContext.Provider value={{ socket }}>
+    <SocketContext.Provider value={{  }}>
       {children}
     </SocketContext.Provider>
   );

@@ -132,9 +132,9 @@ const ProductDetails = ({ product }) => {
 
 			</section>
 
-			<div className="amount_view">
+			{/* <div className="amount_view">
 				Actualmente, hay {amountView} personas en esta página
-			</div>
+			</div> */}
 		</section>
 	)
 }
