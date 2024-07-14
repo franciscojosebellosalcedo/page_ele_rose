@@ -5,6 +5,8 @@ import Footer from '../../components/footer/Footer';
 import { useState } from "react";
 import { isEmailValid, isValidObject } from "../../utils/utils";
 import { saveInfoContact } from "../../service/contact.service";
+import emailjs from "@emailjs/browser";
+import LoaderButton from "../../components/loaderButton/LoaderButton";
 
 const Contact = () => {
 	const [dataInfoContact, setDataInfoContact] = useState({
@@ -19,12 +21,16 @@ const Contact = () => {
 		isOpen: false
 	})
 
+	const [isLoader, setIsLoader] = useState(false);
+
 	const handlerFormContact = (target, value) => {
 		setDataInfoContact({ ...dataInfoContact, [target]: value });
 	}
 
 	const sendDataInfoContact = async(e) => {
-		e.preventDefault();
+		try {
+			setIsLoader(true)
+			e.preventDefault();
 		if(!isValidObject(dataInfoContact)){
 			setAlertFormContact({message:"Llene los campos por favor",type:0,isOpen:true});
 		}else if(!isEmailValid(dataInfoContact.email)){
@@ -32,6 +38,15 @@ const Contact = () => {
 		}else{
 			const responseSendInfoContact=await saveInfoContact(dataInfoContact);
 			if(responseSendInfoContact.status===201 && responseSendInfoContact.response){
+				const serviceID = "service_dnmr0bg";
+				const templateID = "template_nafb8vg";
+				emailjs.init({publicKey: "_yOP6dNF1dy9F4KYE"})
+				await emailjs.send(serviceID, templateID ,{
+					name: dataInfoContact.name,
+					email: dataInfoContact.email,
+					affeir: dataInfoContact.affeir,
+					message: dataInfoContact.message
+				});
 				setAlertFormContact({message:responseSendInfoContact.message,type:1,isOpen:true});
 				setDataInfoContact({
 					name: "",
@@ -43,6 +58,12 @@ const Contact = () => {
 				setAlertFormContact({message:responseSendInfoContact.message,type:0,isOpen:true});
 			}
 		}
+		} catch (error) {
+			setAlertFormContact({message:"Error en el servidor",type:0,isOpen:true});
+
+		}
+		setIsLoader(false)
+
 	}
 
 	return (
@@ -74,7 +95,7 @@ const Contact = () => {
 							<p style={{color:alertFormContact.type===0 ? "red":"green"}} className="error_amount error_item_cart alert_form_contact">{alertFormContact.message}</p>
 							: ""
 					}
-					<button onClick={(e) => sendDataInfoContact(e)} className="btn btn_send_message_contact">Enviar <i className="uil uil-message"></i></button>
+					<button onClick={(e) => sendDataInfoContact(e)} className="btn btn_send_message_contact"> {isLoader ? <LoaderButton/> : <>Enviar <i className="uil uil-message"></i></>} </button>
 				</form>
 			</section>
 			<Footer />

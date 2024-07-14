@@ -14,10 +14,20 @@ const About = () => {
                 <h2 className="title_about last_title"> Soy Laura Salguedo</h2>
                 <p className="text_about">
                 La personita detrás de Ele Rose. Permíteme contarte un poco sobre mí y cómo nació este maravilloso proyecto.
-                Soy una estudiante universitaria apasionada por los accesorios. Siempre he creído que los accesorios son la clave para elevar cualquier atuendo y expresar nuestra personalidad. 
+                Soy una estudiante universitaria apasionada por los accesorios. Siempre he creído que los accesorios son la clave para elevar cualquier atuendo y expresar nuestra personalidad.
+
+								<br />
+								<br />
                 La idea de crear Ele Rose surgió de una combinación de mi amor por los accesorios y la necesidad de generar ingresos mientras completo mi educación. Este emprendimiento no solo representa una fuente de sustento para mí, sino también un sueño hecho realidad.
+								<br />
+								<br />
                 Mi objetivo es brindarte acceso a accesorios excepcionales que te hagan sentir única y empoderada, sin importar la ocasión.
+								<br />
+								<br />
                 En Ele Rose, nos esforzamos por ofrecerte una buena experiencia de compra. Estoy aquí para escucharte, asesorarte y asegurarme de que encuentres el accesorio perfecto que complemente tu estilo y personalidad.
+
+								<br />
+								<br />
                 Gracias por ser parte de esta hermosa aventura. Tu apoyo significa mucho para mí. Si tienes alguna pregunta o comentario ¡no dudes en contactarme! Estoy aquí para ti.
                 </p>
             </div>

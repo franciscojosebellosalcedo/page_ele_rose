@@ -6,7 +6,7 @@ import HeaderSection from "../../components/headerSection/HeaderSection";
 import ListProducts from "../../components/listProducts/ListProducts";
 import NavBar from "../../components/navBar/NavBar";
 import SliderSmallCategories from "../../components/sliderCategoriesSmall/SliderSmallCategories";
-import { setProductsFilter } from "../../features/product/product";
+import { setProductsFilter, setProductsFilterSelect } from "../../features/product/product";
 import "./Accesories.css";
 
 const Accesories = () => {
@@ -17,10 +17,11 @@ const Accesories = () => {
 
 
 	useEffect(()=>{
-		if(products.length >0){
+		dispatch(setProductsFilterSelect([]));
+		if(products.length > productsList.length){
 			dispatch(setProductsFilter([...products]));
 		}
-	},[]);
+	},[products]);
 
 	return (
 		<section className="container container_accesories">
