@@ -19,7 +19,7 @@ export const ROUTES = {
 export const INFO_ELEROSE = {
 	serviceClient: {
 		title: "Atención al cliente",
-		text: "Atendemos todas las inquietudes por Whatsapp +57 3053559355 y también por el email elerose@gmail.com",
+		text: "Atendemos todas las inquietudes por Whatsapp +57 3053559355 y también por el email eleroseaccesorios@gmail.com",
 	},
 	deliveries: {
 		title: "Envíos",
