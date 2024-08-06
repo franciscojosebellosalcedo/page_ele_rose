@@ -7,7 +7,7 @@ import { setActiveQualification } from "../../features/qualification/qualificati
 
 const InfoAditionalProduct = ({product}) => {
 	const [openContent, setOpenContent] = useState({
-		description: true,
+		tips: true,
 		shipping: false,
 		comments: false
 	});
@@ -33,7 +33,7 @@ const InfoAditionalProduct = ({product}) => {
 		<section className="">
 			<section className="section_aditional_product">
 				<article className="list_title_info">
-					<h3 onClick={() => handlerOpenContent("description")} className={`title_item ${openContent.description === true ? "see_element_before_title" : ""}`}>Descripción</h3>
+					<h3 onClick={() => handlerOpenContent("tips")} className={`title_item ${openContent.tips === true ? "see_element_before_title" : ""}`}>Tips</h3>
 					<h3 onClick={() => handlerOpenContent("shipping")} className={`title_item ${openContent.shipping === true ? "see_element_before_title" : ""}`}>Envios y pagos</h3>
 					<h3 onClick={() => handlerOpenContent("comments")} className={`title_item ${openContent.comments === true ? "see_element_before_title" : ""}`}>Comentarios</h3>
 				</article>
@@ -44,7 +44,7 @@ const InfoAditionalProduct = ({product}) => {
 					: ""
 			}
 			{
-				openContent.description === true ?
+				openContent.tips === true ?
 					<div className="content_description">
 						<h3 className="title_description">Maximiza la Vida Útil de Tu Producto con los siguientes Consejos</h3>
 						<ul className="list_tips">
@@ -72,6 +72,8 @@ const InfoAditionalProduct = ({product}) => {
 					<Qualification product={product}/>
 				:""
 			}
+			<br />
+			<br />
 		</section>
 	)
 }

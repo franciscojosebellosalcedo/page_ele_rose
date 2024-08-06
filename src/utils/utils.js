@@ -187,3 +187,13 @@ export const sortProductsByIsNow=(products,bool)=>{
 	return products.filter((pro)=>pro.isNow===bool);
 }
 
+// format price
+export const formatePriceProduct = (price) => {
+
+  let formattedPrice = price.toLocaleString('es-ES', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+
+  formattedPrice = formattedPrice.replace(/,/g, '.');
+
+  return formattedPrice;
+}
+

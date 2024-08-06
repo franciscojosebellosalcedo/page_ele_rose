@@ -7,6 +7,8 @@ export const ROUTES = {
 	COLLECTIONS: "/collections/all",
 	ONE_COLLECTION: "/collections/collection",
 	ONE_CATEGORY: "/accesories/category",
+	DISCOUNTS: "/discount",
+	FAVORITE: "/favorite",
 	PRODUCT: "/accesories/product",
 	CART: "/cart",
 	ACCOUNT: "/account",
@@ -15,6 +17,8 @@ export const ROUTES = {
 	CONTACT: "/contact",
 	NOT_FOUND: "/not-found",
 };
+
+export const nameKeyProductsFavorites = "favorites";
 
 export const INFO_ELEROSE = {
 	serviceClient: {

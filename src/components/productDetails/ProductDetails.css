@@ -132,6 +132,11 @@
 	padding: 6px;
 	border: 1px red dashed;
 }
+.description_product{
+	margin-top: 10px;
+	font-size: 14px;
+	color: var(--color-icon);
+}
 @media screen and (min-width:777px) {
 	.box_flex_details_product{
 		flex-direction: row;

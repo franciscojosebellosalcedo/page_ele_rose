@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setCart } from "../../features/cart/cart";
 import { setCategories } from "../../features/category/category";
 import { setCollections, setCollectionsReverse } from "../../features/collection/collection";
-import { setProducts, setProductsNew } from "../../features/product/product";
+import { setProducts, setProductsFavorites, setProductsNew } from "../../features/product/product";
 import { setQualification } from "../../features/qualification/qualification";
 import { setUser } from "../../features/user/user";
 import RoutesApp from "../../routes/RoutesApp";
@@ -14,11 +14,20 @@ import { getAllQualification } from "../../service/qualification.service";
 import { getNewAccessTokenUser } from "../../service/user.service";
 import { getCartLocalStorage, getRefressTokenLocalStorage, saveRefressTokenLocalStorage } from "../../utils/utils";
 import Loader from "../loader/Loader";
+import { nameKeyProductsFavorites } from "../../constants/constants";
 
 const Layaut = () => {
 	const token = useSelector((state) => state.user.data.user.token);
 	const dispatch = useDispatch();
 	const [isLoader, setIsLoader] = useState(false);
+
+	const getProductFavorites = ()=>{
+		const list = JSON.parse(localStorage.getItem(nameKeyProductsFavorites));
+
+		if(list && Array.isArray(list)){
+			dispatch(setProductsFavorites(list));
+		}
+	}
 
 	const getAllRegistersModules = async () => {
 		setIsLoader(true);
@@ -96,6 +105,7 @@ const Layaut = () => {
 		}
 		setIsLoader(false);
 
+		getProductFavorites();
 
 		// setIsLoader(true);
 		// getNewAccessTokenUserPage();

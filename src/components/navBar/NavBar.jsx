@@ -124,6 +124,12 @@ const NavBar = () => {
 								</ul>
 							</div>
 
+							<div className="nav_ul_li">
+								<li className="list_item">
+									<NavLink className={({ isActive }) => isActive === true ? "item " : "item"} to={ROUTES.DISCOUNTS} >Descuentos</NavLink>
+								</li>
+							</div>
+
 
 							<div className="nav_ul_li">
 								<li className="list_item">
@@ -144,7 +150,10 @@ const NavBar = () => {
 					<div className="nav_container_icons">
 						<i className="uil uil-search icon_nav icon_menu" onClick={(e) => handlerOpenModalSearch(e)}></i>
 						<i className="uil uil-user icon_nav icon_menu" onClick={(e) => handlerOpenModal(e)}></i>
-						<i className="uil uil-heart icon_nav icon_menu" ></i>
+						<i className="uil uil-heart icon_nav icon_menu" onClick={(e)=> {
+							e.preventDefault();
+							nav(ROUTES.FAVORITE);
+						}}></i>
 						<i className="uil uil-shopping-cart icon_nav icon_menu" onClick={() => handlerOpencart()}><span className="amount_cart_products">{getAllAmountPoductsOrder(listItemsCart)}</span></i>
 					</div>
 

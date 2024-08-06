@@ -36,7 +36,11 @@ const OneProduct = () => {
 			<NavBar />
 			<HeaderSection title={params.name} />
 			<SliderSmallCategories />
-			<ProductDetails product={product} />
+			{
+				product ?
+					<ProductDetails product={product} />
+				: ""
+			}
 			<InfoAditionalProduct product={product} />
 			{
 				product ? <SliderAditionalProduct product={product} setProduct={setProduct} />: ""

@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./HistoryOrderUser.css";
 import { getAllOrdersByUser } from "../../service/order.service";
 import LoaderButton from "../loaderButton/LoaderButton";
-import { formatDate, getAllAmountPoductsOrder } from "../../utils/utils";
+import { formatePriceProduct, formatPrice, getAllAmountPoductsOrder } from "../../utils/utils";
 import { useNavigate } from "react-router-dom";
 import { ROUTES } from "../../constants/constants";
 
@@ -31,7 +31,6 @@ const HistoryOrderUser = ({ user }) => {
 			if (user) {
 				const responseOrders = (await getAllOrdersByUser(user)).data;
 				const data = responseOrders.data;
-				console.log(data)
 				const list=[];
 				for (let index = 0; index < data.length; index++) {
 					list.push({isOpen:false,index});
@@ -43,6 +42,38 @@ const HistoryOrderUser = ({ user }) => {
 			console.log(error);
 		}
 		setIsLoader(false);
+	}
+
+	const getNameStateOrder = (order)=>{
+
+		if(order){
+
+			switch (order.statusOrder) {
+
+				case "Pending":
+
+					return "Pendiente"
+
+				case "In process":
+
+					return "En Progreso"
+
+				case "Sent":
+
+					return  "Enviado"
+
+				case "Finalized":
+
+				return  "Finalizado"
+
+				case "Canceled":
+
+				return "Cancelado"
+
+			}
+		}
+
+		return "";
 	}
 
 	useEffect(() => {
@@ -61,7 +92,7 @@ const HistoryOrderUser = ({ user }) => {
 										<h1 className="container_title title_history_orders">Mi historial de pedidos</h1>
 										{
 											orders.map((or,index) => {
-												return <>
+												return <React.Fragment key={or._id}>
 													<article className="container_table_orders">
 														<article className="item_orders_user">
 															<div className="content_info_order">
@@ -71,7 +102,7 @@ const HistoryOrderUser = ({ user }) => {
 																		<p>Nombre: <span>{user?.name}</span></p>
 																	</div>
 																	<div className="item_info">
-																		<p>Fecha: <span>{formatDate(or?.createdAt)}</span></p>
+																		<p>Fecha: <span>{formatePriceProductProduct(or?.createdAt)}</span></p>
 																		<p>Dirección: <span>{user?.address}</span></p>
 																	</div>
 																	<div className="item_info">
@@ -79,8 +110,8 @@ const HistoryOrderUser = ({ user }) => {
 																		<p>Número de pedido: <span>{or?.num}</span></p>
 																	</div>
 																	<div className="item_info">
-																		<p>Estado: <span>{or?.statusOrder === "Pending" ? "Pendiente" : "Finalizado"}</span></p>
-																		<p>Total: <span>$ {or?.total}</span></p>
+																		<p>Estado: <span>{getNameStateOrder(or)}</span></p>
+																		<p>Total: <span>$ {formatePriceProduct(or?.total)}</span></p>
 																	</div>
 																</section>
 																<button onClick={() => handlerIsOpenDetailsOrdersUser(index)} className="btn btn_view_details">Ver detalles <i className={`uil uil-angle-right ${viewOrder[index]?.isOpen ? "rotate_arrow" : ""}`}  ></i></button>
@@ -117,7 +148,7 @@ const HistoryOrderUser = ({ user }) => {
 																											{item.amount}
 																										</td>
 																										<td>
-																											$ {item.product.pricePromotion >0 ? item.product.pricePromotion*item.amount:item.product.realPrice*item.amount}
+																											$ {item.product.pricePromotion >0 ? formatePriceProduct(item.product.pricePromotion*item.amount) : formatPrice(item.product.realPrice*item.amount)}
 																										</td>
 																									</tr>
 																								})
@@ -134,7 +165,7 @@ const HistoryOrderUser = ({ user }) => {
 															</div>
 														</article>
 													</article>
-												</>
+												</React.Fragment>
 											})
 										}
 									</section>

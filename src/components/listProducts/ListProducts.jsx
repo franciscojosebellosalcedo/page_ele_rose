@@ -2,7 +2,21 @@ import { INFO_ELEROSE } from "../../constants/constants";
 import ItemProduct from "../itemProduct/ItemProduct";
 import "./ListProducts.css";
 
-const ListProducts = ({products}) => {
+const ListProducts = ({products , isPageDiscount, isPageFavorite}) => {
+
+	const getTextProductListEmpty = ()=>{
+
+		if(isPageDiscount === true){
+			return  "No hay productos en descuento"
+		}
+
+		if(isPageFavorite === true){
+			return "No tienes productos favoritos"
+		}
+
+		return INFO_ELEROSE.messageProductsNotFound;
+	}
+
 	return (
 		<div className="grid_products">
 				{
@@ -14,7 +28,7 @@ const ListProducts = ({products}) => {
 								})
 							}
 						</>
-					:<p className="message_list_products">{INFO_ELEROSE.messageProductsNotFound}</p>
+					:<p className="message_list_products">{getTextProductListEmpty()}</p>
 				}
 			</div>
 	)

@@ -12,6 +12,8 @@ import Collections from "../pages/collections/Collections";
 import OneCollection from "../pages/oneCollection/OneCollection";
 import About from "../pages/about/About";
 import Contact from "../pages/contact/Contact";
+import Discount from "../pages/discount/Discount";
+import Favorite from "../pages/favorite/Favorite";
 
 const RoutesPages = () => {
 
@@ -21,6 +23,8 @@ const RoutesPages = () => {
             <Route path={ROUTES.INIT} element={<IndexPage/>}></Route>
             <Route path={ROUTES.ACCESORIES} element={<Accesories/>}></Route>
             <Route path={ROUTES.COLLECTIONS} element={<Collections/>}></Route>
+            <Route path={ROUTES.DISCOUNTS} element={<Discount/>}></Route>
+            <Route path={ROUTES.FAVORITE} element={<Favorite/>}></Route>
             <Route path={ROUTES.ONE_COLLECTION+"/:name"} element={<OneCollection/>}></Route>
             <Route path={ROUTES.ONE_CATEGORY+"/:name"} element={<OneCategory/>}></Route>
             <Route path={ROUTES.PRODUCT+"/:name"} element={<OneProduct/>}></Route>
