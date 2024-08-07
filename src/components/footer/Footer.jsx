@@ -6,6 +6,7 @@ const Footer = () => {
 	const navigate=useNavigate();
 	return (
 		<footer className="container container_footer">
+			hola
 			<section className="info_footer">
 				<div className="content_info_footer">
 					<h1 className="info_footer_title">Información</h1>
