@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { decrementAmountItem, incrementAmountItem, removeItemCart, setActiveCart, setAmountItemCart } from "../../features/cart/cart";
 import "./ItemProductCart.css";
 import { useEffect, useState, useRef } from "react";
+import { formatePriceProduct } from "../../utils/utils";
 
 const ItemProductCart = ({ item, index }) => {
 	const cart = useSelector((state) => state.cart.data.list);
@@ -71,34 +72,40 @@ const ItemProductCart = ({ item, index }) => {
 	}, [isActiveCart]);
 
 	return (
-		<section className="container_item_cart">
-			<div className="content_product_cart">
-				<img className="img_product_cart" src={item?.product?.imagen} alt="" />
-				<div className="section_data_product_cart">
-					<p className="text_item_cart name_item_cart">{item?.product?.name} </p>
-					<section className="section_bottom_item_cart">
-						<div>
-							<p className="text_nowrap text_item_cart amout_item_cart">Disp: {item?.product?.amount}</p>
-							<p className="text_nowrap text_item_cart amout_item_cart">Qty: {item?.amount}</p>
-							<p className="text_nowrap text_item_cart price_item_cart">$ {item?.product?.pricePromotion > 0 ? item?.product?.pricePromotion : item?.product?.realPrice}</p>
-						</div>
-						<input onInput={(e) => handlerAmount(e.target.value)} value={amount} className="input_amount" type="number" />
-						<div className="controllers">
-							<i onClick={() => incremetAmount(index, 1)} className="uil uil-arrow-up icon_controller"></i>
-							<i onClick={() => decrementAmount(index, 1)} className="uil uil-arrow-down icon_controller"></i>
-						</div>
-					</section>
-				</div>
-
-
-				<i className="uil uil-times icon_delete_item_cart" onClick={() => removeItem()}></i>
-			</div>
+		<>
 			{
-				isValidAmount === false ?
-					<p className="error_amount error_item_cart">Cantidad ingresada incorrecta</p>
-					: ""
+				item ?
+				<section className="container_item_cart">
+				<div className="content_product_cart">
+					<img className="img_product_cart" src={item?.product?.imagen} alt="" />
+					<div className="section_data_product_cart">
+						<p className="text_item_cart name_item_cart">{item?.product?.name} </p>
+						<section className="section_bottom_item_cart">
+							<div>
+								<p className="text_nowrap text_item_cart amout_item_cart">Disp: {formatePriceProduct(item.product.amount)}</p>
+								<p className="text_nowrap text_item_cart amout_item_cart">Qty: {item?.amount}</p>
+								<p className="text_nowrap text_item_cart price_item_cart">$ {item?.product?.pricePromotion > 0 ? formatePriceProduct(item.product.pricePromotion) : formatePriceProduct(item.product.realPrice)}</p>
+							</div>
+							<input onInput={(e) => handlerAmount(e.target.value)} value={amount} className="input_amount" type="number" />
+							<div className="controllers">
+								<i onClick={() => incremetAmount(index, 1)} className="uil uil-arrow-up icon_controller"></i>
+								<i onClick={() => decrementAmount(index, 1)} className="uil uil-arrow-down icon_controller"></i>
+							</div>
+						</section>
+					</div>
+
+
+					<i className="uil uil-times icon_delete_item_cart" onClick={() => removeItem()}></i>
+				</div>
+				{
+					isValidAmount === false ?
+						<p className="error_amount error_item_cart">Cantidad ingresada incorrecta</p>
+						: ""
+				}
+			</section>
+				: ""
 			}
-		</section>
+		</>
 	)
 }
 

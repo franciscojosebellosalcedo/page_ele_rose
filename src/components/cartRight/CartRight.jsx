@@ -9,6 +9,7 @@ import {
 } from "../../features/cart/cart";
 import { setIsOpenModal } from "../../features/user/user";
 import {
+	formatePriceProduct,
 	getAllAmountPoductsOrder,
 	getTotalPriceCart,
 	isValidCart,
@@ -136,9 +137,9 @@ const CartRight = ({ handlerOpencart }) => {
 			)}
 			<div className="content_bottom_cart">
 				<p className="title_total_price">
-					Total:{" "}
+					Total:
 					<span className="price_total">
-						$ {getTotalPriceCart(listItemCart)}
+						$ {formatePriceProduct(getTotalPriceCart(listItemCart))}
 					</span>
 				</p>
 				<section className="section_button_cart">
