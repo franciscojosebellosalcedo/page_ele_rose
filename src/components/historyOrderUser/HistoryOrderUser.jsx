@@ -102,7 +102,7 @@ const HistoryOrderUser = ({ user }) => {
 																		<p>Nombre: <span>{user?.name}</span></p>
 																	</div>
 																	<div className="item_info">
-																		<p>Fecha: <span>{formatePriceProductProduct(or?.createdAt)}</span></p>
+																		<p>Fecha: <span>{formatePriceProduct(or?.createdAt)}</span></p>
 																		<p>Dirección: <span>{user?.address}</span></p>
 																	</div>
 																	<div className="item_info">
