@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setActiveCart, setCart } from "../../features/cart/cart";
 import "./ProductDetails.css";
 import { formatePriceProduct } from "../../utils/utils";
+import ShareProduct from "./ShareProduct";
 
 const ProductDetails = ({ product }) => {
 	const [amount, setAmount] = useState(1);
@@ -97,7 +98,7 @@ const ProductDetails = ({ product }) => {
 							{
 								product?.pricePromotion > 0 ?
 									<article className="info_price_product">
-										<p>Precio descuento de {product.percentage}% :</p>
+										<p>Ahorra {product.percentage}%</p>
 										<div>
 											<p>${formatePriceProduct(product.realPrice)}</p>
 											<p>${formatePriceProduct(product.pricePromotion)}</p>
@@ -107,6 +108,7 @@ const ProductDetails = ({ product }) => {
 									<p className="price_product">Precio: <span>$ {formatePriceProduct(product.realPrice)}</span></p>
 							}
 							<p className="amount_product_details" >Disponibles: <span >{product?.amount}</span></p>
+
 							<div className="box_btn_add_cart">
 								<button onClick={(e) => addProductCart(e)} className="btn btn_add_cart_product_details">
 									{cart.some((item) => item?.product?._id === product?._id) === true
@@ -130,6 +132,9 @@ const ProductDetails = ({ product }) => {
 									: ""
 							}
 						</div>
+							<br />
+						<ShareProduct/>
+
 					</div>
 
 				</section>

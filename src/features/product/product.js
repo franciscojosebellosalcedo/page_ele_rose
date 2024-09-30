@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { nameKeyProductsFavorites } from "../../constants/constants";
 
 const initialState = {
   data: {
@@ -22,23 +21,7 @@ const productSlice = createSlice({
 
 		addProductFavorite: (state, action)=>{
 
-			let listAux = state.data.favorites;
-			const idProduct = action.payload;
-
-			const indexProductFavorite = listAux.findIndex((favorite)=> favorite === idProduct);
-
-			if(listAux.some((favorite)=> favorite === idProduct )){
-
-				listAux.splice( indexProductFavorite , 1);
-
-			}else{
-
-				listAux = [idProduct , ...listAux];
-
-			}
-
-			state.data.favorites = listAux;
-			localStorage.setItem(nameKeyProductsFavorites , JSON.stringify(listAux));
+			state.data.favorites = [...action.payload];
 
 		},
 

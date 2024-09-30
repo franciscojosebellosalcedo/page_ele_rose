@@ -3,8 +3,9 @@ import "./ItemProduct.css";
 import { setActiveCart, setCart } from "../../features/cart/cart";
 import { addProductFavorite} from "../../features/product/product";
 import { useNavigate } from "react-router-dom";
-import { ROUTES } from "../../constants/constants";
+import { nameKeyProductsFavorites, ROUTES } from "../../constants/constants";
 import { formatePriceProduct } from "../../utils/utils";
+import { useEffect } from "react";
 
 const ItemProduct = ({ product }) => {
 	const dispatch = useDispatch();
@@ -15,13 +16,25 @@ const ItemProduct = ({ product }) => {
 	const products = useSelector((state)=>state.product.data.favorites);
 
 	const isProductFavorite = ()=>{
-		const is = products.some((idProduct) => idProduct === product._id);
-		return is;
+		return products.some((pro) => pro._id === product._id);
 	}
 
-	const handlerAddProductToFavorite = (idProduct)=>{
+	const handlerAddProductToFavorite = ()=>{
+		let listAux = [...products];
 
-		dispatch(addProductFavorite(idProduct));
+		if(isProductFavorite() === true){
+
+			listAux.splice(listAux.findIndex((pro)=> pro._id === product._id), 1);
+
+		}else{
+
+			listAux.push(product);
+
+		}
+
+		dispatch(addProductFavorite([...listAux]));
+
+		localStorage.setItem(nameKeyProductsFavorites , JSON.stringify([...listAux]));
 
 	}
 
@@ -64,7 +77,7 @@ const ItemProduct = ({ product }) => {
 
 				<div  className={`icon_heart ${isProductFavorite() ? 'favorite_true' : '' } `} onClick={(e)=>{
 					e.stopPropagation();
-					handlerAddProductToFavorite(product._id);
+					handlerAddProductToFavorite();
 				}}>
 					<i className="uil uil-heart"></i>
 				</div>

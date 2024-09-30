@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import Slider from "react-slick";
-import { SETTINGS_SLIDER_RESPONSIVE } from "../../constants/constants";
+import { SETTINGS_SLIDER_RESPONSIVE_PRODUCTS_RELATIONALS } from "../../constants/constants";
 import ItemProduct from "../itemProduct/ItemProduct";
 import "./SliderAditionalProduct.css";
 
@@ -25,13 +25,14 @@ const SliderAditionalProduct = ({ product,setProduct }) => {
 		setProductsByCar(list);
 	},[product]);
 
+
 	return (
 		productByCat && productByCat.length > 0 ?
 			<section className="container container_main_categories list_products_relationals">
 				<h1 className="container_title container_title_categories">Pruductos relacionados</h1>
 				<div className="conatiner_slider_categories">
 					{
-						<Slider {...SETTINGS_SLIDER_RESPONSIVE}>
+						<Slider {...SETTINGS_SLIDER_RESPONSIVE_PRODUCTS_RELATIONALS}>
 							{
 								productByCat.map((pro, index) => {
 									return index <= 6 ? <div onClick={() => toUp(pro)} key={index}><ItemProduct product={pro} /></div> : ""

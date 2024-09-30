@@ -1,6 +1,7 @@
 import NextArrow from "../components/nextArrow/NextArrow.jsx";
 import PrevArrow from "../components/prevArrow/PrevArrow.jsx";
 
+
 export const ROUTES = {
 	INIT: "/",
 	ACCESORIES: "/accesories/all",
@@ -196,9 +197,164 @@ export const SETTINGS_SLIDER_RESPONSIVE_RATINGS = {
 		},
 	],
 };
+
+export const SETTINGS_SLIDER_RESPONSIVE_PRODUCTS_RELATIONALS = {
+	dots: true,
+	infinite: false,
+	speed: 500,
+	autoplay: true,
+	slidesToShow: 4,
+	slidesToScroll: 4,
+	nextArrow: <NextArrow />,
+	prevArrow: <PrevArrow />,
+	initialSlide: 0,
+	responsive: [
+		{
+			breakpoint: 1024,
+			settings: {
+				slidesToShow: 3,
+				slidesToScroll: 3,
+			},
+		},
+		{
+			breakpoint: 740,
+			settings: {
+				slidesToShow: 2,
+				slidesToScroll: 1,
+			},
+		},
+		{
+			breakpoint: 710,
+			settings: {
+				slidesToShow: 2,
+				slidesToScroll: 1,
+			},
+		},
+		{
+			breakpoint: 690,
+			settings: {
+				slidesToShow: 2,
+				slidesToScroll: 1,
+			},
+		},
+		{
+			breakpoint: 670,
+			settings: {
+				slidesToShow: 2,
+				slidesToScroll: 1,
+			},
+		},
+		{
+			breakpoint: 650,
+			settings: {
+				slidesToShow: 2,
+				slidesToScroll: 1,
+			},
+		},
+		{
+			breakpoint: 630,
+			settings: {
+				slidesToShow: 2,
+				slidesToScroll: 1,
+			},
+		},
+		{
+			breakpoint: 610,
+			settings: {
+				slidesToShow: 2,
+				slidesToScroll: 1,
+			},
+		},
+		{
+			breakpoint: 590,
+			settings: {
+				slidesToShow: 2,
+				slidesToScroll: 1,
+			},
+		},
+		{
+			breakpoint: 580,
+			settings: {
+				slidesToShow: 2,
+				slidesToScroll: 1,
+			},
+		},
+		{
+			breakpoint: 560,
+			settings: {
+				slidesToShow: 2,
+				slidesToScroll: 1,
+			},
+		},
+		{
+			breakpoint: 540,
+			settings: {
+				slidesToShow: 2,
+				slidesToScroll: 1,
+			},
+		},
+		{
+			breakpoint: 530,
+			settings: {
+				slidesToShow: 2,
+				slidesToScroll: 1,
+			},
+		},
+		{
+			breakpoint: 510,
+			settings: {
+				slidesToShow: 2,
+				slidesToScroll: 1,
+			},
+		},
+		{
+			breakpoint: 500,
+			settings: {
+				slidesToShow: 2,
+				slidesToScroll: 1,
+			},
+		},
+		{
+			breakpoint: 460,
+			settings: {
+				slidesToShow: 1,
+				slidesToScroll: 1,
+			},
+		},
+		{
+			breakpoint: 450,
+			settings: {
+				slidesToShow: 1,
+				slidesToScroll: 1,
+			},
+		},
+		{
+			breakpoint: 430,
+			settings: {
+				slidesToShow: 1,
+				slidesToScroll: 1,
+			},
+		},
+		{
+			breakpoint: 410,
+			settings: {
+				slidesToShow: 1,
+				slidesToScroll: 1,
+			},
+		},
+		{
+			breakpoint: 400,
+			settings: {
+				slidesToShow: 1,
+				slidesToScroll: 1,
+			},
+		},
+	],
+};
+
 export const SETTINGS_SLIDER_RESPONSIVE = {
 	dots: true,
-	infinite: true,
+	infinite: false,
 	speed: 500,
 	autoplay: true,
 	slidesToShow: 4,
@@ -347,6 +503,161 @@ export const SETTINGS_SLIDER_RESPONSIVE = {
 		},
 	],
 };
+
+export const SETTINGS_SLIDER_RESPONSIVE_CATEGORIES_MAIN = {
+	dots: true,
+	infinite: false,
+	speed: 500,
+	autoplay: true,
+	slidesToShow: 4,
+	slidesToScroll: 4,
+	nextArrow: <NextArrow />,
+	prevArrow: <PrevArrow />,
+	initialSlide: 0,
+	responsive: [
+		{
+			breakpoint: 1024,
+			settings: {
+				slidesToShow: 3,
+				slidesToScroll: 3,
+			},
+		},
+		{
+			breakpoint: 740,
+			settings: {
+				slidesToShow: 2,
+				slidesToScroll: 1,
+			},
+		},
+		{
+			breakpoint: 710,
+			settings: {
+				slidesToShow: 2,
+				slidesToScroll: 1,
+			},
+		},
+		{
+			breakpoint: 690,
+			settings: {
+				slidesToShow: 2,
+				slidesToScroll: 1,
+			},
+		},
+		{
+			breakpoint: 670,
+			settings: {
+				slidesToShow: 2,
+				slidesToScroll: 1,
+			},
+		},
+		{
+			breakpoint: 650,
+			settings: {
+				slidesToShow: 2,
+				slidesToScroll: 1,
+			},
+		},
+		{
+			breakpoint: 630,
+			settings: {
+				slidesToShow: 2,
+				slidesToScroll: 1,
+			},
+		},
+		{
+			breakpoint: 610,
+			settings: {
+				slidesToShow: 2,
+				slidesToScroll: 1,
+			},
+		},
+		{
+			breakpoint: 590,
+			settings: {
+				slidesToShow: 2,
+				slidesToScroll: 1,
+			},
+		},
+		{
+			breakpoint: 580,
+			settings: {
+				slidesToShow: 2,
+				slidesToScroll: 1,
+			},
+		},
+		{
+			breakpoint: 560,
+			settings: {
+				slidesToShow: 2,
+				slidesToScroll: 1,
+			},
+		},
+		{
+			breakpoint: 540,
+			settings: {
+				slidesToShow: 2,
+				slidesToScroll: 1,
+			},
+		},
+		{
+			breakpoint: 530,
+			settings: {
+				slidesToShow: 2,
+				slidesToScroll: 1,
+			},
+		},
+		{
+			breakpoint: 510,
+			settings: {
+				slidesToShow: 2,
+				slidesToScroll: 1,
+			},
+		},
+		{
+			breakpoint: 500,
+			settings: {
+				slidesToShow: 2,
+				slidesToScroll: 1,
+			},
+		},
+		{
+			breakpoint: 460,
+			settings: {
+				slidesToShow: 1,
+				slidesToScroll: 1,
+			},
+		},
+		{
+			breakpoint: 450,
+			settings: {
+				slidesToShow: 1,
+				slidesToScroll: 1,
+			},
+		},
+		{
+			breakpoint: 430,
+			settings: {
+				slidesToShow: 1,
+				slidesToScroll: 1,
+			},
+		},
+		{
+			breakpoint: 410,
+			settings: {
+				slidesToShow: 1,
+				slidesToScroll: 1,
+			},
+		},
+		{
+			breakpoint: 400,
+			settings: {
+				slidesToShow: 1,
+				slidesToScroll: 1,
+			},
+		},
+	],
+};
+
 export const SETTINGS_SLIDER_RESPONSIVE_CATEGORIES_ACCESORIES = {
 	dots: true,
 	speed: 800,
@@ -354,7 +665,7 @@ export const SETTINGS_SLIDER_RESPONSIVE_CATEGORIES_ACCESORIES = {
 	autoplay: true,
 	slidesToScroll: 4,
 	initialSlide: 0,
-	infinite: true,
+	infinite: false,
 	responsive: [
 		{
 			breakpoint: 700,

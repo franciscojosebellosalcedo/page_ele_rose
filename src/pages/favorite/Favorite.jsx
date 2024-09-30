@@ -5,12 +5,15 @@ import Footer from '../../components/footer/Footer';
 import { useDispatch, useSelector } from 'react-redux';
 import { nameKeyProductsFavorites } from '../../constants/constants';
 import ListProducts from '../../components/listProducts/ListProducts';
+import { addProductFavorite } from '../../features/product/product';
 
 const Favorite = () => {
 
 	const products = useSelector((state)=>state.product.data.list);
 
-	const [productsFavorites , setProductsFavorites] = useState([]);
+	const productsFavorites = useSelector((state)=>state.product.data.favorites);
+
+	const dispatch = useDispatch();
 
 	const getProductsFavorites = ()=>{
 		const listAux = [];
@@ -20,13 +23,13 @@ const Favorite = () => {
 		if(listLocalStorage && Array.isArray(listLocalStorage)){
 
 			for (let index = 0; index < listLocalStorage.length; index++) {
-				const idProduct = listLocalStorage[index];
+				const pro = listLocalStorage[index];
 
-				const productFound = products.find((product)=> product._id === idProduct);
+				const productFound = products.find((product)=> product._id === pro._id);
 
 				if(productFound){
 
-					listAux.push(productFound);
+					listAux.unshift(productFound);
 
 				}
 
@@ -34,7 +37,7 @@ const Favorite = () => {
 
 		}
 
-		setProductsFavorites([...listAux]);
+		dispatch(addProductFavorite([...listAux]));
 
 	}
 
@@ -42,7 +45,8 @@ const Favorite = () => {
 
 		getProductsFavorites();
 
-	},[products]);
+	},[productsFavorites]);
+
 	return (
 		<section className='container_favite'>
 			<NavBar/>

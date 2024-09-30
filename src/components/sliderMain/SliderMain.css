@@ -16,17 +16,19 @@
 	justify-content:center;
 	color:black;
 	background: white;
-	border-radius:6px;
+	border-radius: 50%;
 	width:30px;
 	height:30px;
 	color: var(--color-icon);
-	top: 50%;
+	top: 40%;
 	transform: translateY(-50%);
 	position: absolute;
 	cursor: pointer;
+	transition: .6s;
 	z-index:10;
 	box-shadow: var(--box-shadow-black);
 }
+
 .arrow_right{
 	right: 20px;
 }
