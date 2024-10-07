@@ -27,7 +27,7 @@ const Footer = () => {
 				<div className="content_info_footer">
 					<h1 className="info_footer_title">Servicio al cliente</h1>
 					<ul className="list_info_ele_rose">
-						<li onClick={()=>{} }>Preguntas frecuentes</li>
+						<li onClick={()=>navigate(ROUTES.FREQUENTY_QUESTIONS)}>Preguntas frecuentes</li>
 						<li onClick={()=> {}}>Envíos</li>
 						<li onClick={()=> {}}>Proceso de compra</li>
 						<li onClick={()=> {}}>Medios de pago</li>

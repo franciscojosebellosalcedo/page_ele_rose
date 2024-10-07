@@ -9,6 +9,7 @@ export const ROUTES = {
 	ONE_COLLECTION: "/collections/collection",
 	ONE_CATEGORY: "/accesories/category",
 	DISCOUNTS: "/discount",
+	FREQUENTY_QUESTIONS: "/frequenty/questions",
 	FAVORITE: "/favorite",
 	PRODUCT: "/accesories/product",
 	CART: "/cart",

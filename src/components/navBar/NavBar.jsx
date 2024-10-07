@@ -1,15 +1,14 @@
-import { NavLink, useNavigate } from "react-router-dom";
-import "./NavBar.css";
-import { useState } from "react";
-import { ROUTES } from "../../constants/constants";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import ModalRegisterUser from "../modalRegisterUser/ModalRegisterUser";
-import ModalSearch from "../modalSearch/ModalSearch";
-import { getAllAmountPoductsOrder, isValidObject } from "../../utils/utils";
-import CartRight from "../cartRight/CartRight";
+import { NavLink, useNavigate } from "react-router-dom";
+import { ROUTES } from "../../constants/constants";
 import { setActiveCart } from "../../features/cart/cart";
 import { setIsOpenModal } from "../../features/user/user";
-import { setProductsFilter } from "../../features/product/product";
+import { getAllAmountPoductsOrder, isValidObject } from "../../utils/utils";
+import CartRight from "../cartRight/CartRight";
+import ModalRegisterUser from "../modalRegisterUser/ModalRegisterUser";
+import ModalSearch from "../modalSearch/ModalSearch";
+import "./NavBar.css";
 
 const NavBar = () => {
 	const [isOpenAccessories, setIsOpenAccessories] = useState(false);
@@ -64,6 +63,18 @@ const NavBar = () => {
 		e.stopPropagation();
 		setIsOpenCollections(!isOpenCollections);
 	}
+
+	const toUp=()=>{
+		window.scrollTo({
+			top:0,behavior:"smooth"
+		});
+	}
+
+	useEffect(()=>{
+
+		toUp();
+
+	},[])
 
 	return (
 		<header className="header">
@@ -150,8 +161,7 @@ const NavBar = () => {
 					<div className="nav_container_icons">
 						<i className="uil uil-search icon_nav icon_menu" onClick={(e) => handlerOpenModalSearch(e)}></i>
 						<i className="uil uil-user icon_nav icon_menu" onClick={(e) => handlerOpenModal(e)}></i>
-						<i className="uil uil-heart icon_nav icon_menu" onClick={(e)=> {
-							e.preventDefault();
+						<i className="uil uil-heart icon_nav icon_menu" onClick={()=> {
 							nav(ROUTES.FAVORITE);
 						}}></i>
 						<i className="uil uil-shopping-cart icon_nav icon_menu" onClick={() => handlerOpencart()}><span className="amount_cart_products">{getAllAmountPoductsOrder(listItemsCart)}</span></i>

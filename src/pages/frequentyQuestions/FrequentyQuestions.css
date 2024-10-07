@@ -1,0 +1,23 @@
+.container_frequenty_questions {
+	width: var(--width-container);
+	margin: 0px auto;
+	margin-top: 30px;
+	overflow: hidden;
+}
+
+.text_frequenty_questions{
+	font-size: 15px;
+  color: var(--color-icon);
+	margin-bottom: 30px;
+}
+
+.list_shape_shoopy{
+	list-style-type: disc;
+	width: var(--width-container);
+	margin: 0px 0px 0px 10px;
+}
+.list_shape_shoopy >li{
+	margin-left: 10px;
+	margin-bottom: 10px;
+	color: var(--color-icon);
+}

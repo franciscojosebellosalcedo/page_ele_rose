@@ -41,12 +41,6 @@ const Favorite = () => {
 
 	}
 
-	useEffect(()=>{
-
-		getProductsFavorites();
-
-	},[productsFavorites]);
-
 	return (
 		<section className='container_favite'>
 			<NavBar/>
