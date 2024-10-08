@@ -46,7 +46,7 @@ const Footer = () => {
 					<ul className="list_info_ele_rose">
 						<li onClick={()=>navigate(ROUTES.FREQUENTY_QUESTIONS)}>Preguntas frecuentes</li>
 						<li onClick={()=> navigate(ROUTES.INFO_SEND_ORDER)}>Envíos</li>
-						<li onClick={()=> {}}>Proceso de compra</li>
+						<li onClick={()=> navigate(ROUTES.PURCHASING_PROCESS)}>Proceso de compra</li>
 						<li onClick={()=> {}}>Medios de pago</li>
 					</ul>
 				</div>

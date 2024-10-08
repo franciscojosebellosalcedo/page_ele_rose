@@ -11,6 +11,7 @@ export const ROUTES = {
 	DISCOUNTS: "/discount",
 	FREQUENTY_QUESTIONS: "/frequenty/questions",
 	INFO_SEND_ORDER: "/information/send/order",
+	PURCHASING_PROCESS: "/purchasing/process",
 	FAVORITE: "/favorite",
 	PRODUCT: "/accesories/product",
 	CART: "/cart",

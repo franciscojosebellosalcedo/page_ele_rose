@@ -9,13 +9,14 @@ import Discount from "../pages/discount/Discount";
 import Favorite from "../pages/favorite/Favorite";
 import FrequentyQuestions from "../pages/frequentyQuestions/FrequentyQuestions";
 import IndexPage from "../pages/index/IndexPage";
+import InfoSendOrder from "../pages/infoSendOrder/InfoSendOrder";
 import NotFound from "../pages/notFound/NotFound";
 import OneCategory from "../pages/oneCategory/OneCategory";
 import OneCollection from "../pages/oneCollection/OneCollection";
 import OneProduct from "../pages/oneProduct/OneProduct";
+import PurchasingProcess from "../pages/purchasingProcess/PurchasingProcess";
 import ResetPassword from "../pages/resetPassword/ResetPassword";
 import User from "../pages/user/User";
-import InfoSendOrder from "../pages/infoSendOrder/InfoSendOrder";
 
 const RoutesPages = () => {
 
@@ -35,6 +36,7 @@ const RoutesPages = () => {
             <Route path={ROUTES.ACCOUNT} element={<User/>}></Route>
             <Route path={ROUTES.ABOUT} element={<About/>}></Route>
             <Route path={ROUTES.INFO_SEND_ORDER} element={<InfoSendOrder/>}></Route>
+            <Route path={ROUTES.PURCHASING_PROCESS} element={<PurchasingProcess/>}></Route>
             <Route path={ROUTES.CONTACT} element={<Contact/>}></Route>
             <Route path={ROUTES.FREQUENTY_QUESTIONS} element={<FrequentyQuestions/>}></Route>
             <Route path="*" element={<NotFound/>}></Route>
