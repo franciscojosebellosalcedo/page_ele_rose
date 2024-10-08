@@ -15,6 +15,7 @@ import OneCollection from "../pages/oneCollection/OneCollection";
 import OneProduct from "../pages/oneProduct/OneProduct";
 import ResetPassword from "../pages/resetPassword/ResetPassword";
 import User from "../pages/user/User";
+import InfoSendOrder from "../pages/infoSendOrder/InfoSendOrder";
 
 const RoutesPages = () => {
 
@@ -33,6 +34,7 @@ const RoutesPages = () => {
             <Route path={ROUTES.RESET_PASSWORD+`/:token`} element={<ResetPassword/>}></Route>
             <Route path={ROUTES.ACCOUNT} element={<User/>}></Route>
             <Route path={ROUTES.ABOUT} element={<About/>}></Route>
+            <Route path={ROUTES.INFO_SEND_ORDER} element={<InfoSendOrder/>}></Route>
             <Route path={ROUTES.CONTACT} element={<Contact/>}></Route>
             <Route path={ROUTES.FREQUENTY_QUESTIONS} element={<FrequentyQuestions/>}></Route>
             <Route path="*" element={<NotFound/>}></Route>

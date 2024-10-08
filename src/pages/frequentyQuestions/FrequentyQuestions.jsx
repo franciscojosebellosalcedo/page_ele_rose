@@ -5,8 +5,6 @@ import HeaderSection from '../../components/headerSection/HeaderSection';
 import NavBar from '../../components/navBar/NavBar';
 import "./FrequentyQuestions.css";
 
-
-
 const FrequentyQuestions = () => {
 
 	const items = [
@@ -30,13 +28,13 @@ const FrequentyQuestions = () => {
 			label: '¿Cómo es el proceso de compra?',
 			children: <ul className="list_shape_shoopy">
 			<li>
+				<p>Inicia sesión o si aún no estás registrado realiza el proceso de registro agregando los datos solicitados</p>
+			</li>
+			<li>
 				<p> Añade al carrito los productos que desear pedir</p>
 			</li>
 			<li>
 				<p>Da clic en pedir por whatsApp</p>
-			</li>
-			<li>
-				<p>Inicia sesión o si aún no estás registrado realiza el proceso de registro agregando los datos solicitados</p>
 			</li>
 			<li>
 				<p>El pedido será enviado y se le notificará por whatsApp la información para el envío dependiendo de la dirección ingresada y el valor total del pedido</p>
@@ -50,20 +48,20 @@ const FrequentyQuestions = () => {
 		</ul>,
 		},
 		{
-			key: '3',
+			key: '4',
 			label: '¿Cuáles son los métodos de pago?',
 			children: <p>
 				Los medios de pago disponibles actualmente son Nequi y Daviplata.
 			</p>,
 		},
 		{
-			key: '4',
+			key: '5',
 			label: '¿Manejan pago contra entrega?',
 			children: <p>
 				Sólo para domicilios en Cartagena y envíos a ciudades cercanas, teniendo en cuenta que el valor de un envío contra entrega es mayor al de un envío normal y depende del monto del pedido.			</p>,
 		},
 		{
-			key: '5',
+			key: '6',
 			label: '¿Cuánto tiempo tarda en llegar mi pedido?',
 			children:
 			<>
@@ -82,7 +80,7 @@ const FrequentyQuestions = () => {
 			</>
 		},
 		{
-			key: '6',
+			key: '7',
 			label: '¿Qué cuidados debo tener con los accesorios?',
 			children: <ul className="list_shape_shoopy">
 			<li>
@@ -104,7 +102,7 @@ const FrequentyQuestions = () => {
 		},
 
 		{
-			key: '7',
+			key: '8',
 			label: '¿Venden al por mayor?',
 			children: <p>
 				No, aún no manejamos ventas al por mayor pero si deseas accesorios para recordatorios te ofrecemos descuentos.

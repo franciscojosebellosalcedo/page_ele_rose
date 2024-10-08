@@ -10,6 +10,7 @@ export const ROUTES = {
 	ONE_CATEGORY: "/accesories/category",
 	DISCOUNTS: "/discount",
 	FREQUENTY_QUESTIONS: "/frequenty/questions",
+	INFO_SEND_ORDER: "/information/send/order",
 	FAVORITE: "/favorite",
 	PRODUCT: "/accesories/product",
 	CART: "/cart",
